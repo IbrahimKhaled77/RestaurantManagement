@@ -8,10 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="DTOs\" />
     <Folder Include="Helper\Mapper\" />
-    <Folder Include="Interface\" />
-    <Folder Include="Implementation\" />
   </ItemGroup>
 
   <ItemGroup>

@@ -12,5 +12,7 @@ namespace RestaurantManagement_Repository.Model.Entity
         public virtual Order Order { get; set; }
 
         public virtual Menu Menu { get; set; }
+
+        public bool IsActive { get; set; }
     }
 }

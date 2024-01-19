@@ -1,8 +1,8 @@
 ﻿
-namespace RestaurantManagement_Repository.Model.Entity
-{
-    public class Employee
 
+namespace RestaurantManagement_Repository.DTOs.EmployeeDTO
+{
+    public class UpdateEmployeeDTO
     {
         public int EmployeeId { get; set; }
         public string Name { get; set; }
@@ -11,10 +11,5 @@ namespace RestaurantManagement_Repository.Model.Entity
         public string Password { get; set; }
         public string Position { get; set; }
         public bool IsActive { get; set; }
-        public virtual ICollection<Table> Table { get; set; }
-
-        public virtual ICollection<EmployeeOrder> EmployeeOrder { get; set; }
-
-      
     }
 }

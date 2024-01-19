@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using RestaurantManagement_Repository.Context;
+using RestaurantManagement_Repository.Implementation;
+using RestaurantManagement_Repository.IRepository;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,7 +12,11 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<RestaurantManagementContext>(server => server.UseSqlServer(builder.Configuration.GetConnectionString("sqlconnect")));
-
+builder.Services.AddScoped<IMenuRepository, MenuRepository>();
+builder.Services.AddScoped<IOrderRepository, OrderRepository>();
+builder.Services.AddScoped<ITableRepository, TableRepository>();
+builder.Services.AddScoped<IEmployeeRepository, EmployeeRepository>();
+builder.Services.AddScoped<ICustomerRepository, CustomerRepository>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

@@ -1,9 +1,8 @@
 ﻿
 
-
-namespace RestaurantManagement_Repository.Model.Entity
+namespace RestaurantManagement_Repository.DTOs.CustomerDTO
 {
-    public class Customer
+    public class UpdateCustomerDTO
     {
         public int CustomerId { get; set; }
         public string Name { get; set; }
@@ -13,8 +12,5 @@ namespace RestaurantManagement_Repository.Model.Entity
         public string PhoneNumber { get; set; }
 
         public bool IsActive { get; set; }
-        public virtual ICollection<Order> OrderCustomer { get; set; }
-
-      
     }
 }
