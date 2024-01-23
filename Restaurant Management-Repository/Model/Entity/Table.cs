@@ -7,8 +7,13 @@ namespace RestaurantManagement_Repository.Model.Entity
         public int TableId { get; set; }
         public int TableNumber { get; set; }
         public bool IsActive { get; set; }
-        public virtual ICollection<Order> Order { get; set; }
 
-        public virtual Employee Employee { get; set; }
+       
+        public virtual ICollection<Order> Order { get; set; }
+        
+        //public virtual Employee? Employee { get; set; }
+
+        //
+       // public virtual Customer Customer { get; set; }
     }
 }

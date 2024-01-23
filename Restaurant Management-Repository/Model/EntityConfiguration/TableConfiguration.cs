@@ -6,7 +6,7 @@ using RestaurantManagement_Repository.Model.Entity;
 
 namespace RestaurantManagement_Repository.Model.EntityConfiguration
 {
-    internal class TableConfiguration : IEntityTypeConfiguration<Table>
+    public class TableConfiguration : IEntityTypeConfiguration<Table>
     {
         [Obsolete]
         public void Configure(EntityTypeBuilder<Table> builder)
@@ -15,6 +15,8 @@ namespace RestaurantManagement_Repository.Model.EntityConfiguration
             builder.Property(x => x.TableId).UseIdentityColumn();
 
             builder.Property(x => x.TableNumber).IsRequired();
+
+            builder.HasIndex(x => x.TableNumber).IsUnique();
             builder.HasCheckConstraint("TableNumber", "TableNumber >= 0");
         }
     }

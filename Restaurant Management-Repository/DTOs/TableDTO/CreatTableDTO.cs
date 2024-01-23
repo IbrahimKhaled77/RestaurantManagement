@@ -7,5 +7,7 @@ namespace RestaurantManagement_Repository.DTOs.TableDTO
 
         public int TableNumber { get; set; }
 
+    
+
     }
 }

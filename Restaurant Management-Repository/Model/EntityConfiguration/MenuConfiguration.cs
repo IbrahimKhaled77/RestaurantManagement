@@ -18,12 +18,13 @@ namespace RestaurantManagement_Repository.Model.EntityConfiguration
             builder.HasCheckConstraint("Name", "(NOT [Name] like '%[0-9]%' AND NOT [Name] like '%[^A-Za-z]%')");
 
             builder.Property(x => x.Description).IsRequired();
-            builder.HasCheckConstraint("Description", "([Description] like '%[0-9]%' AND NOT [Description] like '%[^A-Za-z]%')");
+            builder.HasCheckConstraint("Description", "(NOT [Description] like '%[0-9]%' AND NOT [Description] like '%[^A-Za-z]%')");
 
-            builder.Property(x => x.Description).IsRequired();
-            builder.HasCheckConstraint("Description", "([Description] like '%[0-9]%' AND NOT [Description] like '%[^A-Za-z]%')");
 
+          
             builder.Property(e => e.Price).HasColumnType("decimal(18, 2)") .IsRequired();
+
+            builder.HasMany(i => i.OrderItems) .WithOne(oi => oi.Menu).HasForeignKey(oi => oi.MenuId);
 
         }
     }

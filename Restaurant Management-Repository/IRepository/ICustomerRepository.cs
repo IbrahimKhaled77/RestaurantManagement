@@ -1,5 +1,7 @@
 ﻿
 
+using RestaurantManagement_Repository.DTOs.CustomerDTO;
+using RestaurantManagement_Repository.DTOs.OrderDTO;
 using RestaurantManagement_Repository.Model.Entity;
 
 namespace RestaurantManagement_Repository.IRepository
@@ -7,10 +9,10 @@ namespace RestaurantManagement_Repository.IRepository
     public interface ICustomerRepository
     {
 
-        Task<IEnumerable<Customer>> GetAllCustomers();
-        Task<Customer> GetCustomerById(int id);
-        Task<bool> AddCustomer(Customer customer);
-        Task<bool> UpdateCustomer(Customer customer);
-        Task<bool> DeleteCustomer(int id);
+        Task<List<CustomerCardDTO>> GetAllCustomers();
+        Task<CustomerCardDTO> GetCustomerById(int id);
+        Task<string> AddCustomer(CreateCustomerDTO customer);
+        Task<string> UpdateCustomer(UpdateCustomerDTO customer);
+        Task<string> DeleteCustomer(int id);
     }
 }

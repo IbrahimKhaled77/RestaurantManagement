@@ -2,6 +2,7 @@
 
 using RestaurantManagement_Repository.DTOs.OrderItemDTO;
 using RestaurantManagement_Repository.DTOs.TableDTO;
+using RestaurantManagement_Repository.Model.Entity;
 
 namespace RestaurantManagement_Repository.DTOs.OrderDTO
 {
@@ -10,12 +11,13 @@ namespace RestaurantManagement_Repository.DTOs.OrderDTO
         //UpdateTableDto or TableCardDto
         //UpdateOrderIterm or OrderItermCard
         public int OrderId { get; set; }
-        public bool IsActive { get; set; }
-        
-        public decimal TotalPrice { get; set; }
-        public UpdateTableDto TableNumber { get; set; }
 
-        public List<UpdateOrderIterm> OrderItems { get; set; }
+        public int TableId { get; set; }
+        public decimal TotalPrice { get; set; }
+        
+        public bool IsActive { get; set; }
+
+         public List<UpdateOrderIterm> OrderItems { get; set; }
 
     }
 }

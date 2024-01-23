@@ -8,11 +8,13 @@ namespace RestaurantManagement_Repository.DTOs.OrderItemDTO
     {
 
      
-        public MenuCardDTO MenuId { get; set; }
+        public int MenuId { get; set; }
+        //public int OrderId { get; set; }
         public int Quantity { get; set; }
 
+        public bool IsActive { get; set; }
         //orderId*
-        
+
 
     }
 }

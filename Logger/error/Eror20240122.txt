@@ -1,0 +1,2 @@
+2024-01-22 23:58:39.236 +03:00 [ERR] Table Not Found 
+2024-01-22 23:58:39.291 +03:00 [ERR] An error occurred ,Exception: Not Found (Parameter 'table')

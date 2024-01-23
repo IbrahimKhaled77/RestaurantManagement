@@ -1,0 +1,215 @@
+2024-01-23 01:00:59.735 +03:00 [INF] Starting web host
+2024-01-23 01:01:09.250 +03:00 [INF] Table Is In Procesing
+2024-01-23 01:01:09.819 +03:00 [INF] Table Is In Finised
+2024-01-23 01:01:09.819 +03:00 [DBG] Debugging AddTables Has been Finised Successfully With Table ID  
+2024-01-23 01:01:56.973 +03:00 [INF] Starting web host
+2024-01-23 01:02:05.833 +03:00 [INF] Table Is In Procesing
+2024-01-23 01:02:06.348 +03:00 [INF] Table Is In Finised
+2024-01-23 01:02:06.348 +03:00 [DBG] Debugging AddTables Has been Finised Successfully With Table ID  
+2024-01-23 01:02:12.005 +03:00 [ERR] Table Not Found 
+2024-01-23 01:02:12.035 +03:00 [ERR] An error occurred ,Exception: Not Found (Parameter 'table')
+2024-01-23 01:08:37.778 +03:00 [INF] Starting web host
+2024-01-23 01:08:48.339 +03:00 [INF] Table Is In Procesing
+2024-01-23 01:08:48.863 +03:00 [INF] Table Is In Finised
+2024-01-23 01:08:48.863 +03:00 [DBG] Debugging AddTables Has been Finised Successfully With Table ID  
+2024-01-23 01:08:52.860 +03:00 [ERR] Table Not Found 
+2024-01-23 01:08:52.888 +03:00 [ERR] An error occurred ,Exception: Not Found (Parameter 'table')
+2024-01-23 02:15:23.871 +03:00 [INF] Starting web host
+2024-01-23 02:15:51.315 +03:00 [ERR] Table Not Found 
+2024-01-23 02:15:51.343 +03:00 [ERR] An error occurred ,Exception: Not Found (Parameter 'table')
+2024-01-23 02:24:39.664 +03:00 [INF] Starting web host
+2024-01-23 02:25:04.474 +03:00 [INF] Table Is In Procesing
+2024-01-23 02:25:04.994 +03:00 [INF] Table Is In Finised
+2024-01-23 02:25:04.994 +03:00 [DBG] Debugging AddTables Has been Finised Successfully With Table ID  0
+2024-01-23 02:25:45.360 +03:00 [INF] Table Is In Procesing
+2024-01-23 02:26:00.276 +03:00 [INF] Starting web host
+2024-01-23 02:26:10.109 +03:00 [INF] Table Is In Procesing
+2024-01-23 02:26:54.101 +03:00 [INF] Starting web host
+2024-01-23 02:27:03.741 +03:00 [INF] Table Is In Procesing
+2024-01-23 02:27:04.254 +03:00 [INF] Table Is In Finised
+2024-01-23 02:27:04.254 +03:00 [DBG] Debugging AddTables Has been Finised Successfully With Table ID  0
+2024-01-23 02:27:04.687 +03:00 [ERR] An error occurred In datebase: An error occurred while saving the entity changes. See the inner exception for details.
+2024-01-23 02:40:13.675 +03:00 [INF] Starting web host
+2024-01-23 02:40:24.736 +03:00 [INF] Tables are Reached
+2024-01-23 02:40:24.737 +03:00 [DBG] Debugging GetAllTables Has been Finised Successfully
+2024-01-23 02:45:04.737 +03:00 [INF] Starting web host
+2024-01-23 02:45:17.329 +03:00 [INF] Table Is  Existing: 5
+2024-01-23 02:45:17.330 +03:00 [INF] Table Is Reached
+2024-01-23 02:45:17.330 +03:00 [DBG] Debugging GetTableById Has been Finised Successfully With Table ID  = 5
+2024-01-23 02:45:33.235 +03:00 [INF] Tables are Reached
+2024-01-23 02:45:33.235 +03:00 [DBG] Debugging GetAllTables Has been Finised Successfully
+2024-01-23 14:55:51.767 +03:00 [INF] Starting web host
+2024-01-23 14:57:31.004 +03:00 [INF] Starting web host
+2024-01-23 14:58:03.561 +03:00 [INF] Starting web host
+2024-01-23 14:59:24.802 +03:00 [INF] Starting web host
+2024-01-23 15:04:13.361 +03:00 [INF] Starting web host
+2024-01-23 15:06:58.431 +03:00 [INF] Starting web host
+2024-01-23 15:12:09.117 +03:00 [INF] Starting web host
+2024-01-23 15:16:19.430 +03:00 [INF] Starting web host
+2024-01-23 15:32:32.873 +03:00 [INF] Starting web host
+2024-01-23 15:32:43.497 +03:00 [INF] Customers are Reached
+2024-01-23 15:32:43.497 +03:00 [DBG] Debugging GetAllCustomers Has been Finised Successfully
+2024-01-23 15:34:38.871 +03:00 [INF] Starting web host
+2024-01-23 15:35:12.999 +03:00 [INF] Starting web host
+2024-01-23 15:37:50.413 +03:00 [INF] Starting web host
+2024-01-23 15:38:06.873 +03:00 [INF] Customer Is Reached
+2024-01-23 15:38:06.873 +03:00 [DBG] Debugging GetCustomerById Has been Finised Successfully With Customer ID  = 4
+2024-01-23 18:23:04.776 +03:00 [INF] Starting web host
+2024-01-23 18:23:44.280 +03:00 [INF] Create New Employee
+2024-01-23 18:23:45.177 +03:00 [INF] Employee Is In Finised
+2024-01-23 18:23:45.177 +03:00 [DBG] Debugging AddEmployee Has been Finised Successfully With Employee ID  1 
+2024-01-23 18:24:49.683 +03:00 [INF] Create New Customer
+2024-01-23 18:24:49.817 +03:00 [ERR] An error occurred in datebase: An error occurred while saving the entity changes. See the inner exception for details.
+2024-01-23 18:25:07.159 +03:00 [INF] Create New Customer
+2024-01-23 18:25:07.181 +03:00 [INF] Customer Is In Finised
+2024-01-23 18:25:07.181 +03:00 [DBG] Debugging AddCustomer Has been Finised Successfully With Customer ID  2 
+2024-01-23 18:25:19.824 +03:00 [INF] Table Is In Procesing
+2024-01-23 18:25:19.830 +03:00 [INF] Table Is In Finised
+2024-01-23 18:25:19.831 +03:00 [DBG] Debugging AddTables Has been Finised Successfully With Table ID  0
+2024-01-23 18:25:56.103 +03:00 [INF] Starting web host
+2024-01-23 18:27:24.781 +03:00 [INF] Starting web host
+2024-01-23 18:28:12.425 +03:00 [INF] Order Is In Procesing
+2024-01-23 18:28:13.597 +03:00 [INF] Order Is In Finised
+2024-01-23 18:28:13.598 +03:00 [DBG] Debugging AddOrder Has been Finised Successfully With Order ID 1  
+2024-01-23 18:32:17.404 +03:00 [INF] Starting web host
+2024-01-23 18:34:22.374 +03:00 [INF] Starting web host
+2024-01-23 18:34:30.842 +03:00 [INF] EmployeeOrder Is In Procesing
+2024-01-23 18:34:32.026 +03:00 [INF] EmployeeOrder Is In Finised
+2024-01-23 18:34:32.026 +03:00 [DBG] Debugging AddEmployeeOrder Has been Finised Successfully EmployeeOrder ID  1 
+2024-01-23 19:01:00.468 +03:00 [INF] Starting web host
+2024-01-23 19:01:46.956 +03:00 [INF] Starting web host
+2024-01-23 19:02:54.265 +03:00 [INF] Starting web host
+2024-01-23 19:03:15.809 +03:00 [INF] Order Is  Existing: 1
+2024-01-23 19:03:15.811 +03:00 [INF] Order Is Reached
+2024-01-23 19:03:15.811 +03:00 [DBG] Debugging Get Order By Id Has been Finised Successfully With Order ID  = 1
+2024-01-23 19:03:58.698 +03:00 [INF] Starting web host
+2024-01-23 19:04:09.100 +03:00 [INF] Table Is In Procesing
+2024-01-23 19:04:09.612 +03:00 [INF] Table Is In Finised
+2024-01-23 19:04:09.613 +03:00 [DBG] Debugging AddTables Has been Finised Successfully With Table ID  0
+2024-01-23 19:04:26.139 +03:00 [INF] Order Is In Procesing
+2024-01-23 19:04:26.573 +03:00 [ERR] An error occurred in datebase: An error occurred while saving the entity changes. See the inner exception for details.
+2024-01-23 19:04:46.178 +03:00 [INF] Order Is In Procesing
+2024-01-23 19:04:46.222 +03:00 [INF] Order Is In Finised
+2024-01-23 19:04:46.223 +03:00 [DBG] Debugging AddOrder Has been Finised Successfully With Order ID 3  
+2024-01-23 19:06:06.515 +03:00 [INF] EmployeeOrder Is In Procesing
+2024-01-23 19:06:06.535 +03:00 [INF] EmployeeOrder Is In Finised
+2024-01-23 19:06:06.535 +03:00 [DBG] Debugging AddEmployeeOrder Has been Finised Successfully EmployeeOrder ID  2 
+2024-01-23 19:06:16.711 +03:00 [INF] Order Is  Existing: 3
+2024-01-23 19:06:16.712 +03:00 [INF] Order Is Reached
+2024-01-23 19:06:16.712 +03:00 [DBG] Debugging Get Order By Id Has been Finised Successfully With Order ID  = 3
+2024-01-23 19:06:49.864 +03:00 [INF] Table Is  Existing: 1
+2024-01-23 19:06:49.865 +03:00 [INF] Table Is Reached
+2024-01-23 19:06:49.865 +03:00 [DBG] Debugging GetTableById Has been Finised Successfully With Table ID  = 1
+2024-01-23 19:07:12.948 +03:00 [INF] Table Is In Procesing
+2024-01-23 19:07:12.949 +03:00 [INF] Table Is In Finised
+2024-01-23 19:07:12.949 +03:00 [DBG] Debugging AddTables Has been Finised Successfully With Table ID  0
+2024-01-23 19:12:10.081 +03:00 [INF] Starting web host
+2024-01-23 19:12:47.994 +03:00 [INF] Order Is In Procesing
+2024-01-23 19:12:49.179 +03:00 [INF] Order Is In Finised
+2024-01-23 19:12:49.179 +03:00 [DBG] Debugging AddOrder Has been Finised Successfully With Order ID 4  
+2024-01-23 19:12:49.196 +03:00 [INF] EmployeeOrder Is In Finised
+2024-01-23 19:12:49.196 +03:00 [DBG] Debugging AddEmployeeOrder Has been Finised Successfully EmployeeOrder ID  3 
+2024-01-23 20:00:49.880 +03:00 [INF] Starting web host
+2024-01-23 20:01:36.734 +03:00 [INF] Create New Customer
+2024-01-23 20:01:38.043 +03:00 [ERR] An error occurred in datebase: An error occurred while saving the entity changes. See the inner exception for details.
+2024-01-23 20:01:49.333 +03:00 [INF] Create New Customer
+2024-01-23 20:01:49.420 +03:00 [ERR] An error occurred in datebase: An error occurred while saving the entity changes. See the inner exception for details.
+2024-01-23 20:02:56.737 +03:00 [INF] Create New Customer
+2024-01-23 20:02:56.797 +03:00 [ERR] An error occurred in datebase: An error occurred while saving the entity changes. See the inner exception for details.
+2024-01-23 20:03:23.320 +03:00 [INF] Create New Customer
+2024-01-23 20:03:23.367 +03:00 [ERR] An error occurred in datebase: An error occurred while saving the entity changes. See the inner exception for details.
+2024-01-23 20:03:34.775 +03:00 [INF] Create New Customer
+2024-01-23 20:03:34.806 +03:00 [INF] Customer Is In Finised
+2024-01-23 20:03:34.806 +03:00 [DBG] Debugging AddCustomer Has been Finised Successfully With Customer ID  5 
+2024-01-23 20:04:28.612 +03:00 [INF] Create New Employee
+2024-01-23 20:04:28.638 +03:00 [INF] Employee Is In Finised
+2024-01-23 20:04:28.638 +03:00 [DBG] Debugging AddEmployee Has been Finised Successfully With Employee ID  1 
+2024-01-23 20:05:08.733 +03:00 [INF] Menu Is In Procesing
+2024-01-23 20:05:08.800 +03:00 [ERR] An error occurred in datebase: An error occurred while saving the entity changes. See the inner exception for details.
+2024-01-23 20:05:15.118 +03:00 [INF] Menu Is In Procesing
+2024-01-23 20:05:15.127 +03:00 [INF] Menu Is In Finised
+2024-01-23 20:05:15.127 +03:00 [DBG] Debugging AddMenus Has been Finised Successfully With Menu ID  2 
+2024-01-23 20:06:04.635 +03:00 [INF] Table Is In Procesing
+2024-01-23 20:06:04.649 +03:00 [INF] Table Is In Finised
+2024-01-23 20:06:04.649 +03:00 [DBG] Debugging AddTables Has been Finised Successfully With Table ID  0
+2024-01-23 20:13:12.824 +03:00 [INF] Starting web host
+2024-01-23 20:15:29.063 +03:00 [INF] Starting web host
+2024-01-23 20:18:16.842 +03:00 [INF] Order Is In Procesing
+2024-01-23 20:18:18.038 +03:00 [INF] Order Is In Finised
+2024-01-23 20:18:18.038 +03:00 [DBG] Debugging AddOrder Has been Finised Successfully With Order ID 1  
+2024-01-23 20:23:44.791 +03:00 [INF] Starting web host
+2024-01-23 20:25:42.034 +03:00 [INF] Starting web host
+2024-01-23 20:26:59.013 +03:00 [INF] Order Is In Procesing
+2024-01-23 20:27:00.185 +03:00 [INF] Order Is In Finised
+2024-01-23 20:27:00.186 +03:00 [DBG] Debugging AddOrder Has been Finised Successfully With Order ID 2  
+2024-01-23 20:27:00.263 +03:00 [ERR] An error occurred in datebase: An error occurred while saving the entity changes. See the inner exception for details.
+2024-01-23 20:30:10.284 +03:00 [INF] Starting web host
+2024-01-23 20:31:12.515 +03:00 [INF] Order Is In Procesing
+2024-01-23 20:31:13.751 +03:00 [INF] Order Is In Finised
+2024-01-23 20:31:13.751 +03:00 [DBG] Debugging AddOrder Has been Finised Successfully With Order ID 3  
+2024-01-23 20:35:34.900 +03:00 [INF] Starting web host
+2024-01-23 20:36:20.204 +03:00 [INF] Order Is In Procesing
+2024-01-23 20:36:21.383 +03:00 [INF] Order Is In Finised
+2024-01-23 20:36:21.383 +03:00 [DBG] Debugging AddOrder Has been Finised Successfully With Order ID 4  
+2024-01-23 20:37:56.111 +03:00 [INF] Starting web host
+2024-01-23 20:38:16.608 +03:00 [INF] Order Is In Procesing
+2024-01-23 20:38:17.791 +03:00 [INF] Order Is In Finised
+2024-01-23 20:38:17.791 +03:00 [DBG] Debugging AddOrder Has been Finised Successfully With Order ID 5  
+2024-01-23 20:46:56.545 +03:00 [INF] Starting web host
+2024-01-23 20:47:14.769 +03:00 [INF] Order Is In Procesing
+2024-01-23 20:47:15.932 +03:00 [INF] Order Is In Finised
+2024-01-23 20:47:15.932 +03:00 [DBG] Debugging AddOrder Has been Finised Successfully With Order ID 6  
+2024-01-23 20:55:10.414 +03:00 [INF] Starting web host
+2024-01-23 20:55:34.691 +03:00 [INF] Starting web host
+2024-01-23 20:56:01.216 +03:00 [INF] Order Is In Processing
+2024-01-23 20:56:02.407 +03:00 [INF] Order Is In Finished
+2024-01-23 20:56:02.407 +03:00 [DBG] Debugging AddOrder Has been Finished Successfully With Order ID 7
+2024-01-23 20:58:27.326 +03:00 [INF] Starting web host
+2024-01-23 20:58:47.612 +03:00 [INF] Order Is In Processing
+2024-01-23 20:59:24.210 +03:00 [ERR] Order Not Found: Value cannot be null. (Parameter 'source')
+2024-01-23 21:00:06.477 +03:00 [INF] Order Is In Processing
+2024-01-23 21:00:17.448 +03:00 [ERR] Order Not Found: Value cannot be null. (Parameter 'source')
+2024-01-23 21:00:47.900 +03:00 [INF] Starting web host
+2024-01-23 21:01:50.468 +03:00 [INF] Order Is In Processing
+2024-01-23 21:01:51.710 +03:00 [INF] Order Is In Finished
+2024-01-23 21:01:51.711 +03:00 [DBG] Debugging AddOrder Has been Finished Successfully With Order ID 10
+2024-01-23 21:02:09.125 +03:00 [INF] Starting web host
+2024-01-23 21:02:48.902 +03:00 [INF] Order Is In Processing
+2024-01-23 21:10:28.032 +03:00 [INF] Starting web host
+2024-01-23 21:10:47.393 +03:00 [INF] Order Is In Processing
+2024-01-23 21:11:18.425 +03:00 [ERR] An error occurred in the database: An error occurred while saving the entity changes. See the inner exception for details.
+2024-01-23 21:13:05.200 +03:00 [INF] Starting web host
+2024-01-23 21:15:11.977 +03:00 [INF] Starting web host
+2024-01-23 21:15:31.020 +03:00 [INF] Order Is In Processing
+2024-01-23 21:38:55.858 +03:00 [INF] Starting web host
+2024-01-23 21:39:25.848 +03:00 [INF] Order Is In Processing
+2024-01-23 21:40:02.599 +03:00 [INF] Starting web host
+2024-01-23 21:40:19.650 +03:00 [INF] Order Is In Processing
+2024-01-23 21:43:12.048 +03:00 [INF] Starting web host
+2024-01-23 21:43:31.145 +03:00 [INF] Order Is In Processing
+2024-01-23 21:44:14.291 +03:00 [INF] Starting web host
+2024-01-23 21:44:36.253 +03:00 [INF] Order Is In Processing
+2024-01-23 21:45:02.065 +03:00 [INF] Starting web host
+2024-01-23 21:45:27.337 +03:00 [INF] Order Is In Processing
+2024-01-23 21:45:28.536 +03:00 [INF] Order Is In Finished
+2024-01-23 21:45:28.537 +03:00 [DBG] Debugging AddOrder Has been Finished Successfully With Order ID 18
+2024-01-23 21:48:34.170 +03:00 [INF] Starting web host
+2024-01-23 21:49:05.800 +03:00 [INF] Order Is In Processing
+2024-01-23 21:49:07.004 +03:00 [INF] Order Is In Finished
+2024-01-23 21:49:07.004 +03:00 [DBG] Debugging AddOrder Has been Finished Successfully With Order ID 19
+2024-01-23 22:02:41.509 +03:00 [INF] Starting web host
+2024-01-23 22:02:52.087 +03:00 [INF] Starting web host
+2024-01-23 22:03:12.782 +03:00 [INF] Starting web host
+2024-01-23 22:03:36.819 +03:00 [INF] Order Is In Processing
+2024-01-23 22:03:38.120 +03:00 [INF] OrderItem Is In Processing
+2024-01-23 22:03:38.126 +03:00 [INF] orderItem Is In Finished
+2024-01-23 22:03:38.126 +03:00 [DBG] Debugging orderItem Has been Finished Successfully With orderItem ID 9
+2024-01-23 22:03:38.168 +03:00 [ERR] An error occurred: Collection was modified; enumeration operation may not execute.
+2024-01-23 22:06:32.653 +03:00 [INF] Starting web host
+2024-01-23 22:07:12.541 +03:00 [INF] Starting web host
+2024-01-23 22:07:26.840 +03:00 [INF] Starting web host
+2024-01-23 22:07:44.677 +03:00 [INF] Starting web host
+2024-01-23 22:08:12.299 +03:00 [INF] Order Is In Processing
+2024-01-23 22:08:13.520 +03:00 [ERR] Order Not Found: Value cannot be null. (Parameter 'source')
+2024-01-23 22:11:09.923 +03:00 [INF] Starting web host
+2024-01-23 22:11:29.678 +03:00 [INF] Order Is In Processing

@@ -15,6 +15,9 @@ namespace RestaurantManagement_Repository.Model.Entity
         public bool IsActive { get; set; }
         public virtual ICollection<Order> OrderCustomer { get; set; }
 
-      
+        //
+       // public virtual Table Table { get; set; }
+
+
     }
 }

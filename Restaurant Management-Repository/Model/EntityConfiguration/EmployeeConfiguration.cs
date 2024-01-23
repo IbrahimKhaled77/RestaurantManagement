@@ -26,6 +26,10 @@ namespace RestaurantManagement_Repository.Model.EntityConfiguration
             
             builder.Property(x => x.Position).HasMaxLength(20).IsRequired();
             builder.HasCheckConstraint("Position", "(NOT [Position] like '%[0-9]%' AND NOT [Position] like '%[^A-Za-z]%')");
+
+            builder.HasMany(o => o.EmployeeOrder)
+           .WithOne(oi => oi.Employee)
+           .HasForeignKey(oi => oi.EmployeeId);
         }
     }
 }

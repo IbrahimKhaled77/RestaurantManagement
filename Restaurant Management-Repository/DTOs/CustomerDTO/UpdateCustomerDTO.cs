@@ -11,6 +11,6 @@ namespace RestaurantManagement_Repository.DTOs.CustomerDTO
         public string Password { get; set; }
         public string PhoneNumber { get; set; }
 
-        public bool IsActive { get; set; }
+       
     }
 }

@@ -13,6 +13,14 @@ namespace RestaurantManagement_Repository.Model.EntityConfiguration
             builder.Property(x => x.OrderId).UseIdentityColumn();
 
             builder.Property(e => e.TotalPrice).HasColumnType("decimal(18, 2)").IsRequired();
+
+            builder.HasMany(o => o.EmployeeOrder)
+               .WithOne(oi => oi.Order)
+               .HasForeignKey(oi => oi.OrderId);
+
+              builder.HasMany(o => o.OrderItems)
+             .WithOne(oi => oi.Order)
+             .HasForeignKey(oi => oi.OrderId);
         }
     }
 }

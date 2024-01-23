@@ -11,9 +11,10 @@ namespace RestaurantManagement_Repository.Model.Entity
         public string Password { get; set; }
         public string Position { get; set; }
         public bool IsActive { get; set; }
-        public virtual ICollection<Table> Table { get; set; }
 
-        public virtual ICollection<EmployeeOrder> EmployeeOrder { get; set; }
+       // public virtual ICollection<Table> Table { get; set; }
+
+        public virtual List<EmployeeOrder> EmployeeOrder { get; set; }
 
       
     }

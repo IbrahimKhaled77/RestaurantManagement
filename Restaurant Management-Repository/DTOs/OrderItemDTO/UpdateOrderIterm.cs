@@ -7,7 +7,7 @@ namespace RestaurantManagement_Repository.DTOs.OrderItemDTO
     {
         //UpdateMenuDTO or 
         public int OrderItemId { get; set; }
-        public MenuCardDTO MenuId { get; set; }
+        public int MenuId { get; set; }
         public int Quantity { get; set; }
 
       //  public int OrderId { get; set; }****

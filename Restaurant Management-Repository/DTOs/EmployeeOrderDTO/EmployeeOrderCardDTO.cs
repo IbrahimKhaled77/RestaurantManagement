@@ -1,15 +1,17 @@
 ﻿
 
-
-using RestaurantManagement_Repository.DTOs.OrderDTO;
-
-namespace RestaurantManagement_Repository.DTOs.EmployeeOrderCardDTO
+namespace RestaurantManagement_Repository.DTOs.EmployeeOrderDTO
 {
-    public class EmployeeOrderCardDTOs
+    public class EmployeeOrderCardDTo
     {
+
+
         public int EmployeeOrderId { get; set; }
-        public OrderCardDTO Order { get; set; }
-      
+
+        public int OrderId { get; set; }
+
+        public int EmployeeId { get; set; }
+
 
 
     }

@@ -5,7 +5,7 @@ using RestaurantManagement_Repository.Model.Entity;
 
 namespace RestaurantManagement_Repository.Model.EntityConfiguration
 {
-    internal class EmployeeOrderConfiguration : IEntityTypeConfiguration<EmployeeOrder>
+    public class EmployeeOrderConfiguration : IEntityTypeConfiguration<EmployeeOrder>
     {
         public void Configure(EntityTypeBuilder<EmployeeOrder> builder)
         {

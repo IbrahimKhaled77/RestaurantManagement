@@ -10,9 +10,9 @@ namespace RestaurantManagement_Repository.IRepository
 
         Task<List<EmployeeCardDTO>> GetAllEmployees();
         Task<EmployeeCardDTO> GetEmployeeById(int id);
-        Task<bool> AddEmployee(CreatEmployeeDTO employee);
-        Task<bool> UpdateEmployee(UpdateEmployeeDTO employee);
-        Task<bool> DeleteEmployee(int id);
+        Task<string> AddEmployee(CreatEmployeeDTO employee);
+        Task<string> UpdateEmployee(UpdateEmployeeDTO employee);
+        Task<string> DeleteEmployee(int id);
 
 
     }

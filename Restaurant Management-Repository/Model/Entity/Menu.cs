@@ -9,9 +9,12 @@ namespace RestaurantManagement_Repository.Model.Entity
 
 
        public decimal Price { get; set; }
-        public virtual ICollection<OrderItem> OrderItem { get; set; }
 
         public bool IsActive { get; set; }
+
+        public virtual ICollection<OrderItem> OrderItems { get; set; }
+
+      
 
     }
 }

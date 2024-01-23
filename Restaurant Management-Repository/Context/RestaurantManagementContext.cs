@@ -18,7 +18,7 @@ namespace RestaurantManagement_Repository.Context
 
             modelBuilder.ApplyConfiguration(new CustomerConfiguration());
             modelBuilder.ApplyConfiguration(new EmployeeConfiguration());
-          modelBuilder.ApplyConfiguration(new EmployeeOrderConfiguration());
+            modelBuilder.ApplyConfiguration(new EmployeeOrderConfiguration());
             modelBuilder.ApplyConfiguration(new MenuConfiguration());
             modelBuilder.ApplyConfiguration(new OrderConfiguration());
             modelBuilder.ApplyConfiguration(new OrderItemConfiguration());
@@ -31,7 +31,7 @@ namespace RestaurantManagement_Repository.Context
 
         public virtual DbSet<Employee> Employee { get; set; }
 
-      //  public virtual DbSet<EmployeeOrder> EmployeeOrder { get; set; }
+       public virtual DbSet<EmployeeOrder> EmployeeOrder { get; set; }
 
         public virtual DbSet<Menu> Menu { get; set; }
 

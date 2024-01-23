@@ -9,9 +9,9 @@ namespace RestaurantManagement_Repository.IRepository
     {
         Task<List<MenuCardDTO>> GetAllMenus();
         Task<MenuCardDTO> GetMenuById(int id);
-        Task<bool> AddMenu(CreatMenuDTO menu);
-        Task<bool> UpdateMenu(UpdateMenuDTO menu);
-        Task<bool> DeleteMenu(int id);
+        Task<string> AddMenus(CreatMenuDTO menu);
+        Task<string> UpdateMenu(UpdateMenuDTO menu);
+        Task<string> DeleteMenu(int id);
 
 
     }

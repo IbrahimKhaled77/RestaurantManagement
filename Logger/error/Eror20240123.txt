@@ -1,0 +1,32 @@
+2024-01-23 00:03:01.347 +03:00 [ERR] Table Not Found 
+2024-01-23 00:03:01.399 +03:00 [ERR] An error occurred ,Exception: Not Found (Parameter 'table')
+2024-01-23 00:03:09.083 +03:00 [ERR] Table Not Found 
+2024-01-23 00:03:09.101 +03:00 [ERR] An error occurred ,Exception: Not Found (Parameter 'table')
+2024-01-23 00:03:29.367 +03:00 [ERR] Table Not Found 
+2024-01-23 00:03:29.391 +03:00 [ERR] An error occurred ,Exception: Not Found (Parameter 'table')
+2024-01-23 00:03:33.369 +03:00 [ERR] Table Not Found 
+2024-01-23 00:03:33.389 +03:00 [ERR] An error occurred ,Exception: Not Found (Parameter 'table')
+2024-01-23 00:18:55.869 +03:00 [ERR] Table Not Found 
+2024-01-23 00:18:55.919 +03:00 [ERR] An error occurred ,Exception: Not Found (Parameter 'table')
+2024-01-23 00:20:51.905 +03:00 [ERR] Table Not Found 
+2024-01-23 00:20:51.958 +03:00 [ERR] An error occurred ,Exception: Not Found (Parameter 'table')
+2024-01-23 00:20:56.908 +03:00 [ERR] Table Not Found 
+2024-01-23 00:20:56.928 +03:00 [ERR] An error occurred ,Exception: Not Found (Parameter 'table')
+2024-01-23 00:30:56.235 +03:00 [ERR] Table Not Found 
+2024-01-23 00:30:56.286 +03:00 [ERR] An error occurred ,Exception: Not Found (Parameter 'table')
+2024-01-23 01:00:59.735 +03:00 [INF] Starting web host
+2024-01-23 01:01:09.250 +03:00 [INF] Table Is In Procesing
+2024-01-23 01:01:09.819 +03:00 [INF] Table Is In Finised
+2024-01-23 01:01:09.819 +03:00 [DBG] Debugging AddTables Has been Finised Successfully With Table ID  
+2024-01-23 01:01:56.973 +03:00 [INF] Starting web host
+2024-01-23 01:02:05.833 +03:00 [INF] Table Is In Procesing
+2024-01-23 01:02:06.348 +03:00 [INF] Table Is In Finised
+2024-01-23 01:02:06.348 +03:00 [DBG] Debugging AddTables Has been Finised Successfully With Table ID  
+2024-01-23 01:02:12.005 +03:00 [ERR] Table Not Found 
+2024-01-23 01:02:12.035 +03:00 [ERR] An error occurred ,Exception: Not Found (Parameter 'table')
+2024-01-23 01:08:37.778 +03:00 [INF] Starting web host
+2024-01-23 01:08:48.339 +03:00 [INF] Table Is In Procesing
+2024-01-23 01:08:48.863 +03:00 [INF] Table Is In Finised
+2024-01-23 01:08:48.863 +03:00 [DBG] Debugging AddTables Has been Finised Successfully With Table ID  
+2024-01-23 01:08:52.860 +03:00 [ERR] Table Not Found 
+2024-01-23 01:08:52.888 +03:00 [ERR] An error occurred ,Exception: Not Found (Parameter 'table')

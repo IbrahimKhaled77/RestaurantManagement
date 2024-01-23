@@ -14,6 +14,6 @@ namespace RestaurantManagement_Repository.DTOs.CustomerDTO
         public string PhoneNumber {  get; set; }
         public bool IsActive { get; set; }
 
-        public List<OrderCardDTO> Orders { get; set; }
+     //   public List<OrderCardDTO> Orders { get; set; }
     }
 }

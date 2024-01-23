@@ -9,8 +9,8 @@ namespace RestaurantManagement_Repository.IRepository
 
         Task<List<TableCardDTOs>> GetAllTables();
         Task<TableCardDTOs> GetTableById(int id);
-        Task<bool> AddTable(CreatTableDTO table);
-        Task<bool> UpdateTable(UpdateTableDto table);
-        Task<bool> DeleteTable(int id);
+        Task<string> AddTables(CreatTableDTO table);
+        Task<string> UpdateTable(UpdateTableDto table);
+        Task<string> DeleteTable(int id);
     }
 }
