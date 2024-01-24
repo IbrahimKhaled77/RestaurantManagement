@@ -1,10 +1,9 @@
 ﻿
 
-using Microsoft.AspNetCore.Http.HttpResults;
-using Microsoft.EntityFrameworkCore;
 
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using RestaurantManagement_Repository.Context;
-using RestaurantManagement_Repository.DTOs.ResponeDTO;
 using RestaurantManagement_Repository.DTOs.TableDTO;
 using RestaurantManagement_Repository.Helper.Mapper;
 using RestaurantManagement_Repository.IRepository;
@@ -24,11 +23,19 @@ namespace RestaurantManagement_Repository.Implementation
         }
 
         //GetAllTables
-        public async Task<List<TableCardDTOs>> GetAllTables()
+        public async Task<List<TableCardDTOs>> GetAllTables([FromHeader] string email, [FromHeader] string password)
         {
 
             try
             {
+                var isCustomerLoggedIn = await _context.Customer.AnyAsync(x => x.Email == email && x.Password == password && x.IsLoggedIn == true);
+                var isEmployeeLoggedIn = await _context.Employee.AnyAsync(x => x.Email == email && x.Password == password && x.IsLoggedIn == true);
+                if (!isCustomerLoggedIn && !isEmployeeLoggedIn)
+                {
+                    throw new Exception("You Must Login In To Your Account");
+
+                }
+
 
                 var Tables = await _context.Table.Include(t => t.Order)
                     .Select(x => new TableCardDTOs
@@ -65,11 +72,20 @@ namespace RestaurantManagement_Repository.Implementation
         }
 
         //GetTableById
-        public async Task<TableCardDTOs> GetTableById(int id)
+        public async Task<TableCardDTOs> GetTableById(int id,[FromHeader] string email, [FromHeader] string password)
         {
 
             try
             {
+                var isCustomerLoggedIn = await _context.Customer.AnyAsync(x => x.Email == email && x.Password == password && x.IsLoggedIn == true);
+                var isEmployeeLoggedIn = await _context.Employee.AnyAsync(x => x.Email == email && x.Password == password && x.IsLoggedIn == true);
+                if (!isCustomerLoggedIn && !isEmployeeLoggedIn)
+                {
+                    throw new Exception("You Must Login In To Your Account");
+
+                }
+
+
 
                 var table1 = await _context.Table.Include(t => t.Order)
                     .FirstOrDefaultAsync(x => x.TableId == id);
@@ -119,12 +135,27 @@ namespace RestaurantManagement_Repository.Implementation
 
 
         //CreatTable
-        public async Task<string> AddTables(CreatTableDTO table)
+        public async Task<string> AddTables(CreatTableDTO table, [FromHeader] string email, [FromHeader] string password)
         {
         
 
             try
             {
+                var isAdminLoggedIn = await _context.Employee.AnyAsync(x => x.Email == email && x.Password == password && x.Position == "Admin" && x.IsLoggedIn == true);
+                if (!isAdminLoggedIn)
+                {
+                    throw new Exception("You Must Login In To Your Account");
+                    
+                }
+                var isAdmin = await _context.Employee.AnyAsync(x => x.Email == email && x.Password == password && x.Position == "Admin");
+                if (!isAdmin)
+                {
+                    
+                    throw new Exception("You Don't have the required Permission");
+                }
+
+
+
                 Log.Information("Table Is In Procesing");
                 var table1 = new Table();
                 table1.TableNumber = table.TableNumber;
@@ -159,12 +190,25 @@ namespace RestaurantManagement_Repository.Implementation
         }
 
         //UpdateTable
-        public async Task<string> UpdateTable(UpdateTableDto table)
+        public async Task<string> UpdateTable(UpdateTableDto table,[FromHeader] string email, [FromHeader] string password)
         {
 
 
             try
             {
+                var isAdminLoggedIn = await _context.Employee.AnyAsync(x => x.Email == email && x.Password == password && x.Position == "Admin" && x.IsLoggedIn == true);
+                if (!isAdminLoggedIn)
+                {
+                    return "You Must Login In To Your Account";
+                    throw new Exception("You Must Login In To Your Account");
+                }
+                var isAdmin = await _context.Employee.AnyAsync(x => x.Email == email && x.Password == password && x.Position == "Admin");
+                if (!isAdmin)
+                {
+                    return "You Don't have the required Permission";
+                    throw new Exception("You Don't have the required Permission");
+                }
+
                 var table1 = await _context.Table.FindAsync(table.TableId);
                 //check if the element Exist
                 if (table1 != null)
@@ -212,13 +256,26 @@ namespace RestaurantManagement_Repository.Implementation
 
         //DeleteTable
       
-        public async  Task<string> DeleteTable(int id)
+        public async  Task<string> DeleteTable(int id, [FromHeader] string email, [FromHeader] string password)
         {
             
             try
             {
+                var isAdminLoggedIn = await _context.Employee.AnyAsync(x => x.Email == email && x.Password == password && x.Position == "Admin" && x.IsLoggedIn == true);
+                if (!isAdminLoggedIn)
+                {
+                    return "You Must Login In To Your Account";
+                    throw new Exception("You Must Login In To Your Account");
+                }
+                var isAdmin = await _context.Employee.AnyAsync(x => x.Email == email && x.Password == password && x.Position == "Admin");
+                if (!isAdmin)
+                {
+                    return "You Don't have the required Permission";
+                    throw new Exception("You Don't have the required Permission");
+                }
 
-               var  table = await _context.Table.FindAsync(id);
+
+                var  table = await _context.Table.FindAsync(id);
                 if (table != null)
                 {
                     Log.Information("Table Is In Existing");

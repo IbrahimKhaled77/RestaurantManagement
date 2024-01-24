@@ -1,8 +1,8 @@
 ﻿
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using RestaurantManagement_Repository.Context;
 using RestaurantManagement_Repository.DTOs.EmployeeOrderCardDTO;
-
 using RestaurantManagement_Repository.IRepository;
 using RestaurantManagement_Repository.Model.Entity;
 using Serilog;
@@ -18,11 +18,26 @@ namespace RestaurantManagement_Repository.Implementation
             _context = context;
         }
 
-        public async Task<string> AddEmployeeOrder(EmployeeOrderCreatDTOs EmployeeOrderDto)
+        public async Task<string> AddEmployeeOrder(EmployeeOrderCreatDTOs EmployeeOrderDto, [FromHeader] string email, [FromHeader] string password)
         {
 
             try
+
             {
+
+                var isAdminLoggedIn = await _context.Employee.AnyAsync(x => x.Email == email && x.Password == password && x.Position == "Admin" && x.IsLoggedIn == true);
+                if (!isAdminLoggedIn)
+                {
+                   
+                    throw new Exception("You Must Login In To Your Account");
+                }
+                var isAdmin = await _context.Employee.AnyAsync(x => x.Email == email && x.Password == password && x.Position == "Admin");
+                if (!isAdmin)
+                {
+              
+                    throw new Exception("You Don't have the required Permission");
+                }
+
                 Log.Information("EmployeeOrder Is In Procesing");
                 var newEmployeeOrder = new EmployeeOrder
                 {

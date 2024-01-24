@@ -10,10 +10,8 @@ using RestaurantManagement_Repository.Model.Entity;
 using RestaurantManagement_Repository.Helper;
 using RestaurantManagement_Repository.DTOs.OrderItemDTO;
 using Serilog;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
-using Microsoft.EntityFrameworkCore.Metadata;
-using RestaurantManagement_Repository.DTOs.TableDTO;
 using RestaurantManagement_Repository.Helper.Mapper;
+using Microsoft.AspNetCore.Mvc;
 
 namespace RestaurantManagement_Repository.Implementation
 {
@@ -27,10 +25,26 @@ namespace RestaurantManagement_Repository.Implementation
             _context = context;
         }
 
-        public  async Task<string> AddOrder(CreatOrderDTO order)
+        public  async Task<string> AddOrder(CreatOrderDTO order,[FromHeader] string email, [FromHeader] string password)
         {
             try
             {
+                var isAdminLoggedIn = await _context.Employee.AnyAsync(x => x.Email == email && x.Password == password && x.Position == "Admin" && x.IsLoggedIn == true);
+                if (!isAdminLoggedIn)
+                {
+                
+                    throw new Exception("You Must Login In To Your Account");
+                }
+                var isAdmin = await _context.Employee.AnyAsync(x => x.Email == email && x.Password == password && x.Position == "Admin");
+                if (!isAdmin)
+                {
+                  
+                    throw new Exception("You Don't have the required Permission");
+                }
+
+
+
+
                 Log.Information("Order Is In Processing");
                 var order1 = new Order();
                 order1.Customer = await _context.Customer.FindAsync(order.CustomerId);
@@ -105,56 +119,28 @@ namespace RestaurantManagement_Repository.Implementation
         }
 
 
-         //   try
-         //   {
-         //       // Create Order
-         //       Order order1 = new Order
-         //       {
-         //           
-         //           CustomerId = order.CustomerId,
-         //           TableNumber = order.TableNumber,
-         //           IsActive = true,
-         //
-         //    
-         //       };
-         //       var a = await _context.OrderItem.Include(x => x.Order).Include(x=>x.Menu).SingleAsync(); ;
-         //       CreateOrderItemDTO CreateOrderItemDTO = new CreateOrderItemDTO();
-         //      // CreateOrderItemDTO.OrderId = order1.OrderId;
-         //       CreateOrderItemDTO.MenuId = a.MenuId;
-         //       CreateOrderItemDTO.Quantity = a.Quantity;
-         //       CreateOrderItemDTO.IsActive = true;
-         //       OrderItem orderItem = new OrderItem();
-         //    //   orderItem.OrderId = order1.OrderId;
-         //       orderItem.MenuId= CreateOrderItemDTO.MenuId;
-         //       orderItem.Quantity = CreateOrderItemDTO.Quantity;
-         //       orderItem.IsActive = true;
-         //
-         //       _context.OrderItem.Add(orderItem);
-         //       await _context.SaveChangesAsync();
-         //       _context.Order.Add(order1);
-         //       await _context.SaveChangesAsync();
-         //
-         //       return true;
-         //   }
-         //   catch (DbUpdateException ex)
-         //   {
-         //
-         //       Console.WriteLine("Error updating the database:", ex.Message);
-         //       return false;
-         //   }
-         //   catch (Exception ex)
-         //   {
-         //       Console.WriteLine("An error occurred: ", ex.Message);
-         //       return false;
-         //   }
-        
-
-        public async Task<string> DeleteOrder(int id)
+        public async Task<string> DeleteOrder(int id, [FromHeader] string email, [FromHeader] string password)
         {
             
             try
             {
-                var order=await _context.Order.FindAsync(id);
+
+                var isAdminLoggedIn = await _context.Employee.AnyAsync(x => x.Email == email && x.Password == password && x.Position == "Admin" && x.IsLoggedIn == true);
+                if (!isAdminLoggedIn)
+                {
+                  
+                    throw new Exception("You Must Login In To Your Account");
+                }
+                var isAdmin = await _context.Employee.AnyAsync(x => x.Email == email && x.Password == password && x.Position == "Admin");
+                if (!isAdmin)
+                {
+                    
+                    throw new Exception("You Don't have the required Permission");
+                }
+
+
+
+                var order =await _context.Order.FindAsync(id);
                 if (order != null)
                 {
                     Log.Information("Table Is  Existing");
@@ -190,7 +176,7 @@ namespace RestaurantManagement_Repository.Implementation
             }
         }
 
-        public async Task<List<OrderCardDTO>> GetAllOrders()
+        public async Task<List<OrderCardDTO>> GetAllOrders([FromHeader] string email, [FromHeader] string password)
         {
             throw new NotImplementedException();
             try
@@ -216,11 +202,19 @@ namespace RestaurantManagement_Repository.Implementation
             }
         }
 
-        public async Task<OrderCardDTO> GetOrderById(int OrderId)
+        public async Task<OrderCardDTO> GetOrderById(int OrderId,[FromHeader] string email, [FromHeader] string password)
         {
              
             try
             {
+                var isCustomerLoggedIn = await _context.Customer.AnyAsync(x => x.Email == email && x.Password == password && x.IsLoggedIn == true);
+                var isEmployeeLoggedIn = await _context.Employee.AnyAsync(x => x.Email == email && x.Password == password && x.IsLoggedIn == true);
+                if (!isCustomerLoggedIn && !isEmployeeLoggedIn)
+                {
+
+                    throw new Exception("You Must Login In To Your Account");
+                }
+
                 var Order1 = await _context.Order.Include(t => t.EmployeeOrder)
                    .FirstOrDefaultAsync(x => x.OrderId == OrderId);
                 if (Order1 != null)
@@ -265,11 +259,26 @@ namespace RestaurantManagement_Repository.Implementation
             }
         }
 
-        public  async Task<string> UpdateOrder(UpdateOrderDTO OrderDto)
+        public  async Task<string> UpdateOrder(UpdateOrderDTO OrderDto, [FromHeader] string email, [FromHeader] string password)
         {
            
             try
             {
+
+                var isAdminLoggedIn = await _context.Employee.AnyAsync(x => x.Email == email && x.Password == password && x.Position == "Admin" && x.IsLoggedIn == true);
+                if (!isAdminLoggedIn)
+                {
+                    
+                    throw new Exception("You Must Login In To Your Account");
+                }
+                var isAdmin = await _context.Employee.AnyAsync(x => x.Email == email && x.Password == password && x.Position == "Admin");
+                if (!isAdmin)
+                {
+                   
+                    throw new Exception("You Don't have the required Permission");
+                }
+
+
 
                 var Order = await _context.Order.FirstOrDefaultAsync(x=>x.OrderId== OrderDto.OrderId);
                 if (Order == null)
@@ -314,19 +323,3 @@ namespace RestaurantManagement_Repository.Implementation
         
     }
 }
-/*
-// var emptyTable = await _context.Table.FirstOrDefaultAsync(t => !t.Order.Any());
-Order Order1 = new Order();
-//سوال
-Order1.Customer = await _context.Customer.FindAsync(order.CustomerId);
-Order1.TableNumber = order.TableNumber;
-Order1.OrderItems = order.OrderItems.Select(x => new OrderItem
-{
-    Quantity = x.Quantity,
-    MenuId = x.Menu.MenuId,
-}).ToList();
-
-Order1.TotalPrice = Hepler.CalculateTotalPricecc(Order1.OrderItems);
-_context.Order.Add(Order1);
-await _context.SaveChangesAsync();
-return true;*/

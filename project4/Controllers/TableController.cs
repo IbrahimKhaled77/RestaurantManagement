@@ -1,12 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
-using RestaurantManagement_Repository.DTOs.ResponeDTO;
 using RestaurantManagement_Repository.DTOs.TableDTO;
-using RestaurantManagement_Repository.Implementation;
 using RestaurantManagement_Repository.IRepository;
-using RestaurantManagement_Repository.Model.Entity;
-using Serilog;
 
 namespace RestaurantManagement.Controllers
 {
@@ -20,7 +15,7 @@ namespace RestaurantManagement.Controllers
         }
 
 
-        #region HttpGet
+        #region HttpGet GetAllTables & GetTableById
         /// <response code="201">Returns  Get All Table Successfully</response>
         /// <response code="404">If the error was occured  (Not Found)</response>
         /// <response code="500">If an internal server error or database error occurs (Internal Server Error OR Database)</response>   
@@ -31,12 +26,12 @@ namespace RestaurantManagement.Controllers
         /// <returns>List of Table </returns>
         [HttpGet]
         [Route("[action]")]
-        public async Task<IActionResult> GetAllTables()
+        public async Task<IActionResult> GetAllTables([FromHeader] string email, [FromHeader] string password)
         {
             try
             {
 
-                return StatusCode(201,await _TableRepository.GetAllTables());
+                return StatusCode(201,await _TableRepository.GetAllTables(email, password));
 
             }
             catch (DbUpdateException ex)
@@ -75,12 +70,12 @@ namespace RestaurantManagement.Controllers
         /// <returns>The Table information. </returns>
         [HttpGet]
         [Route("[action]/{TableId}")]
-        public async Task<IActionResult> GetTableById([FromRoute] int TableId)
+        public async Task<IActionResult> GetTableById([FromRoute] int TableId,[FromHeader] string email, [FromHeader] string password)
         {
 
             try
             {
-                return StatusCode(201,await _TableRepository.GetTableById(TableId));
+                return StatusCode(201,await _TableRepository.GetTableById(TableId, email,password));
 
             }
             catch (DbUpdateException ex)
@@ -101,7 +96,7 @@ namespace RestaurantManagement.Controllers
         }
         #endregion
 
-        #region HttpPost
+        #region HttpPost AddTable
         /// <remarks>
         /// Sample request:
         /// 
@@ -120,14 +115,14 @@ namespace RestaurantManagement.Controllers
         /// <returns>A message indicating the success of the operation </returns>
         [HttpPost]
         [Route("[action]")]
-        public async Task<IActionResult> AddTable([FromBody] CreatTableDTO table)
+        public async Task<IActionResult> AddTable([FromBody] CreatTableDTO table, [FromHeader] string email, [FromHeader] string password)
         {
           
            
             try
             {
                
-                return StatusCode(201,await _TableRepository.AddTables(table));
+                return StatusCode(201,await _TableRepository.AddTables(table, email, password));
 
             }
             catch (DbUpdateException ex)
@@ -148,7 +143,7 @@ namespace RestaurantManagement.Controllers
         }
         #endregion
 
-        #region HttpPut
+        #region HttpPut UpdateTable
         /// <remarks>
         /// Sample request:
         /// 
@@ -171,11 +166,11 @@ namespace RestaurantManagement.Controllers
         /// <returns>A message indicating the success of the operation </returns>
         [HttpPut]
         [Route("[action]")]
-        public async Task<IActionResult> UpdateTable([FromBody] UpdateTableDto TableDto)
+        public async Task<IActionResult> UpdateTable([FromBody] UpdateTableDto TableDto, [FromHeader] string email, [FromHeader] string password)
         {
             try
             {
-                return StatusCode(201,await _TableRepository.UpdateTable(TableDto));
+                return StatusCode(201,await _TableRepository.UpdateTable(TableDto, email, password));
 
             }
             catch (ArgumentNullException ex)
@@ -197,7 +192,7 @@ namespace RestaurantManagement.Controllers
         }
         #endregion
 
-        #region HttpDelete
+        #region HttpDelete DeleteTable
         /// <remarks>
         /// Sample request:
         /// 
@@ -218,12 +213,12 @@ namespace RestaurantManagement.Controllers
         /// <returns>A message indicating the success of the operation </returns>
         [HttpDelete]
         [Route("[action]/{TableId}")]
-        public async Task<IActionResult> DeleteTable([FromRoute] int TableId)
+        public async Task<IActionResult> DeleteTable([FromRoute] int TableId, [FromHeader] string email, [FromHeader] string password)
         {
             try
             {
 
-                return StatusCode(201,await _TableRepository.DeleteTable(TableId));
+                return StatusCode(201,await _TableRepository.DeleteTable(TableId, email, password));
 
             }
             catch (ArgumentNullException ex)

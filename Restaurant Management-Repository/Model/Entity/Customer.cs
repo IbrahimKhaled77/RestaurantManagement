@@ -12,7 +12,11 @@ namespace RestaurantManagement_Repository.Model.Entity
         public string Password { get; set; }
         public string PhoneNumber { get; set; }
 
+        public string AccessKey { get; set; }
+        public DateTime? AccesskeyExpireDate { get; set; }
         public bool IsActive { get; set; }
+        public bool IsLoggedIn { get; set; }
+
         public virtual ICollection<Order> OrderCustomer { get; set; }
 
         //

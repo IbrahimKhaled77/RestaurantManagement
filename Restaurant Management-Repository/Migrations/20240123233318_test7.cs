@@ -1,11 +1,12 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
 namespace Restaurant_Management_Repository.Migrations
 {
     /// <inheritdoc />
-    public partial class test6 : Migration
+    public partial class test7 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -20,7 +21,10 @@ namespace Restaurant_Management_Repository.Migrations
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Password = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     PhoneNumber = table.Column<string>(type: "nvarchar(13)", maxLength: 13, nullable: false),
-                    IsActive = table.Column<bool>(type: "bit", nullable: false)
+                    AccessKey = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    AccesskeyExpireDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    IsActive = table.Column<bool>(type: "bit", nullable: false),
+                    IsLoggedIn = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -41,6 +45,9 @@ namespace Restaurant_Management_Repository.Migrations
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Password = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Position = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
+                    IsLoggedIn = table.Column<bool>(type: "bit", nullable: false),
+                    AccessKey = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    AccesskeyExpireDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     IsActive = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>

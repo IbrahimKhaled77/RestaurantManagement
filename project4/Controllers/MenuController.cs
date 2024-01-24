@@ -1,9 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using RestaurantManagement_Repository.DTOs.MenuDTO;
-using RestaurantManagement_Repository.Implementation;
 using RestaurantManagement_Repository.IRepository;
-using RestaurantManagement_Repository.Model.Entity;
+
 
 namespace RestaurantManagement.Controllers
 {
@@ -18,7 +17,7 @@ namespace RestaurantManagement.Controllers
         }
 
 
-        #region HttpGet
+        #region HttpGet GetAllMenus & GetMenuById
         /// <response code="201">Returns  Get All Menu Successfully</response>
         /// <response code="404">If the error was occured  (Not Found)</response>
         /// <response code="500">If an internal server error or database error occurs (Internal Server Error OR Database)</response>   
@@ -29,11 +28,11 @@ namespace RestaurantManagement.Controllers
         /// <returns>List of Menu </returns>
         [HttpGet]
         [Route("[action]")]
-        public async Task<IActionResult> GetAllMenus()
+        public async Task<IActionResult> GetAllMenus([FromHeader] string email, [FromHeader] string password)
         {
             try
             {
-                return StatusCode(201, await _MenuRepository.GetAllMenus());
+                return StatusCode(201, await _MenuRepository.GetAllMenus(email, password));
 
             }
             catch (DbUpdateException ex)
@@ -74,11 +73,11 @@ namespace RestaurantManagement.Controllers
         [HttpGet]
         [Route("[action]/{MenuId}")]
 
-        public async Task<IActionResult> GetMenuById([FromRoute]int MenuId)
+        public async Task<IActionResult> GetMenuById([FromRoute]int MenuId, [FromHeader] string email, [FromHeader] string password)
         {
             try
             {
-                return StatusCode(201, await _MenuRepository.GetMenuById(MenuId));
+                return StatusCode(201, await _MenuRepository.GetMenuById(MenuId, email, password));
 
             }
             catch (DbUpdateException ex)
@@ -99,7 +98,7 @@ namespace RestaurantManagement.Controllers
         }
         #endregion
 
-        #region HttpPost
+        #region HttpPost AddMenu
         /// <remarks>
         /// Sample request:
         /// 
@@ -120,12 +119,12 @@ namespace RestaurantManagement.Controllers
         /// <returns>A message indicating the success of the operation </returns>
         [HttpPost]
         [Route("[action]")]
-        public async Task<IActionResult> AddMenu([FromBody]CreatMenuDTO menu)
+        public async Task<IActionResult> AddMenu([FromBody]CreatMenuDTO menu, [FromHeader] string email, [FromHeader] string password)
         {
             
             try
             {
-                return StatusCode(201, await _MenuRepository.AddMenus(menu));
+                return StatusCode(201, await _MenuRepository.AddMenus(menu, email, password));
 
             }
             catch (DbUpdateException ex)
@@ -146,7 +145,7 @@ namespace RestaurantManagement.Controllers
         }
         #endregion
 
-        #region HttpPut
+        #region HttpPut UpdateMenu
         /// <remarks>
         /// Sample request:
         /// 
@@ -169,11 +168,11 @@ namespace RestaurantManagement.Controllers
         /// <returns>A message indicating the success of the operation </returns>
         [HttpPut]
         [Route("[action]")]
-        public async Task<IActionResult> UpdateMenu([FromBody] UpdateMenuDTO MenuDTo)
+        public async Task<IActionResult> UpdateMenu([FromBody] UpdateMenuDTO MenuDTo, [FromHeader] string email, [FromHeader] string password)
         {
             try
             {
-                return StatusCode(201, await _MenuRepository.UpdateMenu(MenuDTo));
+                return StatusCode(201, await _MenuRepository.UpdateMenu(MenuDTo, email, password));
 
             }
             catch (DbUpdateException ex)
@@ -194,7 +193,7 @@ namespace RestaurantManagement.Controllers
         }
         #endregion
 
-        #region HttpDelete
+        #region HttpDelete DeleteMenu
         /// <remarks>
         /// Sample request:
         /// 
@@ -215,11 +214,11 @@ namespace RestaurantManagement.Controllers
         /// <returns>A message indicating the success of the operation </returns>
         [HttpDelete]
         [Route("[action]/{MenuId}")]
-        public async Task<IActionResult> DeleteMenu([FromRoute]int MenuId)
+        public async Task<IActionResult> DeleteMenu([FromRoute]int MenuId, [FromHeader] string email, [FromHeader] string password)
         {
             try
             {
-                return StatusCode(201, await _MenuRepository.DeleteMenu(MenuId));
+                return StatusCode(201, await _MenuRepository.DeleteMenu(MenuId, email, password));
 
             }
             catch (DbUpdateException ex)

@@ -10,6 +10,10 @@ namespace RestaurantManagement_Repository.Model.Entity
 
         public string Password { get; set; }
         public string Position { get; set; }
+
+        public bool IsLoggedIn { get; set; }
+        public string AccessKey { get; set; }
+        public DateTime? AccesskeyExpireDate { get; set; }
         public bool IsActive { get; set; }
 
        // public virtual ICollection<Table> Table { get; set; }

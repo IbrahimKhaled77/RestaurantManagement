@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using RestaurantManagement_Repository.DTOs.AuthanticationDTO;
 using RestaurantManagement_Repository.DTOs.CustomerDTO;
 using RestaurantManagement_Repository.IRepository;
-using RestaurantManagement_Repository.Model.Entity;
-using Serilog;
+
 
 namespace RestaurantManagement.Controllers
 {
@@ -18,7 +18,56 @@ namespace RestaurantManagement.Controllers
         }
 
 
-        #region HttpGet
+        #region HttpPost LoginCustomer
+        /// <remarks>
+        /// Sample request:
+        /// 
+        ///     Post api/LoginCustomer
+        ///     {        
+        ///        "EmailCustomer": "Enter Your EmailCustomer Here (Required)",
+        ///        "passwordCustomer": "Enter Your passwordCustomer Here (Required)",
+        ///      
+        ///     }
+        /// </remarks>
+        /// <response code="201">Returns  LoginCustomer  Successfully</response>
+        /// <response code="404">If the error was occured  (Not Found)</response>
+        /// <response code="500">If an internal server error or database error occurs (Internal Server Error OR Database)</response>   
+        /// <response code="400">If the error was occured  (Exception)</response>       
+        ///<summary>
+        /// Adds a new Token customer to the database.
+        /// </summary>
+        /// <param EmailCustomer="EmailCustomer">The Email of the  Customer to Login (Required).</param>
+        /// <param PasswordCustomer="PasswordCustomer">The Password of the  Customer to Login (Required).</param>
+        /// <returns>A message indicating the success of the operation </returns>
+        [HttpPost]
+        [Route("LoginCustomer")]
+        public async Task<IActionResult> LoginCustomer(AuthanticationDTOs AuthanticationDTOs)
+        {
+            try
+            {
+                return StatusCode(201, await _customerRepository.LoginCustomer(AuthanticationDTOs));
+
+            }
+            catch (DbUpdateException ex)
+            {
+                return StatusCode(500, ex.Message);
+
+            }
+            catch (ArgumentNullException ex)
+            {
+
+                return StatusCode(404, ex.Message);
+
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(400, ex.Message);
+            }
+        }
+        #endregion
+
+
+        #region HttpGet GetAllCustomers & GetCustomerById
 
         /// <response code="201">Returns  Get All Customers Successfully</response>
         /// <response code="404">If the error was occured  (Not Found)</response>
@@ -30,12 +79,12 @@ namespace RestaurantManagement.Controllers
         /// <returns>List of Customers </returns>
         [HttpGet]
         [Route("[action]")]
-        public async Task<IActionResult> GetAllCustomers()
+        public async Task<IActionResult> GetAllCustomers([FromHeader] string email, [FromHeader] string password)
         {
             try
             {
                 
-                return StatusCode(201, await _customerRepository.GetAllCustomers());
+                return StatusCode(201, await _customerRepository.GetAllCustomers(email, password));
 
             }
             catch (DbUpdateException ex)
@@ -75,11 +124,11 @@ namespace RestaurantManagement.Controllers
         /// <returns>The customer information. </returns>
         [HttpGet]
         [Route("[action]/{CustomerId}")]
-        public async Task<IActionResult> GetCustomerById([FromRoute] int CustomerId)
+        public async Task<IActionResult> GetCustomerById([FromRoute] int CustomerId, [FromHeader] string email, [FromHeader] string password)
         {
             try
             {
-                return StatusCode(201, await _customerRepository.GetCustomerById(CustomerId));
+                return StatusCode(201, await _customerRepository.GetCustomerById(CustomerId, email, password));
 
             }
             catch (DbUpdateException ex)
@@ -100,7 +149,7 @@ namespace RestaurantManagement.Controllers
         }
         #endregion
 
-        #region HttpPost
+        #region HttpPost AddCustomer
         /// <remarks>
         /// Sample request:
         /// 
@@ -148,7 +197,7 @@ namespace RestaurantManagement.Controllers
         }
         #endregion
 
-        #region HttpPut
+        #region HttpPut UpdateCustomer
         /// <remarks>
         /// Sample request:
         /// 
@@ -172,11 +221,11 @@ namespace RestaurantManagement.Controllers
         /// <returns>A message indicating the success of the operation </returns>
         [HttpPut]
         [Route("[action]")]
-        public async Task<IActionResult> UpdateCustomer([FromBody] UpdateCustomerDTO updateCustomerDTO)
+        public async Task<IActionResult> UpdateCustomer([FromBody] UpdateCustomerDTO updateCustomerDTO, [FromHeader] string email, [FromHeader] string password)
         {
             try
             {
-                return StatusCode(201, await _customerRepository.UpdateCustomer(updateCustomerDTO));
+                return StatusCode(201, await _customerRepository.UpdateCustomer(updateCustomerDTO, email, password));
 
             }
             catch (DbUpdateException ex)
@@ -197,7 +246,7 @@ namespace RestaurantManagement.Controllers
         }
         #endregion
 
-        #region HttpDelete
+        #region HttpDelete DeleteCustomer
         /// <remarks>
         /// Sample request:
         /// 
@@ -218,11 +267,11 @@ namespace RestaurantManagement.Controllers
         /// <returns>A message indicating the success of the operation </returns>
         [HttpDelete]
         [Route("[action]/{CustomerId}")]
-        public async Task<IActionResult> DeleteCustomer([FromRoute] int CustomerId)
+        public async Task<IActionResult> DeleteCustomer([FromRoute] int CustomerId, [FromHeader] string email, [FromHeader] string password)
         {
             try
             {
-                return StatusCode(201, await _customerRepository.DeleteCustomer(CustomerId));
+                return StatusCode(201, await _customerRepository.DeleteCustomer(CustomerId, email, password));
 
             }
             catch (DbUpdateException ex)

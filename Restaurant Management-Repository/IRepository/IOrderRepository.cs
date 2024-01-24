@@ -1,19 +1,28 @@
 ﻿
 
+using Microsoft.AspNetCore.Mvc;
 using RestaurantManagement_Repository.DTOs.OrderDTO;
-using RestaurantManagement_Repository.DTOs.OrderItemDTO;
-using RestaurantManagement_Repository.Model.Entity;
+
 
 namespace RestaurantManagement_Repository.IRepository
 {
     public interface IOrderRepository
     {
 
-        Task<List<OrderCardDTO>> GetAllOrders();
-        Task<OrderCardDTO> GetOrderById(int id);
-        Task<string> AddOrder(CreatOrderDTO order);
-        Task<string> UpdateOrder(UpdateOrderDTO order);
-        Task<string> DeleteOrder(int id);
+       
+        Task<List<OrderCardDTO>> GetAllOrders([FromHeader] string email, [FromHeader] string password);
+
+        
+        Task<OrderCardDTO> GetOrderById(int id, [FromHeader] string email, [FromHeader] string password);
+        
+        //Admin
+        Task<string> AddOrder(CreatOrderDTO order, [FromHeader] string email, [FromHeader] string password);
+
+        //Admin
+        Task<string> UpdateOrder(UpdateOrderDTO order, [FromHeader] string email, [FromHeader] string password);
+
+        //Admin
+        Task<string> DeleteOrder(int id, [FromHeader] string email, [FromHeader] string password);
 
     }
 }

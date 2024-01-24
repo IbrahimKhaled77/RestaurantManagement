@@ -1,13 +1,18 @@
 ﻿
 
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using RestaurantManagement_Repository.Context;
-using RestaurantManagement_Repository.DTOs.CustomerDTO;
+using RestaurantManagement_Repository.DTOs.AuthanticationDTO;
 using RestaurantManagement_Repository.DTOs.EmployeeDTO;
 using RestaurantManagement_Repository.IRepository;
 using RestaurantManagement_Repository.Model.Entity;
 using Serilog;
 using System;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
 
 namespace RestaurantManagement_Repository.Implementation
 {
@@ -31,6 +36,9 @@ namespace RestaurantManagement_Repository.Implementation
                 Employee.Password = employeeDto.Password;
                 Employee.Position = employeeDto.Position;
                 Employee.IsActive = true;
+                Employee.IsLoggedIn = false;
+                Employee.IsLoggedIn = false;
+                Employee.AccessKey = "";
 
                 _context.Employee.Add(Employee);
                 await _context.SaveChangesAsync();
@@ -58,11 +66,94 @@ namespace RestaurantManagement_Repository.Implementation
             }
         }
 
-        public async Task<string> DeleteEmployee(int id)
+        public async Task<string> LoginEmployee(AuthanticationDTOs AuthanticationDTOs)
+        {
+            try
+            {
+                Log.Information("Starting Login");
+                if (string.IsNullOrEmpty(AuthanticationDTOs.Email))
+                    throw new Exception("Email Is Required");
+                if (string.IsNullOrEmpty(AuthanticationDTOs.Password))
+                    throw new Exception("Password Is Required");
+                var Employee = _context.Employee.SingleOrDefault(x => x.Email.Equals(AuthanticationDTOs.Email) && x.Password.Equals(AuthanticationDTOs.Password));
+                if (Employee != null)
+                {
+                    if (!Employee.IsLoggedIn)
+                    {
+
+                        //2-JWT 
+                        var tokenHandler = new JwtSecurityTokenHandler();
+                        var tokenKey = Encoding.UTF8.GetBytes("LongSecrectStringForModulekodestartppopopopsdfjnshbvhueFGDKJSFBYJDSAGVYKDSGKFUYDGASYGFskc vhHJVCBYHVSKDGHASVBCL");
+                        var tokenDescriptior = new SecurityTokenDescriptor
+                        {
+                            Subject = new ClaimsIdentity(new Claim[]
+                            {
+                        new Claim("UserId",Employee.EmployeeId.ToString()),
+                        new Claim("Name",Employee.Name)
+                            }),
+                            Expires = DateTime.Now.AddHours(3),
+                            SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(tokenKey), SecurityAlgorithms.HmacSha256Signature)
+                        };
+                        var token = tokenHandler.CreateToken(tokenDescriptior);//encoding
+                        string finalToken = tokenHandler.WriteToken(token);
+                        Employee.IsLoggedIn = true;
+                        Employee.AccessKey = finalToken;
+                        Employee.AccesskeyExpireDate = tokenDescriptior.Expires;
+                        _context.Employee.Update(Employee);
+                        await _context.SaveChangesAsync();
+                        Log.Information("LoginEmployee Is In Finised");
+                        Log.Debug($"Debugging LoginEmployee Has been Finised Successfully With finalToken  {finalToken} ");
+
+
+                        return finalToken;
+                    }
+
+                    else
+                    {
+                        Employee.IsLoggedIn = false;
+                        _context.Update(Employee);
+                        await _context.SaveChangesAsync();
+
+                        Log.Information("Employee Is not Found");
+                        Log.Debug($"Youre Session Has been Closed Please Login in Again");
+
+                        return "Youre Session Has been Closed Please Login in Again";
+                    }
+                }
+                else
+                {
+                    Log.Information("Either Email or Password is Incorrect");
+                    Log.Debug($"Either Email or Password is Incorrect");
+                    return "Either Email or Password is Incorrect";
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+
+                Log.Error($"An error occurred Exception: {ex.Message}");
+                throw new Exception($"Exception: {ex.Message}");
+
+            }
+
+
+
+
+        }
+        public async Task<string> DeleteEmployee(int id,[FromHeader] string email, [FromHeader] string password)
         {
            
             try
             {
+
+                var isAdminLoggedIn = await _context.Employee.AnyAsync(x => x.Email == email && x.Password == password && x.IsLoggedIn == true);
+                if (!isAdminLoggedIn)
+                {
+
+                    throw new Exception("You Must Login In To Your Account");
+                }
+
                 var employee= await _context.Employee.FindAsync(id);
                 if (employee == null)
                 {
@@ -96,11 +187,19 @@ namespace RestaurantManagement_Repository.Implementation
             }
         }
 
-        public async Task<List<EmployeeCardDTO>> GetAllEmployees()
+        public async Task<List<EmployeeCardDTO>> GetAllEmployees([FromHeader] string email, [FromHeader] string password)
         {
             
             try
             {
+
+                var isAdminLoggedIn = await _context.Employee.AnyAsync(x => x.Email == email && x.Password == password && x.IsLoggedIn == true);
+                if (!isAdminLoggedIn )
+                {
+
+                    throw new Exception("You Must Login In To Your Account");
+                } 
+
                 var Employees = await _context.Employee.ToListAsync();
                 if (Employees == null)
                 {
@@ -142,11 +241,19 @@ namespace RestaurantManagement_Repository.Implementation
             }
         }
 
-        public async Task<EmployeeCardDTO> GetEmployeeById(int id)
+        public async Task<EmployeeCardDTO> GetEmployeeById(int id, [FromHeader] string email, [FromHeader] string password)
         {
            
             try
             {
+                var isAdminLoggedIn = await _context.Employee.AnyAsync(x => x.Email == email && x.Password == password && x.IsLoggedIn == true);
+                if (!isAdminLoggedIn)
+                {
+
+                    throw new Exception("You Must Login In To Your Account");
+                }
+
+
                 var Employee = await _context.Employee.FirstOrDefaultAsync(x=>x.EmployeeId==id);
                 if (Employee == null)
                 {
@@ -186,11 +293,19 @@ namespace RestaurantManagement_Repository.Implementation
             }
         }
 
-        public async Task<string> UpdateEmployee(UpdateEmployeeDTO employeeDto)
+        public async Task<string> UpdateEmployee(UpdateEmployeeDTO employeeDto,[FromHeader] string email, [FromHeader] string password)
         {
             
             try
             {
+                var isAdminLoggedIn = await _context.Employee.AnyAsync(x => x.Email == email && x.Password == password && x.IsLoggedIn == true);
+                if (!isAdminLoggedIn)
+                {
+
+                    throw new Exception("You Must Login In To Your Account");
+                }
+
+
                 var employee = await _context.Employee.FindAsync(employeeDto.EmployeeId);
                 if (employee == null)
                 {

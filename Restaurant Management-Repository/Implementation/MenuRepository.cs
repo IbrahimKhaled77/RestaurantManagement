@@ -1,10 +1,8 @@
 ﻿
 
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using RestaurantManagement_Repository.Context;
-
 using RestaurantManagement_Repository.DTOs.MenuDTO;
 using RestaurantManagement_Repository.IRepository;
 using RestaurantManagement_Repository.Model.Entity;
@@ -21,11 +19,25 @@ namespace RestaurantManagement_Repository.Implementation
             _context = context;
         }
 
-        public  async Task<string> AddMenus(CreatMenuDTO menu)
+        public  async Task<string> AddMenus(CreatMenuDTO menu, [FromHeader] string email, [FromHeader] string password)
         {
             
             try
             {
+                var isAdminLoggedIn = await _context.Employee.AnyAsync(x => x.Email == email && x.Password == password && x.Position == "Admin" && x.IsLoggedIn == true);
+                if (!isAdminLoggedIn)
+                {
+                   
+                    throw new Exception("You Must Login In To Your Account");
+                }
+                var isAdmin = await _context.Employee.AnyAsync(x => x.Email == email && x.Password == password && x.Position == "Admin");
+                if (!isAdmin)
+                {
+              
+                    throw new Exception("You Don't have the required Permission");
+                }
+
+
                 Log.Information("Menu Is In Procesing");
                 Menu Menu1 = new Menu();
                 Menu1.Description = menu.Description;
@@ -59,11 +71,25 @@ namespace RestaurantManagement_Repository.Implementation
             }
         }
 
-        public  async Task<string> DeleteMenu(int id)
+        public  async Task<string> DeleteMenu(int id, [FromHeader] string email, [FromHeader] string password)
         {
             
             try
             {
+
+                var isAdminLoggedIn = await _context.Employee.AnyAsync(x => x.Email == email && x.Password == password && x.Position == "Admin" && x.IsLoggedIn == true);
+                if (!isAdminLoggedIn)
+                {
+                   
+                    throw new Exception("You Must Login In To Your Account");
+                }
+                var isAdmin = await _context.Employee.AnyAsync(x => x.Email == email && x.Password == password && x.Position == "Admin");
+                if (!isAdmin)
+                {
+              
+                    throw new Exception("You Don't have the required Permission");
+                }
+
                 var menu = await _context.Menu.FindAsync(id);
                 if (menu == null)
                 {
@@ -98,11 +124,21 @@ namespace RestaurantManagement_Repository.Implementation
             }
         }
 
-        public async Task<List<MenuCardDTO>> GetAllMenus()
+        public async Task<List<MenuCardDTO>> GetAllMenus([FromHeader] string email, [FromHeader] string password)
         {
             
             try
             {
+
+                var isCustomerLoggedIn = await _context.Customer.AnyAsync(x => x.Email == email && x.Password == password && x.IsLoggedIn == true);
+                var isEmployeeLoggedIn = await _context.Employee.AnyAsync(x => x.Email == email && x.Password == password && x.IsLoggedIn == true);
+                if (!isCustomerLoggedIn && !isEmployeeLoggedIn)
+                {
+
+                    throw new Exception("You Must Login In To Your Account");
+                }
+
+
                 var menus = await _context.Menu.ToListAsync();
                 if (menus == null)
                 {
@@ -151,11 +187,19 @@ namespace RestaurantManagement_Repository.Implementation
             }
         }
 
-        public  async Task<MenuCardDTO> GetMenuById(int id)
+        public  async Task<MenuCardDTO> GetMenuById(int id, [FromHeader] string email, [FromHeader] string password)
         {
             
             try
             {
+                var isCustomerLoggedIn = await _context.Customer.AnyAsync(x => x.Email == email && x.Password == password && x.IsLoggedIn == true);
+                var isEmployeeLoggedIn = await _context.Employee.AnyAsync(x => x.Email == email && x.Password == password  && x.IsLoggedIn == true);
+                if (!isCustomerLoggedIn && !isEmployeeLoggedIn)
+                {
+
+                    throw new Exception("You Must Login In To Your Account");
+                }
+
                 var menu = await _context.Menu.FirstOrDefaultAsync(value => value.MenuId == id);
                 if (menu == null)
                 {
@@ -195,10 +239,24 @@ namespace RestaurantManagement_Repository.Implementation
             }
         }
 
-        public async Task<string> UpdateMenu(UpdateMenuDTO MenuDto)
+        public async Task<string> UpdateMenu(UpdateMenuDTO MenuDto, [FromHeader] string email, [FromHeader] string password)
         {
             try
             {
+                var isAdminLoggedIn = await _context.Employee.AnyAsync(x => x.Email == email && x.Password == password && x.Position == "Admin" && x.IsLoggedIn == true);
+                if (!isAdminLoggedIn)
+                {
+                    
+                    throw new Exception("You Must Login In To Your Account");
+                }
+                var isAdmin = await _context.Employee.AnyAsync(x => x.Email == email && x.Password == password && x.Position == "Admin");
+                if (!isAdmin)
+                {
+                  
+                    throw new Exception("You Don't have the required Permission");
+                }
+
+
                 var menu = await _context.Menu.FindAsync(MenuDto.MenuId);
                 if (menu == null)
                 {

@@ -1,18 +1,20 @@
 ﻿
 
+using Microsoft.AspNetCore.Mvc;
+using RestaurantManagement_Repository.DTOs.AuthanticationDTO;
 using RestaurantManagement_Repository.DTOs.CustomerDTO;
-using RestaurantManagement_Repository.DTOs.OrderDTO;
-using RestaurantManagement_Repository.Model.Entity;
+
 
 namespace RestaurantManagement_Repository.IRepository
 {
     public interface ICustomerRepository
     {
 
-        Task<List<CustomerCardDTO>> GetAllCustomers();
-        Task<CustomerCardDTO> GetCustomerById(int id);
+        Task<List<CustomerCardDTO>> GetAllCustomers([FromHeader] string email, [FromHeader] string password);
+        Task<CustomerCardDTO> GetCustomerById(int id, [FromHeader] string email, [FromHeader] string password);
         Task<string> AddCustomer(CreateCustomerDTO customer);
-        Task<string> UpdateCustomer(UpdateCustomerDTO customer);
-        Task<string> DeleteCustomer(int id);
+         Task<string> LoginCustomer(AuthanticationDTOs dto);
+        Task<string> UpdateCustomer(UpdateCustomerDTO customer,[FromHeader] string email, [FromHeader] string password);
+        Task<string> DeleteCustomer(int id, [FromHeader] string email, [FromHeader] string password);
     }
 }

@@ -1,5 +1,6 @@
 ﻿
 
+using Microsoft.AspNetCore.Mvc;
 using RestaurantManagement_Repository.DTOs.EmployeeOrderCardDTO;
 
 
@@ -9,8 +10,8 @@ namespace RestaurantManagement_Repository.IRepository
     
     {
 
-      
-        Task<string> AddEmployeeOrder(EmployeeOrderCreatDTOs order);
+      //Admin
+        Task<string> AddEmployeeOrder(EmployeeOrderCreatDTOs order, [FromHeader] string email, [FromHeader] string password);
 
     }
 }

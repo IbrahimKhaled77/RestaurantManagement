@@ -1,10 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using RestaurantManagement_Repository.DTOs.OrderDTO;
-using RestaurantManagement_Repository.DTOs.OrderItemDTO;
-using RestaurantManagement_Repository.Implementation;
 using RestaurantManagement_Repository.IRepository;
-using RestaurantManagement_Repository.Model.Entity;
+
 
 namespace RestaurantManagement.Controllers
 {
@@ -18,7 +16,7 @@ namespace RestaurantManagement.Controllers
         }
 
 
-        #region HttpGet
+        #region HttpGet GetAllOrders & GetOrderById
         /// <response code="201">Returns  Get All Orders Successfully</response>
         /// <response code="404">If the error was occured  (Not Found)</response>
         /// <response code="500">If an internal server error or database error occurs (Internal Server Error OR Database)</response>   
@@ -29,12 +27,12 @@ namespace RestaurantManagement.Controllers
         /// <returns>List of Orders </returns>
         [HttpGet]
         [Route("[action]")]
-        public async Task<IActionResult> GetAllOrders()
+        public async Task<IActionResult> GetAllOrders([FromHeader] string email, [FromHeader] string password)
         {
 
             try
             {
-                return StatusCode(201,await _OrderRepository.GetAllOrders());
+                return StatusCode(201,await _OrderRepository.GetAllOrders(email, password));
 
             }
             catch (DbUpdateException ex)
@@ -73,11 +71,11 @@ namespace RestaurantManagement.Controllers
         /// <returns>The Order information. </returns>
         [HttpGet]
         [Route("[action]/{OrderId}")]
-        public async Task<IActionResult> GetOrderById([FromRoute]  int OrderId)
+        public async Task<IActionResult> GetOrderById([FromRoute]  int OrderId, [FromHeader] string email, [FromHeader] string password)
         {
             try
             {
-                return StatusCode(201,await _OrderRepository.GetOrderById(OrderId));
+                return StatusCode(201,await _OrderRepository.GetOrderById(OrderId, email, password));
 
             }
             catch (DbUpdateException ex)
@@ -98,7 +96,7 @@ namespace RestaurantManagement.Controllers
         }
         #endregion
 
-        #region HttpPost
+        #region HttpPost AddOrder
         /// <remarks>
         /// Sample request:
         /// 
@@ -119,11 +117,11 @@ namespace RestaurantManagement.Controllers
         /// <returns>A message indicating the success of the operation </returns>
         [HttpPut]
         [Route("[action]")]
-        public async Task<IActionResult> AddOrder(CreatOrderDTO order)
+        public async Task<IActionResult> AddOrder(CreatOrderDTO order, [FromHeader] string email, [FromHeader] string password)
         {
             try
             {
-                return StatusCode(201,await _OrderRepository.AddOrder(order));
+                return StatusCode(201,await _OrderRepository.AddOrder(order, email, password));
 
             }
             catch (DbUpdateException ex)
@@ -144,7 +142,7 @@ namespace RestaurantManagement.Controllers
         }
         #endregion
 
-        #region HttpPut
+        #region HttpPut UpdateOrder
         /// <remarks>
         /// Sample request:
         /// 
@@ -166,11 +164,11 @@ namespace RestaurantManagement.Controllers
         /// <returns>A message indicating the success of the operation </returns>
         [HttpPut]
         [Route("[action]")]
-        public async Task<IActionResult> UpdateOrder([FromBody] UpdateOrderDTO order)
+        public async Task<IActionResult> UpdateOrder([FromBody] UpdateOrderDTO order,[FromHeader] string email, [FromHeader] string password)
         {
             try
             {
-                return StatusCode(201,await _OrderRepository.UpdateOrder(order));
+                return StatusCode(201,await _OrderRepository.UpdateOrder(order, email, password));
 
             }
             catch (DbUpdateException ex)
@@ -191,7 +189,7 @@ namespace RestaurantManagement.Controllers
         }
         #endregion
 
-        #region HttpDelete
+        #region HttpDelete DeleteOrder
         /// <remarks>
         /// Sample request:
         /// 
@@ -212,11 +210,11 @@ namespace RestaurantManagement.Controllers
         /// <returns>A message indicating the success of the operation </returns>
         [HttpDelete]
         [Route("[action]/{OrderId}")]
-        public async Task<IActionResult> DeleteOrder([FromRoute]int OrderId)
+        public async Task<IActionResult> DeleteOrder([FromRoute]int OrderId, [FromHeader] string email, [FromHeader] string password)
         {
             try
             {
-                return StatusCode(201,await _OrderRepository.DeleteOrder(OrderId));
+                return StatusCode(201,await _OrderRepository.DeleteOrder(OrderId, email, password));
 
             }
             catch (DbUpdateException ex)

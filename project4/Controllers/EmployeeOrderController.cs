@@ -1,8 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using RestaurantManagement_Repository.DTOs.EmployeeDTO;
 using RestaurantManagement_Repository.DTOs.EmployeeOrderCardDTO;
-using RestaurantManagement_Repository.Implementation;
 using RestaurantManagement_Repository.IRepository;
 
 namespace RestaurantManagement.Controllers
@@ -16,7 +14,7 @@ namespace RestaurantManagement.Controllers
             _EmployeeOrderRepository = EmployeeRepository;
         }
 
-        #region HttpPost
+        #region HttpPost AddEmployeeOrder
         /// <remarks>
         /// Sample request:
         /// 
@@ -39,11 +37,11 @@ namespace RestaurantManagement.Controllers
         /// <returns>A message indicating the success of the operation </returns>
         [HttpPost]
         [Route("[action]")]
-        public async Task<IActionResult> AddEmployeeOrder([FromBody] EmployeeOrderCreatDTOs employeeOrderCardDTOs)
+        public async Task<IActionResult> AddEmployeeOrder([FromBody] EmployeeOrderCreatDTOs employeeOrderCardDTOs,[FromHeader] string email, [FromHeader] string password)
         {
             try
             {
-                return StatusCode(201, await _EmployeeOrderRepository.AddEmployeeOrder(employeeOrderCardDTOs));
+                return StatusCode(201, await _EmployeeOrderRepository.AddEmployeeOrder(employeeOrderCardDTOs, email, password));
 
             }
             catch (DbUpdateException ex)
