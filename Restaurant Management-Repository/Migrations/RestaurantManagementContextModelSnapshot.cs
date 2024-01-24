@@ -67,7 +67,7 @@ namespace Restaurant_Management_Repository.Migrations
                         {
                             t.HasCheckConstraint("Email", "([Email] like '%@GMAIL%' OR [Email] like '%@HOTMAIL%' OR [Email] like '%@ICLOUD%')");
 
-                            t.HasCheckConstraint("Name", "(NOT [Name] like '%[0-9]%' AND NOT [Name] like '%[^A-Za-z]%')");
+                            t.HasCheckConstraint("Name", "(NOT [Name] like '%[0-9]%' AND NOT [Name] like '%[^A-Za-z ]%')");
 
                             t.HasCheckConstraint("Password", "(len([Password])=(11) AND [Password] like '%[0-9]%' AND [Password] like '%[A-Za-z]%' AND [Password] like '%[^A-Za-z]%')");
 
@@ -111,8 +111,8 @@ namespace Restaurant_Management_Repository.Migrations
 
                     b.Property<string>("Position")
                         .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
+                        .HasMaxLength(6)
+                        .HasColumnType("nvarchar(6)");
 
                     b.HasKey("EmployeeId");
 
@@ -121,13 +121,13 @@ namespace Restaurant_Management_Repository.Migrations
                             t.HasCheckConstraint("Email", "([Email] like '%@GMAIL%' OR [Email] like '%@HOTMAIL%' OR [Email] like '%@ICLOUD%')")
                                 .HasName("Email1");
 
-                            t.HasCheckConstraint("Name", "(NOT [Name] like '%[0-9]%' AND NOT [Name] like '%[^A-Za-z]%')")
+                            t.HasCheckConstraint("Name", "(NOT [Name] like '%[0-9]%' AND NOT [Name] like '%[^A-Za-z ]%')")
                                 .HasName("Name1");
 
                             t.HasCheckConstraint("Password", "(len([Password])=(11) AND [Password] like '%[0-9]%' AND [Password] like '%[A-Za-z]%' AND [Password] like '%[^A-Za-z]%')")
                                 .HasName("Password1");
 
-                            t.HasCheckConstraint("Position", "(NOT [Position] like '%[0-9]%' AND NOT [Position] like '%[^A-Za-z]%')");
+                            t.HasCheckConstraint("Position", "([Position] like '%Waiter%' OR [Position] like '%Chef%' OR [Position] like '%Admin%')");
                         });
                 });
 
@@ -180,9 +180,9 @@ namespace Restaurant_Management_Repository.Migrations
 
                     b.ToTable("Menu", t =>
                         {
-                            t.HasCheckConstraint("Description", "(NOT [Description] like '%[0-9]%' AND NOT [Description] like '%[^A-Za-z]%')");
+                            t.HasCheckConstraint("Description", "(NOT [Description] like '%[0-9]%' AND NOT [Description] like '%[^A-Za-z ]%')");
 
-                            t.HasCheckConstraint("Name", "(NOT [Name] like '%[0-9]%' AND NOT [Name] like '%[^A-Za-z]%')")
+                            t.HasCheckConstraint("Name", "(NOT [Name] like '%[0-9]%' AND NOT [Name] like '%[^A-Za-z ]%')")
                                 .HasName("Name2");
                         });
                 });

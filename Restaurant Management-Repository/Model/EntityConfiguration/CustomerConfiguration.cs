@@ -20,7 +20,8 @@ namespace RestaurantManagement_Repository.Model.EntityConfiguration
             builder.Property(x => x.CustomerId).UseIdentityColumn();
 
             builder.Property(x => x.Name).HasMaxLength(20).IsRequired();
-            builder.HasCheckConstraint("Name", "(NOT [Name] like '%[0-9]%' AND NOT [Name] like '%[^A-Za-z]%')");
+            builder.HasCheckConstraint("Name", "(NOT [Name] like '%[0-9]%' AND NOT [Name] like '%[^A-Za-z ]%')");
+
 
             builder.Property(x => x.Email).IsRequired();
             builder.HasCheckConstraint("Email", "([Email] like '%@GMAIL%' OR [Email] like '%@HOTMAIL%' OR [Email] like '%@ICLOUD%')");

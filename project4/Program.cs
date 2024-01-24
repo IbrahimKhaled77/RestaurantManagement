@@ -3,6 +3,8 @@ using Microsoft.OpenApi.Models;
 using RestaurantManagement_Repository.Context;
 using RestaurantManagement_Repository.Implementation;
 using RestaurantManagement_Repository.IRepository;
+using RestaurantManagement_Repository.UnitOfWorkPattern.IUnitOfWork;
+using RestaurantManagement_Repository.UnitOfWorkPattern.UnitOfWork;
 using Serilog;
 
 using System.Text.Json.Serialization;
@@ -49,6 +51,8 @@ builder.Services.AddScoped<ITableRepository, TableRepository>();
 builder.Services.AddScoped<IEmployeeRepository, EmployeeRepository>();
 builder.Services.AddScoped<ICustomerRepository, CustomerRepository>();
 builder.Services.AddScoped<IEmployeeOrderRepository, EmployeeOrdersRepository>();
+builder.Services.AddScoped<IAuthanticationRepository, AuthanticationRepository>();
+builder.Services.AddScoped<IUnitOfwork, UnitOfWork>();
 
 var configuration = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build();
 

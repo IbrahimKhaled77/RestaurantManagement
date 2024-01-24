@@ -14,7 +14,7 @@ namespace RestaurantManagement_Repository.Model.EntityConfiguration
             builder.Property(x => x.EmployeeId).UseIdentityColumn();
 
             builder.Property(x => x.Name).HasMaxLength(20).IsRequired();
-            builder.HasCheckConstraint("Name", "(NOT [Name] like '%[0-9]%' AND NOT [Name] like '%[^A-Za-z]%')");
+            builder.HasCheckConstraint("Name", "(NOT [Name] like '%[0-9]%' AND NOT [Name] like '%[^A-Za-z ]%')");
 
             builder.Property(x => x.Email).IsRequired();
             builder.HasCheckConstraint("Email", "([Email] like '%@GMAIL%' OR [Email] like '%@HOTMAIL%' OR [Email] like '%@ICLOUD%')");
@@ -24,8 +24,8 @@ namespace RestaurantManagement_Repository.Model.EntityConfiguration
 
 
             
-            builder.Property(x => x.Position).HasMaxLength(20).IsRequired();
-            builder.HasCheckConstraint("Position", "(NOT [Position] like '%[0-9]%' AND NOT [Position] like '%[^A-Za-z]%')");
+            builder.Property(x => x.Position).HasMaxLength(6).IsRequired();
+            builder.HasCheckConstraint("Position", "([Position] like '%Waiter%' OR [Position] like '%Chef%' OR [Position] like '%Admin%')");
 
             builder.HasMany(o => o.EmployeeOrder)
            .WithOne(oi => oi.Employee)

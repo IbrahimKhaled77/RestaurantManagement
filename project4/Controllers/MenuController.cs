@@ -1,23 +1,32 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using RestaurantManagement_Repository.DTOs.MenuDTO;
-using RestaurantManagement_Repository.IRepository;
-
+using RestaurantManagement_Repository.UnitOfWorkPattern.IUnitOfWork;
 
 namespace RestaurantManagement.Controllers
 {
     public class MenuController : ControllerBase
     {
 
-        private readonly IMenuRepository _MenuRepository;
+        private readonly IUnitOfwork _IUnitOfwork;
 
-        public MenuController(IMenuRepository MenuRepository)
+        public MenuController(IUnitOfwork UnitOfwork)
         {
-            _MenuRepository = MenuRepository;
+            _IUnitOfwork = UnitOfwork;
         }
 
 
         #region HttpGet GetAllMenus & GetMenuById
+        /// <remarks>
+        /// Sample request:
+        /// 
+        ///     Get api/GetAllMenus
+        ///     {        
+        ///        "Email": "Enter Your Email Here (Required)",
+        ///        "password": "Enter Your password Here (Required)",
+        ///      
+        ///     }
+        /// </remarks>
         /// <response code="201">Returns  Get All Menu Successfully</response>
         /// <response code="404">If the error was occured  (Not Found)</response>
         /// <response code="500">If an internal server error or database error occurs (Internal Server Error OR Database)</response>   
@@ -25,14 +34,16 @@ namespace RestaurantManagement.Controllers
         ///<summary>
         /// I will retrieve all the Menu present on the application.
         /// </summary>
+        /// <param name="Email">The Email of the  User to Get All Menus (Required).</param>
+        /// <param name="Password">The Password of the  User to Get All Menus (Required).</param>
         /// <returns>List of Menu </returns>
         [HttpGet]
         [Route("[action]")]
-        public async Task<IActionResult> GetAllMenus([FromHeader] string email, [FromHeader] string password)
+        public async Task<IActionResult> GetAllMenus([FromHeader] string Email, [FromHeader] string Password)
         {
             try
             {
-                return StatusCode(201, await _MenuRepository.GetAllMenus(email, password));
+                return StatusCode(201, await _IUnitOfwork._IMenuRepository.GetAllMenus(Email, Password));
 
             }
             catch (DbUpdateException ex)
@@ -58,7 +69,9 @@ namespace RestaurantManagement.Controllers
         /// 
         ///     Get api/GetMenuById
         ///     {        
-        ///       "MenuId": "Enter Your Menu ID Here (Required)",  
+        ///       "MenuId": "Enter Your Menu ID Here (Required)", 
+        ///        "Email": "Enter Your Email Here (Required)",
+        ///        "password": "Enter Your password Here (Required)",
         ///     }
         /// </remarks>
         /// <response code="201">Returns  Get  Menu by MenuID Successfully</response>
@@ -69,15 +82,17 @@ namespace RestaurantManagement.Controllers
         /// Retrieves a Menu by ID from the application
         /// </summary>
         /// <param name="MenuId">The ID of the Menu to retrieve (Required).</param>
+        /// <param name="Email">The Email of the  User to Get All Menus (Required).</param>
+        /// <param name="Password">The Password of the  User to Get All Menus (Required).</param>
         /// <returns>The Menu information. </returns>
         [HttpGet]
         [Route("[action]/{MenuId}")]
 
-        public async Task<IActionResult> GetMenuById([FromRoute]int MenuId, [FromHeader] string email, [FromHeader] string password)
+        public async Task<IActionResult> GetMenuById([FromRoute]int MenuId, [FromHeader] string Email, [FromHeader] string Password)
         {
             try
             {
-                return StatusCode(201, await _MenuRepository.GetMenuById(MenuId, email, password));
+                return StatusCode(201, await _IUnitOfwork._IMenuRepository.GetMenuById(MenuId, Email, Password));
 
             }
             catch (DbUpdateException ex)
@@ -103,7 +118,9 @@ namespace RestaurantManagement.Controllers
         /// Sample request:
         /// 
         ///     Post api/AddMenu
-        ///     {        
+        ///     {     
+        ///        "Email": "Enter Your Email Here (Required)",
+        ///        "password": "Enter Your password Here (Required)",
         ///        "NameMenu": "Enter Your NameMenu(Item) Here (Required)",
         ///        "DescriptionMenu": "Enter Your DescriptionMenu(Item) Here (Required)",
         ///        "PriceMenu": "Enter Your PriceMenu(Item) Here (Required)",
@@ -116,15 +133,17 @@ namespace RestaurantManagement.Controllers
         ///<summary>
         /// Adds a new Menu (Item) to the database.
         /// </summary>
+        /// <param name="Email">The Email of the  Employee(Admin) to Add Menu (Required).</param>
+        /// <param name="Password">The Password of the  Employee(Admin) to Add Menu (Required).</param>
         /// <returns>A message indicating the success of the operation </returns>
         [HttpPost]
         [Route("[action]")]
-        public async Task<IActionResult> AddMenu([FromBody]CreatMenuDTO menu, [FromHeader] string email, [FromHeader] string password)
+        public async Task<IActionResult> AddMenu([FromBody]CreatMenuDTO menu, [FromHeader] string Email, [FromHeader] string Password)
         {
             
             try
             {
-                return StatusCode(201, await _MenuRepository.AddMenus(menu, email, password));
+                return StatusCode(201, await _IUnitOfwork._IMenuRepository.AddMenus(menu, Email, Password));
 
             }
             catch (DbUpdateException ex)
@@ -150,7 +169,9 @@ namespace RestaurantManagement.Controllers
         /// Sample request:
         /// 
         ///     Put api/UpdateMenu
-        ///     {     
+        ///     {  
+        ///        "Email": "Enter Your Email Here (Required)",
+        ///        "password": "Enter Your password Here (Required)",     
         ///        "MenuId": "Enter your Menu ID whose information you want to update",
         ///        "NameMenu": "Enter Your NameMenu(Item) Here (Required)",
         ///        "DescriptionMenu": "Enter Your DescriptionMenu(Item) Here (Required)",
@@ -165,14 +186,16 @@ namespace RestaurantManagement.Controllers
         ///<summary>
         /// Update a  Menu(Item)  to the database.
         /// </summary>
+        /// <param name="Email">The Email of the  Employee(Admin) to Update Menu (Required).</param>
+        /// <param name="Password">The Password of the  Employee(Admin) to Update Menu (Required).</param>
         /// <returns>A message indicating the success of the operation </returns>
         [HttpPut]
         [Route("[action]")]
-        public async Task<IActionResult> UpdateMenu([FromBody] UpdateMenuDTO MenuDTo, [FromHeader] string email, [FromHeader] string password)
+        public async Task<IActionResult> UpdateMenu([FromBody] UpdateMenuDTO MenuDTo, [FromHeader] string Email, [FromHeader] string Password)
         {
             try
             {
-                return StatusCode(201, await _MenuRepository.UpdateMenu(MenuDTo, email, password));
+                return StatusCode(201, await _IUnitOfwork._IMenuRepository.UpdateMenu(MenuDTo, Email, Password));
 
             }
             catch (DbUpdateException ex)
@@ -198,7 +221,9 @@ namespace RestaurantManagement.Controllers
         /// Sample request:
         /// 
         ///     Delete api/DeleteMenu
-        ///     {     
+        ///     {
+        ///        "Email": "Enter Your Email Here (Required)",
+        ///        "password": "Enter Your password Here (Required)",   
         ///        "MenuId": "Enter your Menu ID whose information you want to Delete",
         ///      
         ///     }
@@ -211,14 +236,16 @@ namespace RestaurantManagement.Controllers
         /// Delete a  Menu from the database.
         /// </summary>
         /// <param name="MenuId">The ID of the Menu to Delete (Required).</param>
+        /// <param name="Email">The Email of the Employee(Admin) to Delete Menu (Required).</param>
+        /// <param name="Password">The Password of the  Employee(Admin) to Delete Menu (Required).</param>
         /// <returns>A message indicating the success of the operation </returns>
         [HttpDelete]
         [Route("[action]/{MenuId}")]
-        public async Task<IActionResult> DeleteMenu([FromRoute]int MenuId, [FromHeader] string email, [FromHeader] string password)
+        public async Task<IActionResult> DeleteMenu([FromRoute]int MenuId, [FromHeader] string Email, [FromHeader] string Password)
         {
             try
             {
-                return StatusCode(201, await _MenuRepository.DeleteMenu(MenuId, email, password));
+                return StatusCode(201, await _IUnitOfwork._IMenuRepository.DeleteMenu(MenuId, Email, Password));
 
             }
             catch (DbUpdateException ex)

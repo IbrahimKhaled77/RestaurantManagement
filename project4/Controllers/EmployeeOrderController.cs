@@ -1,17 +1,17 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using RestaurantManagement_Repository.DTOs.EmployeeOrderCardDTO;
-using RestaurantManagement_Repository.IRepository;
+using RestaurantManagement_Repository.UnitOfWorkPattern.IUnitOfWork;
 
 namespace RestaurantManagement.Controllers
 {
     public class EmployeeOrderController : ControllerBase
     {
-        private readonly IEmployeeOrderRepository _EmployeeOrderRepository;
+        private readonly IUnitOfwork _IUnitOfwork;
 
-        public EmployeeOrderController(IEmployeeOrderRepository EmployeeRepository)
+        public EmployeeOrderController(IUnitOfwork UnitOfwork)
         {
-            _EmployeeOrderRepository = EmployeeRepository;
+            _IUnitOfwork = UnitOfwork;
         }
 
         #region HttpPost AddEmployeeOrder
@@ -34,14 +34,16 @@ namespace RestaurantManagement.Controllers
         ///<summary>
         /// Adds a new Employee to the database.
         /// </summary>
+        /// <param name="Email">The Email of the  Employee to Add Employee Order (Required).</param>
+        /// <param name="Password">The Password of the  Employee to Add Employee Order(Required).</param>
         /// <returns>A message indicating the success of the operation </returns>
         [HttpPost]
         [Route("[action]")]
-        public async Task<IActionResult> AddEmployeeOrder([FromBody] EmployeeOrderCreatDTOs employeeOrderCardDTOs,[FromHeader] string email, [FromHeader] string password)
+        public async Task<IActionResult> AddEmployeeOrder([FromBody] EmployeeOrderCreatDTOs employeeOrderCardDTOs,[FromHeader] string Email, [FromHeader] string Password)
         {
             try
             {
-                return StatusCode(201, await _EmployeeOrderRepository.AddEmployeeOrder(employeeOrderCardDTOs, email, password));
+                return StatusCode(201, await _IUnitOfwork._IEmployeeOrderRepository.AddEmployeeOrder(employeeOrderCardDTOs, Email, Password));
 
             }
             catch (DbUpdateException ex)

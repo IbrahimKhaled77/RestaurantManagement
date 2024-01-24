@@ -1,8 +1,6 @@
 ﻿
 
 using RestaurantManagement_Repository.DTOs.OrderItemDTO;
-using RestaurantManagement_Repository.DTOs.TableDTO;
-using RestaurantManagement_Repository.Model.Entity;
 
 namespace RestaurantManagement_Repository.DTOs.OrderDTO
 {

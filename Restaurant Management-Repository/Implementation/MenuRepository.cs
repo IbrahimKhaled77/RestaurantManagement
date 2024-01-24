@@ -18,6 +18,120 @@ namespace RestaurantManagement_Repository.Implementation
         {
             _context = context;
         }
+        public async Task<List<MenuCardDTO>> GetAllMenus([FromHeader] string email, [FromHeader] string password)
+        {
+
+            try
+            {
+
+                var isCustomerLoggedIn = await _context.Customer.AnyAsync(x => x.Email == email && x.Password == password && x.IsLoggedIn == true);
+                var isEmployeeLoggedIn = await _context.Employee.AnyAsync(x => x.Email == email && x.Password == password && x.IsLoggedIn == true);
+                if (!isCustomerLoggedIn && !isEmployeeLoggedIn)
+                {
+
+                    throw new Exception("You Must Login In To Your Account");
+                }
+
+
+                var menus = await _context.Menu.ToListAsync();
+                if (menus == null)
+                {
+                    Log.Error($"Menus Not Found ");
+                    throw new ArgumentNullException("menus", "Not Found menus");
+
+                }
+
+                var menu = from menuCardDTO in menus
+                           select new MenuCardDTO
+                           {
+
+                               MenuId = menuCardDTO.MenuId,
+                               Name = menuCardDTO.Name,
+                               Description = menuCardDTO.Description,
+                               Price = menuCardDTO.Price,
+                               IsActive = menuCardDTO.IsActive,
+
+
+
+                           };
+                Log.Information("menus are Reached");
+                Log.Debug($"Debugging GetAllMenus Has been Finised Successfully");
+                return (menu.ToList());
+
+
+
+            }
+            catch (ArgumentNullException ex)
+            {
+                Log.Error($"Menu Not Found: {ex.Message}");
+                throw new DbUpdateException($"datebase Error: {ex.Message}");
+
+            }
+            catch (DbUpdateException ex)
+            {
+                Log.Error($"An error occurred in datebase: {ex.Message}");
+                throw new DbUpdateException($"date Error: {ex.Message}");
+
+            }
+            catch (Exception ex)
+            {
+                Log.Error($"An error occurred Exception : {ex.Message}");
+                throw new Exception($"Exception: {ex.Message}");
+
+            }
+        }
+
+        public async Task<MenuCardDTO> GetMenuById(int id, [FromHeader] string email, [FromHeader] string password)
+        {
+
+            try
+            {
+                var isCustomerLoggedIn = await _context.Customer.AnyAsync(x => x.Email == email && x.Password == password && x.IsLoggedIn == true);
+                var isEmployeeLoggedIn = await _context.Employee.AnyAsync(x => x.Email == email && x.Password == password && x.IsLoggedIn == true);
+                if (!isCustomerLoggedIn && !isEmployeeLoggedIn)
+                {
+
+                    throw new Exception("You Must Login In To Your Account");
+                }
+
+                var menu = await _context.Menu.FirstOrDefaultAsync(value => value.MenuId == id);
+                if (menu == null)
+                {
+
+                    Log.Error($"menu Not Found ");
+                    throw new ArgumentNullException("menu", "Not Found menu");
+                }
+
+
+                var MenuCardDTO = new MenuCardDTO();
+                MenuCardDTO.MenuId = menu.MenuId;
+                MenuCardDTO.Name = menu.Name;
+                MenuCardDTO.Description = menu.Description;
+                MenuCardDTO.Price = menu.Price;
+                MenuCardDTO.IsActive = menu.IsActive;
+                Log.Information("menu Is Reached");
+                Log.Debug($"Debugging GetMenuById Has been Finised Successfully With Menu ID  = {menu.MenuId}");
+                return (MenuCardDTO);
+            }
+            catch (DbUpdateException ex)
+            {
+                Log.Error($"An error occurred in datebase: {ex.Message}");
+                throw new DbUpdateException($"date Error: {ex.Message}");
+
+            }
+            catch (ArgumentNullException ex)
+            {
+                Log.Error($"Menu Not Found: {ex.Message}");
+                throw new DbUpdateException($"datebase Error: {ex.Message}");
+
+            }
+            catch (Exception ex)
+            {
+                Log.Error($"An error occurred Exception : {ex.Message}");
+                throw new Exception($"Exception: {ex.Message}");
+
+            }
+        }
 
         public  async Task<string> AddMenus(CreatMenuDTO menu, [FromHeader] string email, [FromHeader] string password)
         {
@@ -68,6 +182,64 @@ namespace RestaurantManagement_Repository.Implementation
                 Log.Error($"An error occurred Exception: {ex.Message}");
                 throw new Exception($"Exception: {ex.Message}");
              
+            }
+        }
+
+
+        public async Task<string> UpdateMenu(UpdateMenuDTO MenuDto, [FromHeader] string email, [FromHeader] string password)
+        {
+            try
+            {
+                var isAdminLoggedIn = await _context.Employee.AnyAsync(x => x.Email == email && x.Password == password && x.Position == "Admin" && x.IsLoggedIn == true);
+                if (!isAdminLoggedIn)
+                {
+
+                    throw new Exception("You Must Login In To Your Account");
+                }
+                var isAdmin = await _context.Employee.AnyAsync(x => x.Email == email && x.Password == password && x.Position == "Admin");
+                if (!isAdmin)
+                {
+
+                    throw new Exception("You Don't have the required Permission");
+                }
+
+
+                var menu = await _context.Menu.FindAsync(MenuDto.MenuId);
+                if (menu == null)
+                {
+                    Log.Error($"Menu Not Found ");
+                    throw new ArgumentNullException("Menu", "Not Found Menu");
+                }
+                Log.Information("Menu Is  Existing");
+                menu.Name = MenuDto.Name;
+                menu.Description = MenuDto.Description;
+                menu.Price = MenuDto.Price;
+                menu.IsActive = true;
+
+                _context.Menu.Update(menu);
+                await _context.SaveChangesAsync();
+                Log.Information("Menu Is Updated");
+                Log.Debug($"Debugging UpdateMenu Has been Finised Successfully With Menu ID  = {menu.MenuId}");
+                return "UpdateMenu Has been Finised Successfully ";
+
+            }
+            catch (ArgumentNullException ex)
+            {
+                Log.Error($"Menu Not Found: {ex.Message}");
+                throw new DbUpdateException($"datebase Error: {ex.Message}");
+
+            }
+            catch (DbUpdateException ex)
+            {
+                Log.Error($"An error occurred In datebase: {ex.Message}");
+                throw new DbUpdateException($"date Error: {ex.Message}");
+
+            }
+            catch (Exception ex)
+            {
+                Log.Error($"An error occurred ,Exception: {ex.Message}");
+                throw new Exception($"Exception: {ex.Message}");
+
             }
         }
 
@@ -124,176 +296,8 @@ namespace RestaurantManagement_Repository.Implementation
             }
         }
 
-        public async Task<List<MenuCardDTO>> GetAllMenus([FromHeader] string email, [FromHeader] string password)
-        {
-            
-            try
-            {
+     
 
-                var isCustomerLoggedIn = await _context.Customer.AnyAsync(x => x.Email == email && x.Password == password && x.IsLoggedIn == true);
-                var isEmployeeLoggedIn = await _context.Employee.AnyAsync(x => x.Email == email && x.Password == password && x.IsLoggedIn == true);
-                if (!isCustomerLoggedIn && !isEmployeeLoggedIn)
-                {
-
-                    throw new Exception("You Must Login In To Your Account");
-                }
-
-
-                var menus = await _context.Menu.ToListAsync();
-                if (menus == null)
-                {
-                    Log.Error($"Menus Not Found ");
-                    throw new ArgumentNullException("menus", "Not Found menus");
-
-                }
-              
-                var menu = from menuCardDTO in menus
-                           select new MenuCardDTO
-                               {
-                                 
-                               MenuId = menuCardDTO.MenuId,
-                               Name = menuCardDTO.Name,
-                               Description = menuCardDTO.Description,  
-                               Price=menuCardDTO.Price,
-                               IsActive = menuCardDTO.IsActive,
-
-
-
-                               };
-                Log.Information("menus are Reached");
-                Log.Debug($"Debugging GetAllMenus Has been Finised Successfully");
-                return (menu.ToList());
-
-
-
-            }
-            catch (ArgumentNullException ex)
-            {
-                Log.Error($"Menu Not Found: {ex.Message}");
-                throw new DbUpdateException($"datebase Error: {ex.Message}");
-
-            }
-            catch (DbUpdateException ex)
-            {
-                Log.Error($"An error occurred in datebase: {ex.Message}");
-                throw new DbUpdateException($"date Error: {ex.Message}");
-
-            }
-            catch (Exception ex)
-            {
-                Log.Error($"An error occurred Exception : {ex.Message}");
-                throw new Exception($"Exception: {ex.Message}");
-
-            }
-        }
-
-        public  async Task<MenuCardDTO> GetMenuById(int id, [FromHeader] string email, [FromHeader] string password)
-        {
-            
-            try
-            {
-                var isCustomerLoggedIn = await _context.Customer.AnyAsync(x => x.Email == email && x.Password == password && x.IsLoggedIn == true);
-                var isEmployeeLoggedIn = await _context.Employee.AnyAsync(x => x.Email == email && x.Password == password  && x.IsLoggedIn == true);
-                if (!isCustomerLoggedIn && !isEmployeeLoggedIn)
-                {
-
-                    throw new Exception("You Must Login In To Your Account");
-                }
-
-                var menu = await _context.Menu.FirstOrDefaultAsync(value => value.MenuId == id);
-                if (menu == null)
-                {
-
-                    Log.Error($"menu Not Found ");
-                    throw new ArgumentNullException("menu", "Not Found menu");
-                }
-                   
-
-                var MenuCardDTO = new MenuCardDTO();
-                MenuCardDTO.MenuId = menu.MenuId;
-                MenuCardDTO.Name = menu.Name;  
-                MenuCardDTO.Description = menu.Description;
-                MenuCardDTO.Price = menu.Price;
-                MenuCardDTO.IsActive = menu.IsActive;
-                Log.Information("menu Is Reached");
-                Log.Debug($"Debugging GetMenuById Has been Finised Successfully With Menu ID  = {menu.MenuId}");
-                return (MenuCardDTO);
-            }
-            catch (DbUpdateException ex)
-            {
-                Log.Error($"An error occurred in datebase: {ex.Message}");
-                throw new DbUpdateException($"date Error: {ex.Message}");
-
-            }
-            catch (ArgumentNullException ex)
-            {
-                Log.Error($"Menu Not Found: {ex.Message}");
-                throw new DbUpdateException($"datebase Error: {ex.Message}");
-
-            }
-            catch (Exception ex)
-            {
-                Log.Error($"An error occurred Exception : {ex.Message}");
-                throw new Exception($"Exception: {ex.Message}");
-
-            }
-        }
-
-        public async Task<string> UpdateMenu(UpdateMenuDTO MenuDto, [FromHeader] string email, [FromHeader] string password)
-        {
-            try
-            {
-                var isAdminLoggedIn = await _context.Employee.AnyAsync(x => x.Email == email && x.Password == password && x.Position == "Admin" && x.IsLoggedIn == true);
-                if (!isAdminLoggedIn)
-                {
-                    
-                    throw new Exception("You Must Login In To Your Account");
-                }
-                var isAdmin = await _context.Employee.AnyAsync(x => x.Email == email && x.Password == password && x.Position == "Admin");
-                if (!isAdmin)
-                {
-                  
-                    throw new Exception("You Don't have the required Permission");
-                }
-
-
-                var menu = await _context.Menu.FindAsync(MenuDto.MenuId);
-                if (menu == null)
-                {
-                    Log.Error($"Menu Not Found ");
-                    throw new ArgumentNullException("Menu", "Not Found Menu");
-                }
-                Log.Information("Menu Is  Existing");
-                menu.Name = MenuDto.Name;
-                menu.Description = MenuDto.Description;
-                menu.Price = MenuDto.Price;
-                menu.IsActive = true;
-
-                _context.Menu.Update(menu);
-                await _context.SaveChangesAsync();
-                Log.Information("Menu Is Updated");
-                Log.Debug($"Debugging UpdateMenu Has been Finised Successfully With Menu ID  = {menu.MenuId}");
-                return "UpdateMenu Has been Finised Successfully ";
-
-            }
-            catch (ArgumentNullException ex)
-            {
-                Log.Error($"Menu Not Found: {ex.Message}");
-                throw new DbUpdateException($"datebase Error: {ex.Message}");
-
-            }
-            catch (DbUpdateException ex)
-            {
-                Log.Error($"An error occurred In datebase: {ex.Message}");
-                throw new DbUpdateException($"date Error: {ex.Message}");
-
-            }
-            catch (Exception ex)
-            {
-                Log.Error($"An error occurred ,Exception: {ex.Message}");
-                throw new Exception($"Exception: {ex.Message}");
-
-            }
-        }
+        
     }
 }

@@ -1,15 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Restaurant_Management_Repository.DTOs.AuthanticationDTO;
 using RestaurantManagement_Repository.Context;
+using RestaurantManagement_Repository.DTOs.AuthanticationDTO;
 using RestaurantManagement_Repository.IRepository;
 using Serilog;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Restaurant_Management_Repository.Implementation
+namespace RestaurantManagement_Repository.Implementation
 {
     public class AuthanticationRepository: IAuthanticationRepository
     {
@@ -26,6 +21,15 @@ namespace Restaurant_Management_Repository.Implementation
         {
             try
             {
+
+                var isCustomerLoggedIn = await _context.Customer.AnyAsync(x => x.CustomerId == UserId && x.IsLoggedIn == true);
+                var isEmployeeLoggedIn = await _context.Employee.AnyAsync(x => x.EmployeeId == UserId &&  x.IsLoggedIn == true);
+                if (!isCustomerLoggedIn && !isEmployeeLoggedIn)
+                {
+
+                    throw new Exception("You Must Login In To Your Account");
+                }
+
                 Log.Information("Starting Logout");
                 var Employee = await _context.Employee.FindAsync(UserId);
                 var Customer = await _context.Customer.FindAsync(UserId);
@@ -73,34 +77,45 @@ namespace Restaurant_Management_Repository.Implementation
                 if (dTO.Email != null && dTO.NewPassword != null)
                 {
                     //find the user
-                    var Customer = await _context.Customer.Where(x => x.Email == dTO.Email).SingleAsync();
-                    var Employee = await _context.Employee.Where(x => x.Email == dTO.Email).SingleAsync();
-                    if (Customer != null)
+                    var Customer = await _context.Customer.Where(x => x.Email == dTO.Email).FirstOrDefaultAsync();
+                    var Employee = await _context.Employee.Where(x => x.Email == dTO.Email).FirstOrDefaultAsync();
+                     if (Customer != null)
+                     {
+                    
+                         //update the password
+                        
+                         Customer.Password = dTO.NewPassword;
+                         _context.Customer.Update(Customer);
+                         //savechanges
+                         await _context.SaveChangesAsync();
+                         Log.Information(" ResetPasswordCustomer Is In Finised");
+                         Log.Debug($"Debugging ResetPasswordCustomer Has been Finised Successfully With Customer  {Customer.CustomerId} ");
+                         return " Reset Password Customer Is In Finised";
+                     }
+                   else if (Employee != null)
                     {
                         //update the password
-                        Customer.Password = dTO.NewPassword;
-                        _context.Update(Customer);
-                        //savechanges
-                        await _context.SaveChangesAsync();
-                        Log.Information(" ResetPasswordCustomer Is In Finised");
-                        Log.Debug($"Debugging ResetPasswordCustomer Has been Finised Successfully With Customer  {Customer.CustomerId} ");
-                        return " Reset Password Customer Is In Finised";
-                    }
-                    if (Employee != null)
-                    {
-                        //update the password
+
                         Employee.Password = dTO.NewPassword;
-                        _context.Update(Employee);
+                        _context.Employee.Update(Employee);
                         //savechanges
                         await _context.SaveChangesAsync();
                         Log.Information(" ResetPasswordEmployee Is In Finised");
                         Log.Debug($"Debugging ResetPasswordEmployee  Has been Finised Successfully With Employee  {Employee.EmployeeId} ");
                         return " Reset Password Employee Is In Finised";
                     }
+                    else {
+                        throw new Exception("ERROR NOt Found User to ResetPassword ");
+                    }
 
-                    throw new Exception("ERROR NOt Found User to ResetPassword ");
+
                 }
-                throw new NotImplementedException("Please Fill All Information");
+                else
+                {
+                    throw new NotImplementedException("Please Fill All Information");
+
+                }
+             
             }
             catch (Exception ex) {
 

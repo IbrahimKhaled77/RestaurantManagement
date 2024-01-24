@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Restaurant_Management_Repository.Migrations
 {
     /// <inheritdoc />
-    public partial class test7 : Migration
+    public partial class test99 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -30,7 +30,7 @@ namespace Restaurant_Management_Repository.Migrations
                 {
                     table.PrimaryKey("PK_Customer", x => x.CustomerId);
                     table.CheckConstraint("Email", "([Email] like '%@GMAIL%' OR [Email] like '%@HOTMAIL%' OR [Email] like '%@ICLOUD%')");
-                    table.CheckConstraint("Name", "(NOT [Name] like '%[0-9]%' AND NOT [Name] like '%[^A-Za-z]%')");
+                    table.CheckConstraint("Name", "(NOT [Name] like '%[0-9]%' AND NOT [Name] like '%[^A-Za-z ]%')");
                     table.CheckConstraint("Password", "(len([Password])=(11) AND [Password] like '%[0-9]%' AND [Password] like '%[A-Za-z]%' AND [Password] like '%[^A-Za-z]%')");
                     table.CheckConstraint("PhoneNumber", "([PhoneNumber] like '+%' AND len([PhoneNumber])=(13) AND [PhoneNumber] like '%[0-9]%')");
                 });
@@ -44,7 +44,7 @@ namespace Restaurant_Management_Repository.Migrations
                     Name = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Password = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Position = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
+                    Position = table.Column<string>(type: "nvarchar(6)", maxLength: 6, nullable: false),
                     IsLoggedIn = table.Column<bool>(type: "bit", nullable: false),
                     AccessKey = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     AccesskeyExpireDate = table.Column<DateTime>(type: "datetime2", nullable: true),
@@ -54,9 +54,9 @@ namespace Restaurant_Management_Repository.Migrations
                 {
                     table.PrimaryKey("PK_Employee", x => x.EmployeeId);
                     table.CheckConstraint("Email1", "([Email] like '%@GMAIL%' OR [Email] like '%@HOTMAIL%' OR [Email] like '%@ICLOUD%')");
-                    table.CheckConstraint("Name1", "(NOT [Name] like '%[0-9]%' AND NOT [Name] like '%[^A-Za-z]%')");
+                    table.CheckConstraint("Name1", "(NOT [Name] like '%[0-9]%' AND NOT [Name] like '%[^A-Za-z ]%')");
                     table.CheckConstraint("Password1", "(len([Password])=(11) AND [Password] like '%[0-9]%' AND [Password] like '%[A-Za-z]%' AND [Password] like '%[^A-Za-z]%')");
-                    table.CheckConstraint("Position", "(NOT [Position] like '%[0-9]%' AND NOT [Position] like '%[^A-Za-z]%')");
+                    table.CheckConstraint("Position", "([Position] like '%Waiter%' OR [Position] like '%Chef%' OR [Position] like '%Admin%')");
                 });
 
             migrationBuilder.CreateTable(
@@ -73,8 +73,8 @@ namespace Restaurant_Management_Repository.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Menu", x => x.MenuId);
-                    table.CheckConstraint("Description", "(NOT [Description] like '%[0-9]%' AND NOT [Description] like '%[^A-Za-z]%')");
-                    table.CheckConstraint("Name2", "(NOT [Name] like '%[0-9]%' AND NOT [Name] like '%[^A-Za-z]%')");
+                    table.CheckConstraint("Description", "(NOT [Description] like '%[0-9]%' AND NOT [Description] like '%[^A-Za-z ]%')");
+                    table.CheckConstraint("Name2", "(NOT [Name] like '%[0-9]%' AND NOT [Name] like '%[^A-Za-z ]%')");
                 });
 
             migrationBuilder.CreateTable(

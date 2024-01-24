@@ -15,10 +15,10 @@ namespace RestaurantManagement_Repository.Model.EntityConfiguration
             builder.Property(x => x.MenuId).UseIdentityColumn();
 
             builder.Property(x => x.Name).IsRequired();
-            builder.HasCheckConstraint("Name", "(NOT [Name] like '%[0-9]%' AND NOT [Name] like '%[^A-Za-z]%')");
+            builder.HasCheckConstraint("Name", "(NOT [Name] like '%[0-9]%' AND NOT [Name] like '%[^A-Za-z ]%')");
 
             builder.Property(x => x.Description).IsRequired();
-            builder.HasCheckConstraint("Description", "(NOT [Description] like '%[0-9]%' AND NOT [Description] like '%[^A-Za-z]%')");
+            builder.HasCheckConstraint("Description", "(NOT [Description] like '%[0-9]%' AND NOT [Description] like '%[^A-Za-z ]%')");
 
 
           

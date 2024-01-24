@@ -4,11 +4,8 @@
 using Microsoft.EntityFrameworkCore;
 using RestaurantManagement_Repository.Context;
 using RestaurantManagement_Repository.DTOs.OrderDTO;
-
 using RestaurantManagement_Repository.IRepository;
 using RestaurantManagement_Repository.Model.Entity;
-using RestaurantManagement_Repository.Helper;
-using RestaurantManagement_Repository.DTOs.OrderItemDTO;
 using Serilog;
 using RestaurantManagement_Repository.Helper.Mapper;
 using Microsoft.AspNetCore.Mvc;
@@ -23,6 +20,90 @@ namespace RestaurantManagement_Repository.Implementation
         public OrderRepository(RestaurantManagementContext context)
         {
             _context = context;
+        }
+
+
+        public async Task<List<OrderCardDTO>> GetAllOrders([FromHeader] string email, [FromHeader] string password)
+        {
+            throw new NotImplementedException();
+            try
+            {
+
+            }
+            catch (ArgumentNullException ex)
+            {
+                Log.Error($"Order Not Found: {ex.Message}");
+                throw new DbUpdateException($"datebase Error: {ex.Message}");
+
+            }
+            catch (DbUpdateException ex)
+            {
+
+                throw new DbUpdateException($"date Error: {ex.Message}");
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Exception: {ex.Message}");
+
+            }
+        }
+
+        public async Task<OrderCardDTO> GetOrderById(int OrderId, [FromHeader] string email, [FromHeader] string password)
+        {
+
+            try
+            {
+                var isCustomerLoggedIn = await _context.Customer.AnyAsync(x => x.Email == email && x.Password == password && x.IsLoggedIn == true);
+                var isEmployeeLoggedIn = await _context.Employee.AnyAsync(x => x.Email == email && x.Password == password && x.IsLoggedIn == true);
+                if (!isCustomerLoggedIn && !isEmployeeLoggedIn)
+                {
+
+                    throw new Exception("You Must Login In To Your Account");
+                }
+
+                var Order1 = await _context.Order.Include(t => t.EmployeeOrder)
+                   .FirstOrDefaultAsync(x => x.OrderId == OrderId);
+                if (Order1 != null)
+                {
+                    Log.Information($"Order Is  Existing: {Order1.OrderId}");
+
+                    OrderCardDTO orderCardDTO = new OrderCardDTO();
+                    orderCardDTO.OrderId = Order1.OrderId;
+                    orderCardDTO.TableNumber = Order1.TableNumber;
+                    orderCardDTO.IsActive = Order1.IsActive;
+                    orderCardDTO.EmployeeOrder = TableMappingHelper.EmployeeOrderDtoMapper(Order1.EmployeeOrder.ToList());
+                    Log.Information("Order Is Reached");
+                    Log.Debug($"Debugging Get Order By Id Has been Finised Successfully With Order ID  = {Order1.OrderId}");
+                    return orderCardDTO;
+
+
+                }
+                else
+                {
+                    Log.Error($"Order Not Found ");
+                    throw new ArgumentNullException("Order1", "Not Found");
+
+                }
+            }
+            catch (ArgumentNullException ex)
+            {
+                Log.Error($"Order Not Found: {ex.Message}");
+                throw new DbUpdateException($"datebase Error: {ex.Message}");
+
+            }
+            catch (DbUpdateException ex)
+            {
+                Log.Error($"An error occurred in datebase: {ex.Message}");
+                throw new DbUpdateException($"datebase Error: {ex.Message}");
+
+            }
+            catch (Exception ex)
+            {
+                Log.Error($"An error occurred Exception : {ex.Message}");
+                throw new Exception($"Exception: {ex.Message}");
+
+            }
         }
 
         public  async Task<string> AddOrder(CreatOrderDTO order,[FromHeader] string email, [FromHeader] string password)
@@ -119,6 +200,67 @@ namespace RestaurantManagement_Repository.Implementation
         }
 
 
+        public async Task<string> UpdateOrder(UpdateOrderDTO OrderDto, [FromHeader] string email, [FromHeader] string password)
+        {
+
+            try
+            {
+
+                var isAdminLoggedIn = await _context.Employee.AnyAsync(x => x.Email == email && x.Password == password && x.Position == "Admin" && x.IsLoggedIn == true);
+                if (!isAdminLoggedIn)
+                {
+
+                    throw new Exception("You Must Login In To Your Account");
+                }
+                var isAdmin = await _context.Employee.AnyAsync(x => x.Email == email && x.Password == password && x.Position == "Admin");
+                if (!isAdmin)
+                {
+
+                    throw new Exception("You Don't have the required Permission");
+                }
+
+
+
+                var Order = await _context.Order.FirstOrDefaultAsync(x => x.OrderId == OrderDto.OrderId);
+                if (Order == null)
+                {
+                    Log.Error($"Order Not Found ");
+                    throw new ArgumentNullException("Order", "Not Found Order");
+
+                }
+                Log.Information("Order Is  Existing");
+                Order.Table = await _context.Table.FindAsync(OrderDto.TableId);
+                Order.TableNumber = Order.Table.TableId;
+                Order.TotalPrice = OrderDto.TotalPrice;
+                Order.IsActive = OrderDto.IsActive;
+
+
+                _context.Order.Update(Order);
+                await _context.SaveChangesAsync();
+                Log.Information("Order Is Updated");
+                Log.Debug($"Debugging UpdateOrder Has been Finised Successfully With Order ID  = {Order.OrderId}");
+
+                return "UpdateOrder Has been Finised Successfully";
+            }
+            catch (ArgumentNullException ex)
+            {
+                Log.Error($"Order Not Found: {ex.Message}");
+                throw new DbUpdateException($"datebase Error: {ex.Message}");
+
+            }
+            catch (DbUpdateException ex)
+            {
+
+                throw new DbUpdateException($"date Error: {ex.Message}");
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Exception: {ex.Message}");
+
+            }
+        }
+
         public async Task<string> DeleteOrder(int id, [FromHeader] string email, [FromHeader] string password)
         {
             
@@ -176,149 +318,9 @@ namespace RestaurantManagement_Repository.Implementation
             }
         }
 
-        public async Task<List<OrderCardDTO>> GetAllOrders([FromHeader] string email, [FromHeader] string password)
-        {
-            throw new NotImplementedException();
-            try
-            {
-
-            }
-            catch (ArgumentNullException ex)
-            {
-                Log.Error($"Order Not Found: {ex.Message}");
-                throw new DbUpdateException($"datebase Error: {ex.Message}");
-
-            }
-            catch (DbUpdateException ex)
-            {
-
-                throw new DbUpdateException($"date Error: {ex.Message}");
-                
-            }
-            catch (Exception ex)
-            {
-                throw new Exception($"Exception: {ex.Message}");
-             
-            }
-        }
-
-        public async Task<OrderCardDTO> GetOrderById(int OrderId,[FromHeader] string email, [FromHeader] string password)
-        {
-             
-            try
-            {
-                var isCustomerLoggedIn = await _context.Customer.AnyAsync(x => x.Email == email && x.Password == password && x.IsLoggedIn == true);
-                var isEmployeeLoggedIn = await _context.Employee.AnyAsync(x => x.Email == email && x.Password == password && x.IsLoggedIn == true);
-                if (!isCustomerLoggedIn && !isEmployeeLoggedIn)
-                {
-
-                    throw new Exception("You Must Login In To Your Account");
-                }
-
-                var Order1 = await _context.Order.Include(t => t.EmployeeOrder)
-                   .FirstOrDefaultAsync(x => x.OrderId == OrderId);
-                if (Order1 != null)
-                {
-                    Log.Information($"Order Is  Existing: {Order1.OrderId}");
-
-                    OrderCardDTO orderCardDTO = new OrderCardDTO();
-                    orderCardDTO.OrderId = Order1.OrderId;
-                    orderCardDTO.TableNumber = Order1.TableNumber;
-                    orderCardDTO.IsActive = Order1.IsActive;
-                    orderCardDTO.EmployeeOrder = TableMappingHelper.EmployeeOrderDtoMapper(Order1.EmployeeOrder.ToList());
-                    Log.Information("Order Is Reached");
-                    Log.Debug($"Debugging Get Order By Id Has been Finised Successfully With Order ID  = {Order1.OrderId}");
-                    return orderCardDTO;
-
-
-                }
-                else
-                {
-                    Log.Error($"Order Not Found ");
-                    throw new ArgumentNullException("Order1", "Not Found");
-
-                }
-            }
-            catch (ArgumentNullException ex)
-            {
-                Log.Error($"Order Not Found: {ex.Message}");
-                throw new DbUpdateException($"datebase Error: {ex.Message}");
-
-            }
-            catch (DbUpdateException ex)
-            {
-                Log.Error($"An error occurred in datebase: {ex.Message}");
-                throw new DbUpdateException($"datebase Error: {ex.Message}");
-
-            }
-            catch (Exception ex)
-            {
-                Log.Error($"An error occurred Exception : {ex.Message}");
-                throw new Exception($"Exception: {ex.Message}");
-
-            }
-        }
-
-        public  async Task<string> UpdateOrder(UpdateOrderDTO OrderDto, [FromHeader] string email, [FromHeader] string password)
-        {
-           
-            try
-            {
-
-                var isAdminLoggedIn = await _context.Employee.AnyAsync(x => x.Email == email && x.Password == password && x.Position == "Admin" && x.IsLoggedIn == true);
-                if (!isAdminLoggedIn)
-                {
-                    
-                    throw new Exception("You Must Login In To Your Account");
-                }
-                var isAdmin = await _context.Employee.AnyAsync(x => x.Email == email && x.Password == password && x.Position == "Admin");
-                if (!isAdmin)
-                {
-                   
-                    throw new Exception("You Don't have the required Permission");
-                }
 
 
 
-                var Order = await _context.Order.FirstOrDefaultAsync(x=>x.OrderId== OrderDto.OrderId);
-                if (Order == null)
-                {
-                    Log.Error($"Order Not Found ");
-                    throw new ArgumentNullException("Order", "Not Found Order");
-
-                }
-                Log.Information("Order Is  Existing");
-                Order.Table = await _context.Table.FindAsync(OrderDto.TableId);
-                Order.TableNumber = Order.Table.TableId;
-                Order.TotalPrice = OrderDto.TotalPrice;
-                Order.IsActive = OrderDto.IsActive;
-
-
-                _context.Order.Update(Order);
-                await _context.SaveChangesAsync();
-                Log.Information("Order Is Updated");
-                Log.Debug($"Debugging UpdateOrder Has been Finised Successfully With Order ID  = {Order.OrderId}");
-
-                return "UpdateOrder Has been Finised Successfully";
-            }
-            catch (ArgumentNullException ex)
-            {
-                Log.Error($"Order Not Found: {ex.Message}");
-                throw new DbUpdateException($"datebase Error: {ex.Message}");
-
-            }
-            catch (DbUpdateException ex)
-            {
-
-                throw new DbUpdateException($"date Error: {ex.Message}");
-              
-            }
-            catch (Exception ex)
-            {
-                throw new Exception($"Exception: {ex.Message}");
-                
-            }
-        }
 
         
     }

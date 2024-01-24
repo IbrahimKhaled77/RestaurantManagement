@@ -26,3 +26,72 @@
 2024-01-24 02:50:11.625 +03:00 [INF] Starting web host
 2024-01-24 02:50:58.505 +03:00 [INF] Starting web host
 2024-01-24 02:51:15.263 +03:00 [ERR] An error occurred ,Exception: You Must Login In To Your Account
+2024-01-24 19:39:34.216 +03:00 [INF] Starting web host
+2024-01-24 19:46:47.997 +03:00 [INF] Starting web host
+2024-01-24 19:48:10.779 +03:00 [INF] Create New Employee
+2024-01-24 19:48:12.077 +03:00 [INF] Employee Is In Finised
+2024-01-24 19:48:12.077 +03:00 [DBG] Debugging AddEmployee Has been Finised Successfully With Employee ID  2 
+2024-01-24 19:49:57.275 +03:00 [ERR] An error occurred Exception : You Must Login In To Your Account
+2024-01-24 19:50:15.866 +03:00 [INF] Starting Login
+2024-01-24 19:50:16.171 +03:00 [INF] LoginEmployee Is In Finised
+2024-01-24 19:50:16.171 +03:00 [DBG] Debugging LoginEmployee Has been Finised Successfully With finalToken  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySWQiOiIyIiwiTmFtZSI6IklicmFoaW0iLCJuYmYiOjE3MDYxMTUwMTYsImV4cCI6MTcwNjEyNTgxNiwiaWF0IjoxNzA2MTE1MDE2fQ.DsZHXGVAJyaGVrLvzKSV8YkcesbW7ONAvqa9BFcGZKs 
+2024-01-24 19:50:27.798 +03:00 [INF] Employees are Reached
+2024-01-24 19:50:27.798 +03:00 [DBG] Debugging GetAllEmployees Has been Finised Successfully
+2024-01-24 19:51:03.329 +03:00 [INF] Starting ResetPassword
+2024-01-24 19:51:03.365 +03:00 [ERR] An error occurred Exception: Sequence contains no elements.
+2024-01-24 19:52:41.246 +03:00 [INF] Starting web host
+2024-01-24 19:52:53.715 +03:00 [INF] Starting ResetPassword
+2024-01-24 19:52:54.763 +03:00 [ERR] An error occurred Exception: Sequence contains no elements.
+2024-01-24 19:54:27.953 +03:00 [INF] Starting web host
+2024-01-24 19:54:35.512 +03:00 [INF] Starting ResetPassword
+2024-01-24 19:54:36.542 +03:00 [ERR] An error occurred Exception: Sequence contains no elements.
+2024-01-24 19:55:33.208 +03:00 [INF] Starting web host
+2024-01-24 19:55:48.524 +03:00 [INF] Starting ResetPassword
+2024-01-24 19:55:49.532 +03:00 [ERR] An error occurred Exception: Sequence contains no elements.
+2024-01-24 19:55:55.636 +03:00 [INF] Starting ResetPassword
+2024-01-24 19:55:55.676 +03:00 [ERR] An error occurred Exception: Sequence contains no elements.
+2024-01-24 19:56:45.873 +03:00 [INF] Starting web host
+2024-01-24 19:57:02.412 +03:00 [INF] Starting ResetPassword
+2024-01-24 19:57:03.399 +03:00 [ERR] An error occurred Exception: Sequence contains no elements.
+2024-01-24 19:58:58.555 +03:00 [INF] Starting web host
+2024-01-24 19:59:05.917 +03:00 [INF] Starting ResetPassword
+2024-01-24 19:59:06.890 +03:00 [ERR] An error occurred Exception: Sequence contains no elements.
+2024-01-24 19:59:29.844 +03:00 [INF] Starting Logout
+2024-01-24 19:59:30.007 +03:00 [INF] LogoutEmployee Is In Finised
+2024-01-24 19:59:30.007 +03:00 [DBG] Debugging LoginEmployee Has been Finised Successfully With finalToken  1 
+2024-01-24 20:01:20.790 +03:00 [INF] Starting web host
+2024-01-24 20:01:27.364 +03:00 [INF] Starting ResetPassword
+2024-01-24 20:01:28.532 +03:00 [INF]  ResetPasswordEmployee Is In Finised
+2024-01-24 20:01:28.532 +03:00 [DBG] Debugging ResetPasswordEmployee  Has been Finised Successfully With Employee  2 
+2024-01-24 20:02:46.485 +03:00 [INF] Starting web host
+2024-01-24 20:03:10.132 +03:00 [INF] Starting ResetPassword
+2024-01-24 20:03:11.134 +03:00 [ERR] An error occurred Exception: Sequence contains no elements.
+2024-01-24 20:03:44.824 +03:00 [INF] Starting web host
+2024-01-24 20:03:50.925 +03:00 [INF] Starting ResetPassword
+2024-01-24 20:03:51.922 +03:00 [ERR] An error occurred Exception: Sequence contains no elements.
+2024-01-24 20:05:02.860 +03:00 [INF] Starting web host
+2024-01-24 20:05:31.908 +03:00 [INF] Starting web host
+2024-01-24 20:05:39.647 +03:00 [INF] Starting ResetPassword
+2024-01-24 20:05:40.737 +03:00 [INF]  ResetPasswordEmployee Is In Finised
+2024-01-24 20:05:40.738 +03:00 [DBG] Debugging ResetPasswordEmployee  Has been Finised Successfully With Employee  2 
+2024-01-24 20:06:19.372 +03:00 [INF] Starting web host
+2024-01-24 20:10:26.108 +03:00 [INF] Starting web host
+2024-01-24 20:11:06.564 +03:00 [INF] Starting web host
+2024-01-24 20:12:49.048 +03:00 [INF] Starting web host
+2024-01-24 20:13:26.597 +03:00 [INF] Starting web host
+2024-01-24 20:14:19.777 +03:00 [INF] Starting web host
+2024-01-24 20:15:06.360 +03:00 [INF] Starting web host
+2024-01-24 20:15:42.603 +03:00 [INF] Starting web host
+2024-01-24 20:16:04.566 +03:00 [INF] Starting Login
+2024-01-24 20:16:05.672 +03:00 [INF] LoginCustomer Is In Finised
+2024-01-24 20:16:05.672 +03:00 [DBG] Debugging LoginCustomer Has been Finised Successfully With finalToken  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySWQiOiIzIiwiTmFtZSI6ImlnIiwibmJmIjoxNzA2MTE2NTY1LCJleHAiOjE3MDYxMjczNjUsImlhdCI6MTcwNjExNjU2NX0.T6EXEC8AoSJrZymzmR9wCqPW7QfOxw30GZMpFbXCu30 
+2024-01-24 20:17:03.989 +03:00 [INF] Starting web host
+2024-01-24 20:18:00.299 +03:00 [INF] Starting web host
+2024-01-24 20:20:29.708 +03:00 [INF] Starting web host
+2024-01-24 20:20:41.199 +03:00 [INF] Customers are Reached
+2024-01-24 20:20:41.199 +03:00 [DBG] Debugging GetAllCustomers Has been Finised Successfully
+2024-01-24 20:21:00.803 +03:00 [INF] Customer Is Reached
+2024-01-24 20:21:00.804 +03:00 [DBG] Debugging GetCustomerById Has been Finised Successfully With Customer ID  = 3
+2024-01-24 20:26:53.150 +03:00 [INF] Starting web host
+2024-01-24 20:27:21.031 +03:00 [INF] Starting web host
+2024-01-24 21:27:29.226 +03:00 [INF] Starting web host

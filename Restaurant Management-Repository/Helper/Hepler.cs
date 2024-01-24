@@ -1,6 +1,6 @@
 ﻿
 
-using RestaurantManagement_Repository.Model.Entity;
+
 
 namespace RestaurantManagement_Repository.Helper
 {

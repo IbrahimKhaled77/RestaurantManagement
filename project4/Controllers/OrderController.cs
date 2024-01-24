@@ -1,22 +1,31 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using RestaurantManagement_Repository.DTOs.OrderDTO;
-using RestaurantManagement_Repository.IRepository;
-
+using RestaurantManagement_Repository.UnitOfWorkPattern.IUnitOfWork;
 
 namespace RestaurantManagement.Controllers
 {
     public class OrderController : ControllerBase
     {
-        private readonly IOrderRepository _OrderRepository;
+        private readonly IUnitOfwork _IUnitOfwork;
 
-        public OrderController(IOrderRepository OrderRepository)
+        public OrderController(IUnitOfwork UnitOfwork)
         {
-            _OrderRepository = OrderRepository;
+            _IUnitOfwork = UnitOfwork;
         }
 
 
         #region HttpGet GetAllOrders & GetOrderById
+        /// <remarks>
+        /// Sample request:
+        /// 
+        ///     Get api/GetAllOrders
+        ///     {        
+        ///        "Email": "Enter Your Email Here (Required)",
+        ///        "password": "Enter Your password Here (Required)",
+        ///      
+        ///     }
+        /// </remarks>
         /// <response code="201">Returns  Get All Orders Successfully</response>
         /// <response code="404">If the error was occured  (Not Found)</response>
         /// <response code="500">If an internal server error or database error occurs (Internal Server Error OR Database)</response>   
@@ -24,15 +33,17 @@ namespace RestaurantManagement.Controllers
         ///<summary>
         /// I will retrieve all the Orders present on the application.
         /// </summary>
+        /// <param name="Email">The Email of the  User to Get All Orders (Required).</param>
+        /// <param name="Password">The Password of the  User to Get All Orders (Required).</param>
         /// <returns>List of Orders </returns>
         [HttpGet]
         [Route("[action]")]
-        public async Task<IActionResult> GetAllOrders([FromHeader] string email, [FromHeader] string password)
+        public async Task<IActionResult> GetAllOrders([FromHeader] string Email, [FromHeader] string Password)
         {
 
             try
             {
-                return StatusCode(201,await _OrderRepository.GetAllOrders(email, password));
+                return StatusCode(201,await _IUnitOfwork._IOrderRepository.GetAllOrders(Email, Password));
 
             }
             catch (DbUpdateException ex)
@@ -68,14 +79,16 @@ namespace RestaurantManagement.Controllers
         /// Retrieves a Order by ID from the application
         /// </summary>
         /// <param name="OrderId">The ID of the Order to retrieve (Required).</param>
+        /// <param name="Email">The Email of the  User to Get All Order By Id (Required).</param>
+        /// <param name="Password">The Password of the  User to Get All Orders By Id (Required).</param>
         /// <returns>The Order information. </returns>
         [HttpGet]
         [Route("[action]/{OrderId}")]
-        public async Task<IActionResult> GetOrderById([FromRoute]  int OrderId, [FromHeader] string email, [FromHeader] string password)
+        public async Task<IActionResult> GetOrderById([FromRoute]  int OrderId, [FromHeader] string Email, [FromHeader] string Password)
         {
             try
             {
-                return StatusCode(201,await _OrderRepository.GetOrderById(OrderId, email, password));
+                return StatusCode(201,await _IUnitOfwork._IOrderRepository.GetOrderById(OrderId, Email, Password));
 
             }
             catch (DbUpdateException ex)
@@ -102,6 +115,8 @@ namespace RestaurantManagement.Controllers
         /// 
         ///     Post api/AddOrder
         ///     {        
+        ///        "Email": "Enter Your Email Employee (Admin)  Here (Required)",
+        ///        "password": "Enter Your password  Employee (Admin) Here (Required)",
         ///        "CustomerId": "Enter your customer ID here if you want to order (Required)",
         ///        "TableId": "Enter your table ID here to place your order(Required)",
         ///        "TotalPrice": "Enter Your TotalPrice to Order Here (Required)",
@@ -114,14 +129,16 @@ namespace RestaurantManagement.Controllers
         ///<summary>
         /// Adds a new Order  to the database.
         /// </summary>
+        /// <param name="Email">The Email of the  Employee (Admin) to Add Order (Required).</param>
+        /// <param name="Password">The Password of the  Employee (Admin)  to Add Order(Required).</param>
         /// <returns>A message indicating the success of the operation </returns>
         [HttpPut]
         [Route("[action]")]
-        public async Task<IActionResult> AddOrder(CreatOrderDTO order, [FromHeader] string email, [FromHeader] string password)
+        public async Task<IActionResult> AddOrder(CreatOrderDTO order, [FromHeader] string Email, [FromHeader] string Password)
         {
             try
             {
-                return StatusCode(201,await _OrderRepository.AddOrder(order, email, password));
+                return StatusCode(201,await _IUnitOfwork._IOrderRepository.AddOrder(order, Email, Password));
 
             }
             catch (DbUpdateException ex)
@@ -148,6 +165,8 @@ namespace RestaurantManagement.Controllers
         /// 
         ///     Put api/UpdateOrder
         ///     {     
+        ///        "Email": "Enter Your Email Employee (Admin) Here (Required)",
+        ///        "password": "Enter Your password  Employee (Admin) Here (Required)",
         ///        "OrderId": "Enter your Order ID whose information you want to update",
         ///        "TableId": "Enter your table ID here to place your order(Required)",
         ///        "TotalPrice": "Enter Your TotalPrice to Order Here (Required)",
@@ -161,14 +180,16 @@ namespace RestaurantManagement.Controllers
         ///<summary>
         /// Update a  Order(Item)  to the database.
         /// </summary>
+        /// <param name="Email">The Email of the  Employee (Admin) to Update Order (Required).</param>
+        /// <param name="Password">The Password of the  Employee (Admin)  to Update Order (Required).</param>
         /// <returns>A message indicating the success of the operation </returns>
         [HttpPut]
         [Route("[action]")]
-        public async Task<IActionResult> UpdateOrder([FromBody] UpdateOrderDTO order,[FromHeader] string email, [FromHeader] string password)
+        public async Task<IActionResult> UpdateOrder([FromBody] UpdateOrderDTO order,[FromHeader] string Email, [FromHeader] string Password)
         {
             try
             {
-                return StatusCode(201,await _OrderRepository.UpdateOrder(order, email, password));
+                return StatusCode(201,await _IUnitOfwork._IOrderRepository.UpdateOrder(order, Email, Password));
 
             }
             catch (DbUpdateException ex)
@@ -194,7 +215,9 @@ namespace RestaurantManagement.Controllers
         /// Sample request:
         /// 
         ///     Delete api/DeleteOrder
-        ///     {     
+        ///     {    
+        ///        "Email": "Enter Your Email Employee (Admin) Here (Required)",
+        ///        "password": "Enter Your password  Employee (Admin) Here (Required)",
         ///        "OrderId": "Enter your Order ID whose information you want to Delete",
         ///      
         ///     }
@@ -206,15 +229,17 @@ namespace RestaurantManagement.Controllers
         ///<summary>
         /// Delete a  Order from the database.
         /// </summary>
+        /// <param name="Email">The Email of the  Employee (Admin) to Delete Order (Required).</param>
+        /// <param name="Password">The Password of the  Employee (Admin)  to Delete Order (Required).</param>
         /// <param name="OrderId">The ID of the Order to Delete (Required).</param>
         /// <returns>A message indicating the success of the operation </returns>
         [HttpDelete]
         [Route("[action]/{OrderId}")]
-        public async Task<IActionResult> DeleteOrder([FromRoute]int OrderId, [FromHeader] string email, [FromHeader] string password)
+        public async Task<IActionResult> DeleteOrder([FromRoute]int OrderId, [FromHeader] string Email, [FromHeader] string Password)
         {
             try
             {
-                return StatusCode(201,await _OrderRepository.DeleteOrder(OrderId, email, password));
+                return StatusCode(201,await _IUnitOfwork._IOrderRepository.DeleteOrder(OrderId, Email, Password));
 
             }
             catch (DbUpdateException ex)

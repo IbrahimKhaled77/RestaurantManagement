@@ -1,20 +1,20 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Restaurant_Management_Repository.DTOs.AuthanticationDTO;
 using RestaurantManagement_Repository.DTOs.AuthanticationDTO;
-using RestaurantManagement_Repository.Implementation;
-using RestaurantManagement_Repository.IRepository;
+
+using RestaurantManagement_Repository.UnitOfWorkPattern.IUnitOfWork;
 
 namespace RestaurantManagement.Controllers
 {
     public class AuthanticationController :ControllerBase
     {
-       private readonly IAuthanticationRepository _AuthanticationRepository;
+        private readonly IUnitOfwork _IUnitOfwork;
 
-    public AuthanticationController(IAuthanticationRepository AuthanticationRepository)
-    {
-        _AuthanticationRepository = AuthanticationRepository;
-    }
+        public AuthanticationController(IUnitOfwork UnitOfwork)
+        {
+            _IUnitOfwork = UnitOfwork;
+        }
+
 
 
         #region HttpPut Logout
@@ -33,7 +33,7 @@ namespace RestaurantManagement.Controllers
         ///<summary>
         /// Remove a Token customer to the database.
         /// </summary>
-        /// <param UserId="UserId">The User Id  to Logout (Required).</param>
+        /// <param name="UserId">The User Id  to Logout (Required).</param>
         /// <returns>A message indicating the success of the operation </returns>
         [HttpPut]
         [Route("Logout")]
@@ -41,7 +41,7 @@ namespace RestaurantManagement.Controllers
         {
             try
             {
-                return StatusCode(201, await _AuthanticationRepository.Logout(UserId));
+                return StatusCode(201, await _IUnitOfwork._IAuthanticationRepository.Logout(UserId));
 
             }
             catch (DbUpdateException ex)
@@ -87,7 +87,7 @@ namespace RestaurantManagement.Controllers
         {
             try
             {
-                return StatusCode(201, await _AuthanticationRepository.ResetPassword(ResetPasswordDTO));
+                return StatusCode(201, await _IUnitOfwork._IAuthanticationRepository.ResetPassword(ResetPasswordDTO));
 
             }
             catch (DbUpdateException ex)
