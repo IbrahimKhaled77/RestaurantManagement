@@ -1,21 +1,20 @@
 ﻿
 
-using RestaurantManagement_Repository.DTOs.OrderItemDTO;
 
-namespace RestaurantManagement_Repository.DTOs.OrderDTO
+
+namespace RestaurantManagement.DTOs.OrderDTO
 {
     public  class UpdateOrderDTO
     {
-        //UpdateTableDto or TableCardDto
-        //UpdateOrderIterm or OrderItermCard
-        public int OrderId { get; set; }
+       
+        public required  int OrderId { get; set; }
+                
+        public required  int TableId { get; set; }
+        public required  decimal TotalPrice { get; set; }
+                
+        public required  bool IsActive { get; set; }
 
-        public int TableId { get; set; }
-        public decimal TotalPrice { get; set; }
-        
-        public bool IsActive { get; set; }
-
-         public List<UpdateOrderIterm> OrderItems { get; set; }
+       
 
     }
 }

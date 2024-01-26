@@ -1,18 +1,18 @@
 ﻿
 
-using RestaurantManagement_Repository.DTOs.CustomerDTO;
-using RestaurantManagement_Repository.DTOs.OrderItemDTO;
-using RestaurantManagement_Repository.Model.Entity;
 
-namespace RestaurantManagement_Repository.DTOs.OrderDTO
+using RestaurantManagement.DTOs.OrderItemDTO;
+
+
+namespace RestaurantManagement.DTOs.OrderDTO
 {
     public class CreatOrderDTO
     {
-        //CreateOrderItemDTO  or OrderItemCardDTO
-        public int CustomerId { get; set; }
-        public  int TableId { get; set; }    
-        public decimal TotalPrice { get; set; }
-        public  List<CreateOrderItemDTO> OrderItems { get; set; }
+       
+        public required  int CustomerId { get; set; }
+        public required   int TableId { get; set; }    
+        public required  decimal TotalPrice { get; set; }
+        public required List<CreateOrderItemDTO> OrderItems { get; set; }
 
      
        

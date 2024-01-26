@@ -1,12 +1,10 @@
 ﻿
-
-namespace RestaurantManagement_Repository.Model.Entity
+namespace RestaurantManagement.Model.Entity
 {
     public class Order
     {
         public int OrderId { get; set; }
 
-       // public int CustomerId { get; set; }
        
         public int TableNumber { get; set; }
        
@@ -14,11 +12,11 @@ namespace RestaurantManagement_Repository.Model.Entity
 
         public bool IsActive { get; set; }
 
-        public virtual List<OrderItem> OrderItems { get; set; }
-        public virtual List<EmployeeOrder> EmployeeOrder { get; set; }
-        public virtual Table Table { get; set; }
+        public virtual List<OrderItem>? OrderItems { get; set; }
+        public virtual List<EmployeeOrder>? EmployeeOrder { get; set; }
+        public virtual Table? Table { get; set; }
 
-        public virtual Customer Customer { get; set; }
+        public virtual Customer? Customer { get; set; }
 
       
     }

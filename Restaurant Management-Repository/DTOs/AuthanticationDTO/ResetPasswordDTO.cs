@@ -1,10 +1,10 @@
 ﻿
 
-namespace RestaurantManagement_Repository.DTOs.AuthanticationDTO
+namespace RestaurantManagement.DTOs.AuthanticationDTO
 {
     public class ResetPasswordDTO
     {
-        public string Email { get; set; }
-        public string NewPassword { get; set; }
+        public required string Email { get; set; }
+        public required string NewPassword { get; set; }
     }
 }

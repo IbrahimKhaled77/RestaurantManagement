@@ -1,9 +1,9 @@
 ﻿
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using RestaurantManagement_Repository.Model.Entity;
+using RestaurantManagement.Model.Entity;
 
-namespace RestaurantManagement_Repository.Model.EntityConfiguration
+namespace RestaurantManagement.Model.EntityConfiguration
 {
     public class EmployeeConfiguration : IEntityTypeConfiguration<Employee>
     {
@@ -23,9 +23,9 @@ namespace RestaurantManagement_Repository.Model.EntityConfiguration
             builder.HasCheckConstraint("Password", "(len([Password])=(11) AND [Password] like '%[0-9]%' AND [Password] like '%[A-Za-z]%' AND [Password] like '%[^A-Za-z]%')");
 
 
-            
+            //Enter TypePosition Waiter OR Chef OR Admin OR accountant
             builder.Property(x => x.Position).HasMaxLength(6).IsRequired();
-            builder.HasCheckConstraint("Position", "([Position] like '%Waiter%' OR [Position] like '%Chef%' OR [Position] like '%Admin%')");
+            builder.HasCheckConstraint("Position", "([Position] like '%Waiter%' OR [Position] like '%Accountant%' OR [Position] like '%Chef%' OR [Position] like '%Admin%')");
 
             builder.HasMany(o => o.EmployeeOrder)
            .WithOne(oi => oi.Employee)

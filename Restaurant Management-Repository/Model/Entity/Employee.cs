@@ -1,24 +1,24 @@
 ﻿
-namespace RestaurantManagement_Repository.Model.Entity
+namespace RestaurantManagement.Model.Entity
 {
     public class Employee
 
     {
         public int EmployeeId { get; set; }
-        public string Name { get; set; }
-        public string Email { get; set; }
+        public required string Name { get; set; }
+        public required string Email { get; set; }
 
-        public string Password { get; set; }
-        public string Position { get; set; }
+        public required string Password { get; set; }
+        public required string Position { get; set; }
 
-        public bool IsLoggedIn { get; set; }
-        public string AccessKey { get; set; }
+        public required bool IsLoggedIn { get; set; }
+        public required string AccessKey { get; set; }
         public DateTime? AccesskeyExpireDate { get; set; }
-        public bool IsActive { get; set; }
+        public required bool IsActive { get; set; }
 
-       // public virtual ICollection<Table> Table { get; set; }
+       
 
-        public virtual List<EmployeeOrder> EmployeeOrder { get; set; }
+        public virtual List<EmployeeOrder>? EmployeeOrder { get; set; }
 
       
     }

@@ -1,15 +1,15 @@
 ﻿
 
-namespace RestaurantManagement_Repository.DTOs.EmployeeDTO
+namespace RestaurantManagement.DTOs.EmployeeDTO
 {
     public class UpdateEmployeeDTO
     {
-        public int EmployeeId { get; set; }
-        public string Name { get; set; }
-        public string Email { get; set; }
-
-        public string Password { get; set; }
-        public string Position { get; set; }
-        public bool IsActive { get; set; }
+        public required int EmployeeId { get; set; }
+        public required string Name { get; set; }
+        public required string Email { get; set; }
+                
+        public required string Password { get; set; }
+        public required string Position { get; set; }
+        public required bool IsActive { get; set; }
     }
 }

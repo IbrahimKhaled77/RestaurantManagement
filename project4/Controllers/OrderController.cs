@@ -1,17 +1,18 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using RestaurantManagement_Repository.DTOs.OrderDTO;
-using RestaurantManagement_Repository.UnitOfWorkPattern.IUnitOfWork;
+using RestaurantManagement.DTOs.OrderDTO;
+using Restaurants_Service.IService;
 
 namespace RestaurantManagement.Controllers
 {
     public class OrderController : ControllerBase
     {
-        private readonly IUnitOfwork _IUnitOfwork;
+        private readonly IOrderService _orderService;
 
-        public OrderController(IUnitOfwork UnitOfwork)
+        public OrderController(IOrderService orderService)
         {
-            _IUnitOfwork = UnitOfwork;
+            _orderService = orderService;
+;
         }
 
 
@@ -43,7 +44,7 @@ namespace RestaurantManagement.Controllers
 
             try
             {
-                return StatusCode(201,await _IUnitOfwork._IOrderRepository.GetAllOrders(Email, Password));
+                return StatusCode(201,await _orderService.GetAllOrders(Email, Password));
 
             }
             catch (DbUpdateException ex)
@@ -88,7 +89,7 @@ namespace RestaurantManagement.Controllers
         {
             try
             {
-                return StatusCode(201,await _IUnitOfwork._IOrderRepository.GetOrderById(OrderId, Email, Password));
+                return StatusCode(201,await _orderService.GetOrderById(OrderId, Email, Password));
 
             }
             catch (DbUpdateException ex)
@@ -115,8 +116,8 @@ namespace RestaurantManagement.Controllers
         /// 
         ///     Post api/AddOrder
         ///     {        
-        ///        "Email": "Enter Your Email Employee (Admin)  Here (Required)",
-        ///        "password": "Enter Your password  Employee (Admin) Here (Required)",
+        ///        "Email": "Enter Your Email Employee (Admin Or Customer)  Here (Required)",
+        ///        "password": "Enter Your password  Employee (Admin Or Customer) Here (Required)",
         ///        "CustomerId": "Enter your customer ID here if you want to order (Required)",
         ///        "TableId": "Enter your table ID here to place your order(Required)",
         ///        "TotalPrice": "Enter Your TotalPrice to Order Here (Required)",
@@ -129,8 +130,8 @@ namespace RestaurantManagement.Controllers
         ///<summary>
         /// Adds a new Order  to the database.
         /// </summary>
-        /// <param name="Email">The Email of the  Employee (Admin) to Add Order (Required).</param>
-        /// <param name="Password">The Password of the  Employee (Admin)  to Add Order(Required).</param>
+        /// <param name="Email">The Email of the  Employee (Admin Or Customer) to Add Order (Required).</param>
+        /// <param name="Password">The Password of the  Employee (Admin Or Customer)  to Add Order(Required).</param>
         /// <returns>A message indicating the success of the operation </returns>
         [HttpPut]
         [Route("[action]")]
@@ -138,7 +139,7 @@ namespace RestaurantManagement.Controllers
         {
             try
             {
-                return StatusCode(201,await _IUnitOfwork._IOrderRepository.AddOrder(order, Email, Password));
+                return StatusCode(201,await _orderService.AddOrder(order, Email, Password));
 
             }
             catch (DbUpdateException ex)
@@ -165,8 +166,8 @@ namespace RestaurantManagement.Controllers
         /// 
         ///     Put api/UpdateOrder
         ///     {     
-        ///        "Email": "Enter Your Email Employee (Admin) Here (Required)",
-        ///        "password": "Enter Your password  Employee (Admin) Here (Required)",
+        ///        "Email": "Enter Your Email Employee (Admin Or Customer) Here (Required)",
+        ///        "password": "Enter Your password  Employee (Admin Or Customer) Here (Required)",
         ///        "OrderId": "Enter your Order ID whose information you want to update",
         ///        "TableId": "Enter your table ID here to place your order(Required)",
         ///        "TotalPrice": "Enter Your TotalPrice to Order Here (Required)",
@@ -180,8 +181,8 @@ namespace RestaurantManagement.Controllers
         ///<summary>
         /// Update a  Order(Item)  to the database.
         /// </summary>
-        /// <param name="Email">The Email of the  Employee (Admin) to Update Order (Required).</param>
-        /// <param name="Password">The Password of the  Employee (Admin)  to Update Order (Required).</param>
+        /// <param name="Email">The Email of the  Employee (Admin Or Customer) to Update Order (Required).</param>
+        /// <param name="Password">The Password of the  Employee (Admin Or Customer)  to Update Order (Required).</param>
         /// <returns>A message indicating the success of the operation </returns>
         [HttpPut]
         [Route("[action]")]
@@ -189,7 +190,7 @@ namespace RestaurantManagement.Controllers
         {
             try
             {
-                return StatusCode(201,await _IUnitOfwork._IOrderRepository.UpdateOrder(order, Email, Password));
+                return StatusCode(201,await _orderService.UpdateOrder(order, Email, Password));
 
             }
             catch (DbUpdateException ex)
@@ -216,8 +217,8 @@ namespace RestaurantManagement.Controllers
         /// 
         ///     Delete api/DeleteOrder
         ///     {    
-        ///        "Email": "Enter Your Email Employee (Admin) Here (Required)",
-        ///        "password": "Enter Your password  Employee (Admin) Here (Required)",
+        ///        "Email": "Enter Your Email Employee (Admin Or Customer) Here (Required)",
+        ///        "password": "Enter Your password  Employee (Admin Or Customer) Here (Required)",
         ///        "OrderId": "Enter your Order ID whose information you want to Delete",
         ///      
         ///     }
@@ -229,8 +230,8 @@ namespace RestaurantManagement.Controllers
         ///<summary>
         /// Delete a  Order from the database.
         /// </summary>
-        /// <param name="Email">The Email of the  Employee (Admin) to Delete Order (Required).</param>
-        /// <param name="Password">The Password of the  Employee (Admin)  to Delete Order (Required).</param>
+        /// <param name="Email">The Email of the  Employee (Admin Or Customer)  to Delete Order (Required).</param>
+        /// <param name="Password">The Password of the  Employee (Admin Or Customer) to Delete Order (Required).</param>
         /// <param name="OrderId">The ID of the Order to Delete (Required).</param>
         /// <returns>A message indicating the success of the operation </returns>
         [HttpDelete]
@@ -239,7 +240,7 @@ namespace RestaurantManagement.Controllers
         {
             try
             {
-                return StatusCode(201,await _IUnitOfwork._IOrderRepository.DeleteOrder(OrderId, Email, Password));
+                return StatusCode(201,await _orderService.DeleteOrder(OrderId, Email, Password));
 
             }
             catch (DbUpdateException ex)

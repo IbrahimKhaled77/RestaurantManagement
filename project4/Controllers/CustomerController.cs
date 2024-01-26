@@ -1,19 +1,19 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using RestaurantManagement_Repository.DTOs.AuthanticationDTO;
-using RestaurantManagement_Repository.DTOs.CustomerDTO;
-using RestaurantManagement_Repository.UnitOfWorkPattern.IUnitOfWork;
+using RestaurantManagement.DTOs.AuthanticationDTO;
+using RestaurantManagement.DTOs.CustomerDTO;
+using Restaurants_Service.IService;
 
 namespace RestaurantManagement.Controllers
 {
     public class CustomerController : ControllerBase
     {
 
-        private readonly IUnitOfwork _IUnitOfwork;
+        private readonly ICustomerService _customerService;
 
-        public CustomerController(IUnitOfwork UnitOfwork)
+        public CustomerController(ICustomerService CustomerService)
         {
-            _IUnitOfwork = UnitOfwork;
+            _customerService = CustomerService;
         }
 
 
@@ -45,7 +45,7 @@ namespace RestaurantManagement.Controllers
         {
             try
             {
-                return StatusCode(201, await _IUnitOfwork._ICustomerRepository.LoginCustomer(AuthanticationDTOs));
+                return StatusCode(201, await _customerService.LoginCustomer(AuthanticationDTOs));
 
             }
             catch (DbUpdateException ex)
@@ -96,7 +96,7 @@ namespace RestaurantManagement.Controllers
             try
             {
                 
-                return StatusCode(201, await _IUnitOfwork._ICustomerRepository.GetAllCustomers(Email, Password));
+                return StatusCode(201, await _customerService.GetAllCustomers(Email, Password));
 
             }
             catch (DbUpdateException ex)
@@ -145,7 +145,7 @@ namespace RestaurantManagement.Controllers
         {
             try
             {
-                return StatusCode(201, await _IUnitOfwork._ICustomerRepository.GetCustomerById(CustomerId, Email, Password));
+                return StatusCode(201, await _customerService.GetCustomerById(CustomerId, Email, Password));
 
             }
             catch (DbUpdateException ex)
@@ -193,7 +193,7 @@ namespace RestaurantManagement.Controllers
         {
             try
             {
-                return StatusCode(201, await _IUnitOfwork._ICustomerRepository.AddCustomer(createCustomerDTO));
+                return StatusCode(201, await _customerService.AddCustomer(createCustomerDTO));
 
             }
             catch (DbUpdateException ex)
@@ -244,7 +244,7 @@ namespace RestaurantManagement.Controllers
         {
             try
             {
-                return StatusCode(201, await _IUnitOfwork._ICustomerRepository.UpdateCustomer(updateCustomerDTO, Email, Password));
+                return StatusCode(201, await _customerService.UpdateCustomer(updateCustomerDTO, Email, Password));
 
             }
             catch (DbUpdateException ex)
@@ -292,7 +292,7 @@ namespace RestaurantManagement.Controllers
         {
             try
             {
-                return StatusCode(201, await _IUnitOfwork._ICustomerRepository.DeleteCustomer(CustomerId, Email, Password));
+                return StatusCode(201, await _customerService.DeleteCustomer(CustomerId, Email, Password));
 
             }
             catch (DbUpdateException ex)

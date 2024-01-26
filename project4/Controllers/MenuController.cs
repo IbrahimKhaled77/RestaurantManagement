@@ -1,18 +1,18 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using RestaurantManagement_Repository.DTOs.MenuDTO;
-using RestaurantManagement_Repository.UnitOfWorkPattern.IUnitOfWork;
+using RestaurantManagement.DTOs.MenuDTO;
+using Restaurants_Service.IService;
 
 namespace RestaurantManagement.Controllers
 {
     public class MenuController : ControllerBase
     {
 
-        private readonly IUnitOfwork _IUnitOfwork;
+        private readonly IMenuService _IMenuService;
 
-        public MenuController(IUnitOfwork UnitOfwork)
+        public MenuController(IMenuService menuService)
         {
-            _IUnitOfwork = UnitOfwork;
+            _IMenuService = menuService;
         }
 
 
@@ -43,7 +43,7 @@ namespace RestaurantManagement.Controllers
         {
             try
             {
-                return StatusCode(201, await _IUnitOfwork._IMenuRepository.GetAllMenus(Email, Password));
+                return StatusCode(201, await _IMenuService.GetAllMenus(Email, Password));
 
             }
             catch (DbUpdateException ex)
@@ -92,7 +92,7 @@ namespace RestaurantManagement.Controllers
         {
             try
             {
-                return StatusCode(201, await _IUnitOfwork._IMenuRepository.GetMenuById(MenuId, Email, Password));
+                return StatusCode(201, await _IMenuService.GetMenuById(MenuId, Email, Password));
 
             }
             catch (DbUpdateException ex)
@@ -143,7 +143,7 @@ namespace RestaurantManagement.Controllers
             
             try
             {
-                return StatusCode(201, await _IUnitOfwork._IMenuRepository.AddMenus(menu, Email, Password));
+                return StatusCode(201, await _IMenuService.AddMenus(menu, Email, Password));
 
             }
             catch (DbUpdateException ex)
@@ -195,7 +195,7 @@ namespace RestaurantManagement.Controllers
         {
             try
             {
-                return StatusCode(201, await _IUnitOfwork._IMenuRepository.UpdateMenu(MenuDTo, Email, Password));
+                return StatusCode(201, await _IMenuService.UpdateMenu(MenuDTo, Email, Password));
 
             }
             catch (DbUpdateException ex)
@@ -245,7 +245,7 @@ namespace RestaurantManagement.Controllers
         {
             try
             {
-                return StatusCode(201, await _IUnitOfwork._IMenuRepository.DeleteMenu(MenuId, Email, Password));
+                return StatusCode(201, await _IMenuService.DeleteMenu(MenuId, Email, Password));
 
             }
             catch (DbUpdateException ex)

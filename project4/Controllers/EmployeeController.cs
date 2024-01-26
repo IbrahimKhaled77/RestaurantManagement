@@ -1,18 +1,18 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using RestaurantManagement_Repository.DTOs.AuthanticationDTO;
-using RestaurantManagement_Repository.DTOs.EmployeeDTO;
-using RestaurantManagement_Repository.UnitOfWorkPattern.IUnitOfWork;
+using RestaurantManagement.DTOs.AuthanticationDTO;
+using RestaurantManagement.DTOs.EmployeeDTO;
+using Restaurants_Service.IService;
 
 namespace RestaurantManagement.Controllers
 {
     public class EmployeeController : ControllerBase
     {
-        private readonly IUnitOfwork _IUnitOfwork;
+        private readonly IEmployeeService _employeeService;
 
-        public EmployeeController(IUnitOfwork UnitOfwork)
+        public EmployeeController(IEmployeeService employeeService)
         {
-            _IUnitOfwork = UnitOfwork;
+            _employeeService = employeeService;
         }
 
 
@@ -44,7 +44,7 @@ namespace RestaurantManagement.Controllers
         {
             try
             {
-                return StatusCode(201, await _IUnitOfwork._IEmployeeRepository.LoginEmployee(AuthanticationDTOs));
+                return StatusCode(201, await _employeeService.LoginEmployee(AuthanticationDTOs));
 
             }
             catch (DbUpdateException ex)
@@ -92,7 +92,7 @@ namespace RestaurantManagement.Controllers
         {
             try
             {
-                return StatusCode(201, await _IUnitOfwork._IEmployeeRepository.GetAllEmployees(Email, Password));
+                return StatusCode(201, await _employeeService.GetAllEmployees(Email, Password));
 
             }
             catch (DbUpdateException ex)
@@ -139,7 +139,7 @@ namespace RestaurantManagement.Controllers
         {
             try
             {
-                return StatusCode(201, await _IUnitOfwork._IEmployeeRepository.GetEmployeeById(EmployeeId, Email, Password));
+                return StatusCode(201, await _employeeService.GetEmployeeById(EmployeeId, Email, Password));
 
             }
             catch (DbUpdateException ex)
@@ -181,14 +181,16 @@ namespace RestaurantManagement.Controllers
         ///<summary>
         /// Adds a new Employee to the database.
         /// </summary>
+        /// <param name="email">The Email of the  Employee Admin (Required).</param>
+        /// <param name="password">The Password of the  Employee to  Admin  (Required).</param>
         /// <returns>A message indicating the success of the operation </returns>
         [HttpPost]
         [Route("[action]")]
-        public async Task<IActionResult> AddEmployee([FromBody]CreatEmployeeDTO creatEmployee)
+        public async Task<IActionResult> AddEmployee([FromBody]CreatEmployeeDTO creatEmployee, [FromHeader] string email, [FromHeader] string password)
         {
             try
             {
-                return StatusCode(201, await _IUnitOfwork._IEmployeeRepository.AddEmployee(creatEmployee));
+                return StatusCode(201, await _employeeService.AddEmployee(creatEmployee, email, password));
 
             }
             catch (DbUpdateException ex)
@@ -231,8 +233,9 @@ namespace RestaurantManagement.Controllers
         ///<summary>
         /// Update a  Employee to the database.
         /// </summary>
-        /// <param name="Email">The Email of the  Employee to Update Employee (Required).</param>
-        /// <param name="Password">The Password of the  Employee to  Update Employee (Required).</param>
+        /// <param name="UpdateEmployeeDTO"></param>
+        /// <param name="Email">The Email of the  Employee  Admin to Update Employee (Required).</param>
+        /// <param name="Password">The Password  of the  Employee Admin to  Update Employee (Required).</param>
         /// <returns>A message indicating the success of the operation </returns>
         [HttpPut]
         [Route("[action]")]
@@ -240,7 +243,7 @@ namespace RestaurantManagement.Controllers
         {
             try
             {
-                return StatusCode(201, await _IUnitOfwork._IEmployeeRepository.UpdateEmployee(UpdateEmployeeDTO, Email, Password));
+                return StatusCode(201, await _employeeService.UpdateEmployee(UpdateEmployeeDTO, Email, Password));
 
             }
             catch (DbUpdateException ex)
@@ -280,9 +283,9 @@ namespace RestaurantManagement.Controllers
         ///<summary>
         /// Delete a  Employee from the database.
         /// </summary>
-        /// <param name="EmployeeId">The ID of the Employee to Delete (Required).</param>
-        /// <param name="Email">The Email of the  Employee to Delete Employee (Required).</param>
-        /// <param name="Password">The Password of the  Employee to  Delete Employee (Required).</param>
+        /// <param name="EmployeeId">The ID of the Employee  to Delete (Required).</param>
+        /// <param name="Email">The Email of the  Employee Admin to Delete Employee (Required).</param>
+        /// <param name="Password">The Password of the  Employee  Admin to  Delete Employee (Required).</param>
         /// <returns>A message indicating the success of the operation </returns>
         [HttpDelete]
         [Route("[action]/{EmployeeId}")]
@@ -290,7 +293,7 @@ namespace RestaurantManagement.Controllers
         {
             try
             {
-                return StatusCode(201,await _IUnitOfwork._IEmployeeRepository.DeleteEmployee(EmployeeId, Email, Password));
+                return StatusCode(201,await _employeeService.DeleteEmployee(EmployeeId, Email, Password));
 
             }
             catch (DbUpdateException ex)

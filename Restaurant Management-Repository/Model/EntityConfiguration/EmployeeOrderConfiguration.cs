@@ -1,9 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using RestaurantManagement_Repository.Model.Entity;
+using RestaurantManagement.Model.Entity;
 
 
-namespace RestaurantManagement_Repository.Model.EntityConfiguration
+namespace RestaurantManagement.Model.EntityConfiguration
 {
     public class EmployeeOrderConfiguration : IEntityTypeConfiguration<EmployeeOrder>
     {

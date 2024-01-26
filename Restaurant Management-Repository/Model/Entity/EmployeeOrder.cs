@@ -1,5 +1,5 @@
 ﻿
-namespace RestaurantManagement_Repository.Model.Entity
+namespace RestaurantManagement.Model.Entity
 {
     public class EmployeeOrder
     {

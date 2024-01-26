@@ -1,10 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using RestaurantManagement_Repository.Model.Entity;
-using System.Reflection.Emit;
+using RestaurantManagement.Model.Entity;
 
 
-namespace RestaurantManagement_Repository.Model.EntityConfiguration
+namespace RestaurantManagement.Model.EntityConfiguration
 {
     public class OrderItemConfiguration : IEntityTypeConfiguration<OrderItem>
     {
@@ -14,12 +13,10 @@ namespace RestaurantManagement_Repository.Model.EntityConfiguration
             builder.HasKey(x => x.OrderItemId);
             builder.Property(x => x.OrderItemId).UseIdentityColumn();
 
-
+            //Quantity or number of one product. How much should one order from it and be positive 
             builder.Property(x => x.Quantity).IsRequired();
             builder.HasCheckConstraint("Quantity", "Quantity >= 0");
-
-
-
+           
 
         }
     }

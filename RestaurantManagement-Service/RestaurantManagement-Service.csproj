@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <RootNamespace>RestaurantManagement_Service</RootNamespace>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Restaurant Management-Repository\RestaurantManagement-DataAccess.csproj" />
+    <ProjectReference Include="..\RestaurantManagement-Repos\RestaurantManagement-Repos.csproj" />
+  </ItemGroup>
+
+</Project>

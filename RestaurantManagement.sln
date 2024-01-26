@@ -5,7 +5,11 @@ VisualStudioVersion = 17.7.34018.315
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RestaurantManagement", "project4\RestaurantManagement.csproj", "{B0F5B90D-B7FC-413F-A35E-935C84152956}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RestaurantManagement-Repository", "Restaurant Management-Repository\RestaurantManagement-Repository.csproj", "{8E168BE8-1E3F-4627-9B09-E36D865EA21A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RestaurantManagement-DataAccess", "Restaurant Management-Repository\RestaurantManagement-DataAccess.csproj", "{8E168BE8-1E3F-4627-9B09-E36D865EA21A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RestaurantManagement-Repos", "RestaurantManagement-Repos\RestaurantManagement-Repos.csproj", "{9F847904-B63A-48A7-82D0-59DE86C6D8B3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RestaurantManagement-Service", "RestaurantManagement-Service\RestaurantManagement-Service.csproj", "{9C5B38B6-6122-403C-8FF4-3918510BCAF5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +25,14 @@ Global
 		{8E168BE8-1E3F-4627-9B09-E36D865EA21A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8E168BE8-1E3F-4627-9B09-E36D865EA21A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8E168BE8-1E3F-4627-9B09-E36D865EA21A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9F847904-B63A-48A7-82D0-59DE86C6D8B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F847904-B63A-48A7-82D0-59DE86C6D8B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9F847904-B63A-48A7-82D0-59DE86C6D8B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9F847904-B63A-48A7-82D0-59DE86C6D8B3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9C5B38B6-6122-403C-8FF4-3918510BCAF5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9C5B38B6-6122-403C-8FF4-3918510BCAF5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9C5B38B6-6122-403C-8FF4-3918510BCAF5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9C5B38B6-6122-403C-8FF4-3918510BCAF5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

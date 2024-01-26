@@ -1,18 +1,17 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using RestaurantManagement_Repository.DTOs.AuthanticationDTO;
-
-using RestaurantManagement_Repository.UnitOfWorkPattern.IUnitOfWork;
+using RestaurantManagement.DTOs.AuthanticationDTO;
+using Restaurants_Service.IService;
 
 namespace RestaurantManagement.Controllers
 {
     public class AuthanticationController :ControllerBase
     {
-        private readonly IUnitOfwork _IUnitOfwork;
+        private readonly IAuthanticationService _authanticationService;
 
-        public AuthanticationController(IUnitOfwork UnitOfwork)
+        public AuthanticationController(IAuthanticationService authanticationService)
         {
-            _IUnitOfwork = UnitOfwork;
+            _authanticationService = authanticationService;
         }
 
 
@@ -41,7 +40,7 @@ namespace RestaurantManagement.Controllers
         {
             try
             {
-                return StatusCode(201, await _IUnitOfwork._IAuthanticationRepository.Logout(UserId));
+                return StatusCode(201, await _authanticationService.Logout(UserId));
 
             }
             catch (DbUpdateException ex)
@@ -87,7 +86,7 @@ namespace RestaurantManagement.Controllers
         {
             try
             {
-                return StatusCode(201, await _IUnitOfwork._IAuthanticationRepository.ResetPassword(ResetPasswordDTO));
+                return StatusCode(201, await _authanticationService.ResetPassword(ResetPasswordDTO));
 
             }
             catch (DbUpdateException ex)

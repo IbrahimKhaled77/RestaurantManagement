@@ -1,16 +1,16 @@
 ﻿
 
 
-namespace RestaurantManagement_Repository.DTOs.OrderItemDTO
+namespace RestaurantManagement.DTOs.OrderItemDTO
 {
     public class OrderItemCardDTO
     {
 
-        public int OrderItemId { get; set; }
-        public int MenuId { get; set; }
-
-        public int OrderId { get; set; }
-        public int Quantity { get; set; }
-        public bool IsActive { get; set; }
+        public required  int OrderItemId { get; set; }
+        public required int MenuId { get; set; }
+              
+        public required int OrderId { get; set; }
+        public required int Quantity { get; set; }
+        public required bool IsActive { get; set; }
     }
 }

@@ -1,17 +1,17 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using RestaurantManagement_Repository.DTOs.EmployeeOrderCardDTO;
-using RestaurantManagement_Repository.UnitOfWorkPattern.IUnitOfWork;
+using RestaurantManagement.DTOs.EmployeeOrderCardDTO;
+using Restaurants_Service.IService;
 
 namespace RestaurantManagement.Controllers
 {
     public class EmployeeOrderController : ControllerBase
     {
-        private readonly IUnitOfwork _IUnitOfwork;
+        private readonly IEmployeeOrderService _employeeOrderService;
 
-        public EmployeeOrderController(IUnitOfwork UnitOfwork)
+        public EmployeeOrderController(IEmployeeOrderService employeeOrderService)
         {
-            _IUnitOfwork = UnitOfwork;
+            _employeeOrderService = employeeOrderService;
         }
 
         #region HttpPost AddEmployeeOrder
@@ -34,8 +34,9 @@ namespace RestaurantManagement.Controllers
         ///<summary>
         /// Adds a new Employee to the database.
         /// </summary>
-        /// <param name="Email">The Email of the  Employee to Add Employee Order (Required).</param>
-        /// <param name="Password">The Password of the  Employee to Add Employee Order(Required).</param>
+        /// <param name="employeeOrderCardDTOs"></param>
+        /// <param name="Email">The Email of the  Employee Admin to Add Employee Order (Required).</param>
+        /// <param name="Password">The Password of the  Employee Admin to Add Employee Order(Required).</param>
         /// <returns>A message indicating the success of the operation </returns>
         [HttpPost]
         [Route("[action]")]
@@ -43,7 +44,7 @@ namespace RestaurantManagement.Controllers
         {
             try
             {
-                return StatusCode(201, await _IUnitOfwork._IEmployeeOrderRepository.AddEmployeeOrder(employeeOrderCardDTOs, Email, Password));
+                return StatusCode(201, await _employeeOrderService.AddEmployeeOrder(employeeOrderCardDTOs, Email, Password));
 
             }
             catch (DbUpdateException ex)

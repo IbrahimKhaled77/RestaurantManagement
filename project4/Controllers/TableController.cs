@@ -1,17 +1,18 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using RestaurantManagement_Repository.DTOs.TableDTO;
-using RestaurantManagement_Repository.UnitOfWorkPattern.IUnitOfWork;
+using RestaurantManagement.DTOs.TableDTO;
+using Restaurants_Service.IService;
+
 
 namespace RestaurantManagement.Controllers
 {
     public class TableController : ControllerBase
     {
-        private readonly IUnitOfwork _IUnitOfwork;
-        
-        public TableController(IUnitOfwork UnitOfwork)
+        private readonly ITableService _tableService;
+
+        public TableController(ITableService tableService)
         {
-            _IUnitOfwork = UnitOfwork;
+            tableService = tableService;
         }
 
 
@@ -43,7 +44,7 @@ namespace RestaurantManagement.Controllers
             try
             {
 
-                return StatusCode(201,await _IUnitOfwork._ITableRepository.GetAllTables(Email, Password));
+                return StatusCode(201,await _tableService.GetAllTables(Email, Password));
 
             }
             catch (DbUpdateException ex)
@@ -91,7 +92,7 @@ namespace RestaurantManagement.Controllers
 
             try
             {
-                return StatusCode(201,await _IUnitOfwork._ITableRepository.GetTableById(TableId, Email, Password));
+                return StatusCode(201,await _tableService.GetTableById(TableId, Email, Password));
 
             }
             catch (DbUpdateException ex)
@@ -142,7 +143,7 @@ namespace RestaurantManagement.Controllers
             try
             {
                
-                return StatusCode(201,await _IUnitOfwork._ITableRepository.AddTables(Table, Email, Password));
+                return StatusCode(201,await _tableService.AddTables(Table, Email, Password));
 
             }
             catch (DbUpdateException ex)
@@ -194,7 +195,7 @@ namespace RestaurantManagement.Controllers
         {
             try
             {
-                return StatusCode(201,await _IUnitOfwork._ITableRepository.UpdateTable(TableDto, Email, Password));
+                return StatusCode(201,await _tableService.UpdateTable(TableDto, Email, Password));
 
             }
             catch (ArgumentNullException ex)
@@ -246,7 +247,7 @@ namespace RestaurantManagement.Controllers
             try
             {
 
-                return StatusCode(201,await _IUnitOfwork._ITableRepository.DeleteTable(TableId, Email, Password));
+                return StatusCode(201,await _tableService.DeleteTable(TableId, Email, Password));
 
             }
             catch (ArgumentNullException ex)

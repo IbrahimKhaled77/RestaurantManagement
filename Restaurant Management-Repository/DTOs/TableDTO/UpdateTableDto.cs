@@ -1,6 +1,6 @@
 ﻿
 
-namespace RestaurantManagement_Repository.DTOs.TableDTO
+namespace RestaurantManagement.DTOs.TableDTO
 {
     public class UpdateTableDto
     {

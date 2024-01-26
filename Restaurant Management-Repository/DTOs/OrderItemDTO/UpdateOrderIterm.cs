@@ -1,20 +1,20 @@
 ﻿
-using RestaurantManagement_Repository.DTOs.MenuDTO;
 
-namespace RestaurantManagement_Repository.DTOs.OrderItemDTO
+
+namespace RestaurantManagement.DTOs.OrderItemDTO
 {
     public class UpdateOrderIterm
     {
-        //UpdateMenuDTO or 
-        public int OrderItemId { get; set; }
-        public int MenuId { get; set; }
+        
+        public required int OrderItemId { get; set; }
+        public required int MenuId { get; set; }
+               
+        public required int OrderId { get; set; }
+        public required int Quantity { get; set; }
+               
+        public required bool IsAcit { get; set; }
 
-        public int OrderId { get; set; }
-        public int Quantity { get; set; }
-
-        public bool IsAcitvite { get; set; }
-
-      //  public int OrderId { get; set; }****
+   
 
     }
 }
