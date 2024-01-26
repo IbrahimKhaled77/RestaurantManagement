@@ -48,3 +48,5 @@
 2024-01-26 01:27:18.591 +03:00 [INF] Order Is Reached
 2024-01-26 01:27:18.591 +03:00 [DBG] Debugging Get Order By Id Has been Finised Successfully With Order ID  = 4
 2024-01-26 17:11:18.078 +03:00 [INF] Starting web host
+2024-01-26 20:26:12.732 +03:00 [INF] Starting web host
+2024-01-26 20:39:11.535 +03:00 [INF] Starting web host

@@ -11,6 +11,7 @@ using Restaurants_Service.Service;
 using Serilog;
 using System.Text.Json.Serialization;
 using RestaurantManagement.Context;
+using RestaurantManagement.Repository;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers().AddJsonOptions(x =>
@@ -55,7 +56,7 @@ builder.Services.AddScoped<IEmployeeRepository, EmployeeRepository>();
 builder.Services.AddScoped<ICustomerRepository, CustomerRepository>();
 builder.Services.AddScoped<IEmployeeOrderRepository, EmployeeOrdersRepository>();
 builder.Services.AddScoped<IAuthanticationRepository, AuthanticationRepository>();
-builder.Services.AddScoped<IOrderItemService, OrderItemService>();
+builder.Services.AddScoped<IOrderItemRepository, OrderItemRepository>();
 
 builder.Services.AddScoped<IAuthanticationService, AuthanticationService>();
 builder.Services.AddScoped<ICustomerService, CustomerService>();
