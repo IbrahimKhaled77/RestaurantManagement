@@ -262,6 +262,9 @@ namespace Restaurant_Management_Repository.Migrations
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
 
+                    b.Property<bool>("IsActiveOrder")
+                        .HasColumnType("bit");
+
                     b.Property<int>("TableNumber")
                         .HasColumnType("int");
 

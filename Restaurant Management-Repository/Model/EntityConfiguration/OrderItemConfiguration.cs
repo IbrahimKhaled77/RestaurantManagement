@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using RestaurantManagement_Repository.Model.Entity;
+using System.Reflection.Emit;
 
 
 namespace RestaurantManagement_Repository.Model.EntityConfiguration
@@ -16,7 +17,9 @@ namespace RestaurantManagement_Repository.Model.EntityConfiguration
 
             builder.Property(x => x.Quantity).IsRequired();
             builder.HasCheckConstraint("Quantity", "Quantity >= 0");
-           
+
+
+
 
         }
     }

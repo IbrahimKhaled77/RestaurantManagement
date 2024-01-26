@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
+using Restaurant_Management_Repository.IRepository;
 using RestaurantManagement_Repository.Context;
 using RestaurantManagement_Repository.Implementation;
 using RestaurantManagement_Repository.IRepository;
@@ -52,6 +53,7 @@ builder.Services.AddScoped<IEmployeeRepository, EmployeeRepository>();
 builder.Services.AddScoped<ICustomerRepository, CustomerRepository>();
 builder.Services.AddScoped<IEmployeeOrderRepository, EmployeeOrdersRepository>();
 builder.Services.AddScoped<IAuthanticationRepository, AuthanticationRepository>();
+builder.Services.AddScoped<IOrderItemRepository, OrderItemRepository>();
 builder.Services.AddScoped<IUnitOfwork, UnitOfWork>();
 
 var configuration = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build();

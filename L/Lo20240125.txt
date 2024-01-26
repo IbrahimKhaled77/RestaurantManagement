@@ -8,3 +8,22 @@
 2024-01-25 18:23:22.133 +03:00 [INF] Customer Is In Finised
 2024-01-25 18:23:22.134 +03:00 [DBG] Debugging AddCustomer Has been Finised Successfully With Customer ID  2 
 2024-01-25 18:24:12.153 +03:00 [INF] Starting web host
+2024-01-25 21:11:54.214 +03:00 [INF] Starting web host
+2024-01-25 21:16:52.361 +03:00 [INF] Starting web host
+2024-01-25 21:17:14.045 +03:00 [INF] Starting Login
+2024-01-25 21:17:15.356 +03:00 [INF] Either Email or Password is Incorrect
+2024-01-25 21:17:15.356 +03:00 [DBG] Either Email or Password is Incorrect
+2024-01-25 21:17:46.834 +03:00 [INF] Starting Login
+2024-01-25 21:17:47.255 +03:00 [INF] LoginEmployee Is In Finised
+2024-01-25 21:17:47.255 +03:00 [DBG] Debugging LoginEmployee Has been Finised Successfully With finalToken  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySWQiOiIyIiwiTmFtZSI6Ik9tYXIiLCJuYmYiOjE3MDYyMDY2NjcsImV4cCI6MTcwNjIxNzQ2NywiaWF0IjoxNzA2MjA2NjY3fQ.4eZYU0YXaVi5G22ci8jwDx89gIJWZlBrAJj4pAmPcGM 
+2024-01-25 21:18:04.179 +03:00 [INF] Starting Login
+2024-01-25 21:18:04.271 +03:00 [INF] LoginCustomer Is In Finised
+2024-01-25 21:18:04.271 +03:00 [DBG] Debugging LoginCustomer Has been Finised Successfully With finalToken  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySWQiOiIxNCIsIk5hbWUiOiJJYnJhaGltIiwibmJmIjoxNzA2MjA2Njg0LCJleHAiOjE3MDYyMTc0ODQsImlhdCI6MTcwNjIwNjY4NH0.VZ7Mh6IRsYY0EPdS98udzDF54SEj--nVrxhOOna6wyQ 
+2024-01-25 21:23:01.451 +03:00 [INF] Order Is In Processing
+2024-01-25 22:28:58.031 +03:00 [INF] Starting web host
+2024-01-25 22:31:36.457 +03:00 [INF] Order Is In Processing
+2024-01-25 22:34:08.410 +03:00 [INF] Starting web host
+2024-01-25 22:35:00.334 +03:00 [INF] Order Is In Processing
+2024-01-25 23:20:31.561 +03:00 [INF] Starting web host
+2024-01-25 23:22:12.675 +03:00 [INF] Order Is In Processing
+2024-01-25 23:57:41.066 +03:00 [INF] Starting web host

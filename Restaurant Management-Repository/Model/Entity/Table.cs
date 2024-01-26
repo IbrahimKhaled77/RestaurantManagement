@@ -8,7 +8,7 @@ namespace RestaurantManagement_Repository.Model.Entity
         public int TableNumber { get; set; }
         public bool IsActive { get; set; }
 
-       
+        public bool IsActiveOrder { get; set; }
         public virtual ICollection<Order> Order { get; set; }
         
         //public virtual Employee? Employee { get; set; }

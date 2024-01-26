@@ -1,0 +1,50 @@
+2024-01-26 00:00:14.299 +03:00 [INF] Order Is In Processing
+2024-01-26 00:00:14.431 +03:00 [ERR] An error occurred: The Table is not active.
+2024-01-26 00:00:29.648 +03:00 [INF] Starting web host
+2024-01-26 00:00:51.898 +03:00 [INF] Order Is In Processing
+2024-01-26 00:00:52.020 +03:00 [ERR] An error occurred: The Table is not active.
+2024-01-26 00:02:43.032 +03:00 [INF] Starting web host
+2024-01-26 00:03:05.683 +03:00 [INF] Order Is In Processing
+2024-01-26 00:03:50.041 +03:00 [INF] Starting web host
+2024-01-26 00:05:07.257 +03:00 [INF] OrderItem Is In Processing
+2024-01-26 00:05:07.367 +03:00 [ERR] An error occurred: The key value at position 0 of the call to 'DbSet<Order>.Find' was of type 'CreateOrderItemDTO', which does not match the property type of 'int'.
+2024-01-26 00:06:25.427 +03:00 [INF] Starting web host
+2024-01-26 00:06:53.151 +03:00 [INF] OrderItem Is In Processing
+2024-01-26 00:06:53.374 +03:00 [INF] orderItem Is Updated
+2024-01-26 00:06:53.374 +03:00 [DBG] Debugging AddOrderItem Has been Finised Successfully With Order ID  = 1
+2024-01-26 00:06:53.394 +03:00 [INF] Order Is Updated
+2024-01-26 00:06:53.394 +03:00 [DBG] Debugging UpdateOrder Has been Finised Successfully With Order ID  = 4
+2024-01-26 00:56:13.342 +03:00 [INF] Starting web host
+2024-01-26 01:06:49.112 +03:00 [INF] Starting web host
+2024-01-26 01:07:55.706 +03:00 [INF] Starting web host
+2024-01-26 01:08:40.328 +03:00 [INF] Order Is  Existing: 4
+2024-01-26 01:08:40.361 +03:00 [ERR] Order Not Found: Value cannot be null. (Parameter 'source')
+2024-01-26 01:10:07.854 +03:00 [INF] Starting web host
+2024-01-26 01:11:37.442 +03:00 [INF] Order Is  Existing: 4
+2024-01-26 01:11:37.474 +03:00 [ERR] Order Not Found: Value cannot be null. (Parameter 'source')
+2024-01-26 01:12:45.442 +03:00 [INF] Starting web host
+2024-01-26 01:12:58.369 +03:00 [INF] Order Is  Existing: 4
+2024-01-26 01:12:58.402 +03:00 [ERR] Order Not Found: Value cannot be null. (Parameter 'source')
+2024-01-26 01:13:27.589 +03:00 [INF] Starting web host
+2024-01-26 01:13:52.658 +03:00 [INF] Order Is  Existing: 4
+2024-01-26 01:13:52.690 +03:00 [ERR] Order Not Found: Value cannot be null. (Parameter 'source')
+2024-01-26 01:13:59.506 +03:00 [INF] Order Is Reached
+2024-01-26 01:13:59.506 +03:00 [DBG] Debugging Get Order By Id Has been Finised Successfully
+2024-01-26 01:15:16.721 +03:00 [INF] Starting web host
+2024-01-26 01:15:27.824 +03:00 [INF] Order Is  Existing: 4
+2024-01-26 01:15:27.856 +03:00 [ERR] Order Not Found: Value cannot be null. (Parameter 'source')
+2024-01-26 01:16:55.139 +03:00 [INF] Starting web host
+2024-01-26 01:17:04.052 +03:00 [INF] Starting web host
+2024-01-26 01:17:14.668 +03:00 [INF] Order Is  Existing: 4
+2024-01-26 01:17:14.699 +03:00 [ERR] Order Not Found: Value cannot be null. (Parameter 'source')
+2024-01-26 01:21:08.261 +03:00 [INF] Starting web host
+2024-01-26 01:21:24.701 +03:00 [INF] Order Is  Existing: 4
+2024-01-26 01:21:24.733 +03:00 [ERR] Order Not Found: Value cannot be null. (Parameter 'source')
+2024-01-26 01:24:19.742 +03:00 [INF] Starting web host
+2024-01-26 01:24:35.447 +03:00 [INF] Order Is  Existing: 4
+2024-01-26 01:24:35.480 +03:00 [ERR] Order Not Found: Value cannot be null. (Parameter 'source')
+2024-01-26 01:27:04.039 +03:00 [INF] Starting web host
+2024-01-26 01:27:18.582 +03:00 [INF] Order Is  Existing: 4
+2024-01-26 01:27:18.591 +03:00 [INF] Order Is Reached
+2024-01-26 01:27:18.591 +03:00 [DBG] Debugging Get Order By Id Has been Finised Successfully With Order ID  = 4
+2024-01-26 17:11:18.078 +03:00 [INF] Starting web host

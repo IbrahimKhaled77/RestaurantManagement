@@ -10,6 +10,7 @@ using Serilog;
 using RestaurantManagement_Repository.Helper.Mapper;
 using Microsoft.AspNetCore.Mvc;
 
+
 namespace RestaurantManagement_Repository.Implementation
 {
     public class OrderRepository : IOrderRepository
@@ -25,10 +26,33 @@ namespace RestaurantManagement_Repository.Implementation
 
         public async Task<List<OrderCardDTO>> GetAllOrders([FromHeader] string email, [FromHeader] string password)
         {
-            throw new NotImplementedException();
             try
             {
+                var isCustomerLoggedIn = await _context.Customer.AnyAsync(x => x.Email == email && x.Password == password && x.IsLoggedIn == true);
+                var isEmployeeLoggedIn = await _context.Employee.AnyAsync(x => x.Email == email && x.Password == password && x.IsLoggedIn == true);
+                if (!isCustomerLoggedIn && !isEmployeeLoggedIn)
+                {
 
+                    throw new Exception("You Must Login In To Your Account");
+                }
+
+                var Order = await _context.Order.Select(Order1 => new OrderCardDTO
+                {
+                    OrderId = Order1.OrderId,
+                    TableNumber = Order1.TableNumber,
+                    IsActive = Order1.IsActive,
+                    EmployeeOrder = MappingHelper.EmployeeOrderDtoMapper(Order1.EmployeeOrder.ToList()),
+                    OrderItems = MappingHelper.OrderItemDtoMapper(Order1.OrderItems.ToList()),
+
+            }).ToListAsync();
+                Log.Information("Order Is Reached");
+                Log.Debug($"Debugging Get Order By Id Has been Finised Successfully");
+
+
+                return Order;
+
+
+           
             }
             catch (ArgumentNullException ex)
             {
@@ -38,12 +62,13 @@ namespace RestaurantManagement_Repository.Implementation
             }
             catch (DbUpdateException ex)
             {
-
-                throw new DbUpdateException($"date Error: {ex.Message}");
+                Log.Error($"An error occurred in datebase: {ex.Message}");
+                throw new DbUpdateException($"datebase Error: {ex.Message}");
 
             }
             catch (Exception ex)
             {
+                Log.Error($"An error occurred Exception : {ex.Message}");
                 throw new Exception($"Exception: {ex.Message}");
 
             }
@@ -62,8 +87,9 @@ namespace RestaurantManagement_Repository.Implementation
                     throw new Exception("You Must Login In To Your Account");
                 }
 
-                var Order1 = await _context.Order.Include(t => t.EmployeeOrder)
-                   .FirstOrDefaultAsync(x => x.OrderId == OrderId);
+             
+                var Order1 = await _context.Order.Include(t=>t.EmployeeOrder).Include(t => t.OrderItems)
+                    .FirstOrDefaultAsync(x => x.OrderId == OrderId);
                 if (Order1 != null)
                 {
                     Log.Information($"Order Is  Existing: {Order1.OrderId}");
@@ -72,7 +98,8 @@ namespace RestaurantManagement_Repository.Implementation
                     orderCardDTO.OrderId = Order1.OrderId;
                     orderCardDTO.TableNumber = Order1.TableNumber;
                     orderCardDTO.IsActive = Order1.IsActive;
-                    orderCardDTO.EmployeeOrder = TableMappingHelper.EmployeeOrderDtoMapper(Order1.EmployeeOrder.ToList());
+                    orderCardDTO.EmployeeOrder = MappingHelper.EmployeeOrderDtoMapper(Order1.EmployeeOrder.ToList());
+                    orderCardDTO.OrderItems = MappingHelper.OrderItemDtoMapper(Order1.OrderItems.ToList());
                     Log.Information("Order Is Reached");
                     Log.Debug($"Debugging Get Order By Id Has been Finised Successfully With Order ID  = {Order1.OrderId}");
                     return orderCardDTO;
@@ -106,21 +133,19 @@ namespace RestaurantManagement_Repository.Implementation
             }
         }
 
-        public  async Task<string> AddOrder(CreatOrderDTO order,[FromHeader] string email, [FromHeader] string password)
+        public  async Task<string> AddOrder(CreatOrderDTO orderDto,[FromHeader] string email, [FromHeader] string password)
         {
             try
             {
-                var isAdminLoggedIn = await _context.Employee.AnyAsync(x => x.Email == email && x.Password == password && x.Position == "Admin" && x.IsLoggedIn == true);
-                if (!isAdminLoggedIn)
+             
+              
+                var isCustomerLoggedIn = await _context.Customer.AnyAsync(x => x.Email == email && x.Password == password && x.IsLoggedIn == true);
+                var isEmployeeLoggedIn = await _context.Employee.AnyAsync(x => x.Email == email && x.Password == password && x.IsLoggedIn == true);
+              
+                if (!isCustomerLoggedIn && !isEmployeeLoggedIn)
                 {
-                
+
                     throw new Exception("You Must Login In To Your Account");
-                }
-                var isAdmin = await _context.Employee.AnyAsync(x => x.Email == email && x.Password == password && x.Position == "Admin");
-                if (!isAdmin)
-                {
-                  
-                    throw new Exception("You Don't have the required Permission");
                 }
 
 
@@ -128,58 +153,39 @@ namespace RestaurantManagement_Repository.Implementation
 
                 Log.Information("Order Is In Processing");
                 var order1 = new Order();
-                order1.Customer = await _context.Customer.FindAsync(order.CustomerId);
-                order1.Table = await _context.Table.FindAsync(order.TableId);
+
+                var table1 = new Table();
+                //The table is now reserved
+                table1.IsActiveOrder = true;
+
+                order1.Customer = await _context.Customer.FindAsync(orderDto.CustomerId);
+                order1.Table = await _context.Table.FindAsync(orderDto.TableId);
+                if (order1.Table == null && order1.Customer==null) {
+
+                    throw new InvalidOperationException($"Table {orderDto.TableId} OR Customer {orderDto.CustomerId} are null.");
+                }//The table is Not  IsActiveOrder
+                else if (!(order1.Table!.IsActiveOrder))
+                {
+
+                    throw new InvalidOperationException("The Table is not active.");
+                }
                 order1.TableNumber = order1.Table.TableNumber;
-                order1.TotalPrice = 0;
                 order1.IsActive = true;
+                order1.TotalPrice = 0;
+
+
 
                 _context.Order.Add(order1);
                 await _context.SaveChangesAsync();
 
-               
-
-               order1.OrderItems = new List<OrderItem>();
-
-                foreach (var orderItemDTO in order.OrderItems)
-                {
-                    var menu = await _context.Menu.FindAsync(orderItemDTO.MenuId);
-                    menu.OrderItems ??= new List<OrderItem>();
-
-                    if (menu == null)
-                    {
-                        throw new ArgumentNullException("Menu", "Menu not found");
-                    }
-                    Log.Information("OrderItem Is In Processing");
-                    OrderItem orderItem = new OrderItem
-                    {
-                        MenuId = orderItemDTO.MenuId,
-                        OrderId = order1.OrderId,
-                        Quantity = orderItemDTO.Quantity,
-                        IsActive = true,
-                    };
-
-                    _context.OrderItem.Add(orderItem);
-                    await _context.SaveChangesAsync(); // Save each OrderItem individually
-                    Log.Information("orderItem Is In Finished");
-                    Log.Debug($"Debugging orderItem Has been Finished Successfully With orderItem ID {orderItem.OrderItemId}");
-
-                    order1.OrderItems.Add(orderItem);
-                    menu.OrderItems.Add(orderItem);
-                }
-
-                // Save changes once all OrderItems are added
-                await _context.SaveChangesAsync();
-
-                // Calculate TotalPrice after OrderItems are saved
-                order1.TotalPrice = order1.OrderItems.Sum(oi => oi.Quantity * oi.Menu.Price);
-
-                // Update the Order entity with the calculated TotalPrice
-                _context.Order.Update(order1);
-                await _context.SaveChangesAsync();
-
-
                 return "AddOrder Has been Finished Successfully With Order";
+
+
+
+
+
+
+
             }
             catch (ArgumentNullException ex)
             {
@@ -205,18 +211,12 @@ namespace RestaurantManagement_Repository.Implementation
 
             try
             {
-
-                var isAdminLoggedIn = await _context.Employee.AnyAsync(x => x.Email == email && x.Password == password && x.Position == "Admin" && x.IsLoggedIn == true);
-                if (!isAdminLoggedIn)
+                var isCustomerLoggedIn = await _context.Customer.AnyAsync(x => x.Email == email && x.Password == password && x.IsLoggedIn == true);
+                var isEmployeeLoggedIn = await _context.Employee.AnyAsync(x => x.Email == email && x.Password == password && x.IsLoggedIn == true);
+                if (!isCustomerLoggedIn && !isEmployeeLoggedIn)
                 {
 
                     throw new Exception("You Must Login In To Your Account");
-                }
-                var isAdmin = await _context.Employee.AnyAsync(x => x.Email == email && x.Password == password && x.Position == "Admin");
-                if (!isAdmin)
-                {
-
-                    throw new Exception("You Don't have the required Permission");
                 }
 
 
@@ -231,7 +231,7 @@ namespace RestaurantManagement_Repository.Implementation
                 Log.Information("Order Is  Existing");
                 Order.Table = await _context.Table.FindAsync(OrderDto.TableId);
                 Order.TableNumber = Order.Table.TableId;
-                Order.TotalPrice = OrderDto.TotalPrice;
+                Order.TotalPrice = 0;
                 Order.IsActive = OrderDto.IsActive;
 
 
@@ -267,18 +267,14 @@ namespace RestaurantManagement_Repository.Implementation
             try
             {
 
-                var isAdminLoggedIn = await _context.Employee.AnyAsync(x => x.Email == email && x.Password == password && x.Position == "Admin" && x.IsLoggedIn == true);
-                if (!isAdminLoggedIn)
+                
+                var isEmployeeLoggedIn = await _context.Employee.AnyAsync(x => x.Email == email && x.Password == password && x.IsLoggedIn == true);
+                if ( !isEmployeeLoggedIn)
                 {
-                  
+
                     throw new Exception("You Must Login In To Your Account");
                 }
-                var isAdmin = await _context.Employee.AnyAsync(x => x.Email == email && x.Password == password && x.Position == "Admin");
-                if (!isAdmin)
-                {
-                    
-                    throw new Exception("You Don't have the required Permission");
-                }
+
 
 
 
@@ -288,6 +284,12 @@ namespace RestaurantManagement_Repository.Implementation
                     Log.Information("Table Is  Existing");
                     _context.Order.Remove(order);
                     await _context.SaveChangesAsync();
+
+                    var Table = new Table();
+                    //The reservation is invalidated
+                    Table.IsActiveOrder = false;
+
+
                     Log.Information("Table Is Deleted");
                     Log.Debug($"Debugging DeleteOrder Has been Finised Successfully With order ID  = {order.OrderId}");
                     return "DeleteTable Has been Finised Successfully";

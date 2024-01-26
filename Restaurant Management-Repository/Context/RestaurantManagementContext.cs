@@ -16,6 +16,9 @@ namespace RestaurantManagement_Repository.Context
 
             base.OnModelCreating(modelBuilder);
 
+            modelBuilder.Entity<OrderItem>()
+           .HasKey(oi => new { oi.OrderId, oi.MenuId });
+
             modelBuilder.ApplyConfiguration(new CustomerConfiguration());
             modelBuilder.ApplyConfiguration(new EmployeeConfiguration());
             modelBuilder.ApplyConfiguration(new EmployeeOrderConfiguration());

@@ -1,5 +1,6 @@
 ﻿
 
+using Restaurant_Management_Repository.IRepository;
 using RestaurantManagement_Repository.Context;
 using RestaurantManagement_Repository.IRepository;
 using RestaurantManagement_Repository.UnitOfWorkPattern.IUnitOfWork;
@@ -27,7 +28,8 @@ namespace RestaurantManagement_Repository.UnitOfWorkPattern.UnitOfWork
 
         public ITableRepository _ITableRepository { get; private set; }
 
-        public UnitOfWork(RestaurantManagementContext context, ITableRepository tableRepository, IOrderRepository orderRepository, IMenuRepository menuRepository, IEmployeeRepository employeeRepository, ICustomerRepository customerRepository, IAuthanticationRepository authanticationRepository, IEmployeeOrderRepository employeeOrderRepository)
+        public IOrderItemRepository _IOrderItemRepository { get; private set; }
+        public UnitOfWork(RestaurantManagementContext context, IOrderItemRepository IOrderItemRepository, ITableRepository tableRepository, IOrderRepository orderRepository, IMenuRepository menuRepository, IEmployeeRepository employeeRepository, ICustomerRepository customerRepository, IAuthanticationRepository authanticationRepository, IEmployeeOrderRepository employeeOrderRepository)
         {
             _context = context;
             _ITableRepository = tableRepository;
@@ -37,6 +39,7 @@ namespace RestaurantManagement_Repository.UnitOfWorkPattern.UnitOfWork
             _ICustomerRepository = customerRepository;
             _IAuthanticationRepository = authanticationRepository;
             _IEmployeeOrderRepository= employeeOrderRepository;
+            _IOrderItemRepository = IOrderItemRepository;
         }
 
      

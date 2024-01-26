@@ -1,5 +1,6 @@
 ﻿
 
+using Restaurant_Management_Repository.IRepository;
 using RestaurantManagement_Repository.IRepository;
 
 namespace RestaurantManagement_Repository.UnitOfWorkPattern.IUnitOfWork
@@ -15,8 +16,10 @@ namespace RestaurantManagement_Repository.UnitOfWorkPattern.IUnitOfWork
         IOrderRepository _IOrderRepository { get; }
 
         ITableRepository _ITableRepository { get; }
+      
 
-        Task<int> SaveChanges();
+              IOrderItemRepository _IOrderItemRepository { get; }
+    Task<int> SaveChanges();
 
     }
 }

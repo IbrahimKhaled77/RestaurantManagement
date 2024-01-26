@@ -44,7 +44,8 @@ namespace RestaurantManagement_Repository.Implementation
                         TableId = x.TableId,
                         TableNumber = x.TableNumber,
                         IsActive = x.IsActive,
-                        Orders = TableMappingHelper.TableDtoMapper(x.Order.ToList()),
+                        IsActiveOrder = x.IsActiveOrder,
+                          Orders = MappingHelper.TableDtoMapper(x.Order.ToList()),
 
                     }).ToListAsync();
                 Log.Information("Tables are Reached");
@@ -97,8 +98,9 @@ namespace RestaurantManagement_Repository.Implementation
                     TableCardDTOs tableCardDTOs = new TableCardDTOs();
                     tableCardDTOs.TableId = table1.TableId;
                     tableCardDTOs.TableNumber = table1.TableNumber;
+                    tableCardDTOs.IsActiveOrder = table1.IsActiveOrder;
                     tableCardDTOs.IsActive = table1.IsActive;
-                    tableCardDTOs.Orders = TableMappingHelper.TableDtoMapper(table1.Order.ToList());
+                    tableCardDTOs.Orders = MappingHelper.TableDtoMapper(table1.Order.ToList());
                     Log.Information("Table Is Reached");
                     Log.Debug($"Debugging GetTableById Has been Finised Successfully With Table ID  = {table1.TableId}");
                     return tableCardDTOs;
@@ -160,6 +162,7 @@ namespace RestaurantManagement_Repository.Implementation
                 var table1 = new Table();
                 table1.TableNumber = table.TableNumber;
                 table1.IsActive = true;
+                table1.IsActiveOrder = false;
 
 
                 _context.Table.Add(table1);

@@ -12,8 +12,8 @@ using RestaurantManagement_Repository.Context;
 namespace Restaurant_Management_Repository.Migrations
 {
     [DbContext(typeof(RestaurantManagementContext))]
-    [Migration("20240124183305_test99")]
-    partial class test99
+    [Migration("20240126141217_test4")]
+    partial class test4
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -263,6 +263,9 @@ namespace Restaurant_Management_Repository.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("TableId"));
 
                     b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsActiveOrder")
                         .HasColumnType("bit");
 
                     b.Property<int>("TableNumber")
