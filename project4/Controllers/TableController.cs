@@ -12,7 +12,7 @@ namespace RestaurantManagement.Controllers
 
         public TableController(ITableService tableService)
         {
-            tableService = tableService;
+            _tableService = tableService;
         }
 
 

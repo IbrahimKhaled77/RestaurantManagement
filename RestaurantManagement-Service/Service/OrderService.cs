@@ -177,6 +177,7 @@ namespace Restaurants_Service.Service
                 //The table is now reserved
                 table1.IsActiveOrder = true;
 
+                await _unitOfwork.TableRepository.UpdateTable(table1);
                 //Get Customer by CustomerId  is Equal orderDto.CustomerId
                 order1.Customer = await _unitOfwork.CustomerRepository.GetCustomerById(orderDto.CustomerId);
                 //Get Table by TablerId  is Equal orderDto.TableId
@@ -192,7 +193,7 @@ namespace Restaurants_Service.Service
                    
                 }
                 //The table is Not  IsActiveOrder
-                else if (!(order1.Table!.IsActiveOrder)) {
+                else if (order1.Table!.IsActiveOrder) {
 
                     throw new InvalidOperationException("The Table is not active.");
                 }
@@ -256,7 +257,7 @@ namespace Restaurants_Service.Service
                 //Update Order
                 Order.Table = await _unitOfwork. TableRepository.GetTableById(OrderDto.TableId);
                 Order.TableNumber = Order.Table.TableId;
-                Order.TotalPrice = OrderDto.TotalPrice;
+                Order.TotalPrice = 0;
                 Order.IsActive = OrderDto.IsActive;
 
                 //Updata Order And SaveChanges In Database

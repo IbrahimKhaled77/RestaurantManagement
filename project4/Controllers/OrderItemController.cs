@@ -83,7 +83,7 @@ namespace RestaurantManagement.Controllers
         /// <param name="Password">The Password of the  User to Get All Orders item By Id (Required).</param>
         /// <returns>The Order item information. </returns>
         [HttpGet]
-        [Route("[action]/{OrderId}")]
+        [Route("[action]/{OrderItemId}")]
         public async Task<IActionResult> GetOrderItemById([FromRoute] int OrderItemId, [FromHeader] string Email, [FromHeader] string Password)
         {
             try
@@ -232,11 +232,11 @@ namespace RestaurantManagement.Controllers
         /// </summary>
         /// <param name="Email">The Email of the  Employee (Admin) to Delete Order (Required).</param>
         /// <param name="Password">The Password of the  Employee (Admin)  to Delete Order (Required).</param>
-        /// <param name="OrderId">The ID of the Order to Delete (Required).</param>
+        /// <param name="OrderItemId">The ID of the Order to Delete (Required).</param>
         /// <returns>A message indicating the success of the operation </returns>
         [HttpDelete]
-        [Route("[action]/{OrderId}")]
-        public async Task<IActionResult> DeleteOrderItem([FromRoute] int OrderItemId, [FromHeader] string Email, [FromHeader] string Password)
+        [Route("[action]/{OrderItemId}")]
+        public async Task<IActionResult> DeleteOrderItem([FromRoute]  int OrderItemId, [FromHeader] string Email, [FromHeader] string Password)
         {
             try
             {

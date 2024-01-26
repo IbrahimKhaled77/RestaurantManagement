@@ -1,2 +1,128 @@
 2024-01-26 21:35:24.631 +03:00 [INF] Starting web host
 2024-01-26 21:48:38.424 +03:00 [INF] Starting web host
+2024-01-26 21:54:07.868 +03:00 [INF] Starting web host
+2024-01-26 21:55:53.330 +03:00 [INF] Starting web host
+2024-01-26 22:05:17.583 +03:00 [INF] Starting web host
+2024-01-26 22:07:55.098 +03:00 [INF] Starting Login
+2024-01-26 22:07:57.086 +03:00 [INF] LoginEmployee Is In Finised
+2024-01-26 22:07:57.087 +03:00 [DBG] Debugging LoginEmployee Has been Finised Successfully With finalToken  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySWQiOiIzIiwiTmFtZSI6IklicmFoaW0iLCJuYmYiOjE3MDYyOTYwNzcsImV4cCI6MTcwNjMwNjg3NywiaWF0IjoxNzA2Mjk2MDc3fQ.VMirM9uZlQfxYAOy55WA1fV3h_SmT4PKTQQ5cmgJa1E 
+2024-01-26 22:08:50.796 +03:00 [INF] Starting Login
+2024-01-26 22:08:50.834 +03:00 [INF] Employee Is not Found
+2024-01-26 22:08:50.834 +03:00 [DBG] Youre Session Has been Closed Please Login in Again
+2024-01-26 22:09:13.290 +03:00 [INF] Starting Login
+2024-01-26 22:09:13.337 +03:00 [INF] Either Email or Password is Incorrect
+2024-01-26 22:09:13.337 +03:00 [DBG] Either Email or Password is Incorrect
+2024-01-26 22:09:21.723 +03:00 [INF] Starting Login
+2024-01-26 22:09:21.730 +03:00 [INF] LoginEmployee Is In Finised
+2024-01-26 22:09:21.730 +03:00 [DBG] Debugging LoginEmployee Has been Finised Successfully With finalToken  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySWQiOiIzIiwiTmFtZSI6IklicmFoaW0iLCJuYmYiOjE3MDYyOTYxNjEsImV4cCI6MTcwNjMwNjk2MSwiaWF0IjoxNzA2Mjk2MTYxfQ.owzs-rL2RRX3GeO2LKdL5OwJ_XYI2HmlbtBLceiPJtw 
+2024-01-26 22:13:54.393 +03:00 [INF] Create New Employee
+2024-01-26 22:13:54.438 +03:00 [INF] Employee Is In Finised
+2024-01-26 22:13:54.438 +03:00 [DBG] Debugging AddEmployee Has been Finised Successfully With Employee ID  4 
+2024-01-26 22:15:08.758 +03:00 [INF] Create New Employee
+2024-01-26 22:15:08.766 +03:00 [INF] Employee Is In Finised
+2024-01-26 22:15:08.766 +03:00 [DBG] Debugging AddEmployee Has been Finised Successfully With Employee ID  5 
+2024-01-26 22:16:27.917 +03:00 [INF] Employee Is  Existing
+2024-01-26 22:16:27.925 +03:00 [INF] Employee Is Updated
+2024-01-26 22:16:27.925 +03:00 [DBG] Debugging UpdateEmployee Has been Finised Successfully With Employee ID  = 4
+2024-01-26 22:17:18.658 +03:00 [INF] Employee Is In Existing
+2024-01-26 22:17:18.670 +03:00 [INF] Employee Is Deleted
+2024-01-26 22:17:18.670 +03:00 [DBG] Debugging DeleteEmployee Has been Finised Successfully With Employee ID  = 4
+2024-01-26 22:18:03.774 +03:00 [INF] Employee Is Reached
+2024-01-26 22:18:03.774 +03:00 [DBG] Debugging GetEmployeeById Has been Finised Successfully With Employee ID  = 3
+2024-01-26 22:18:35.400 +03:00 [INF] Employees are Reached
+2024-01-26 22:18:35.400 +03:00 [DBG] Debugging GetAllEmployees Has been Finised Successfully
+2024-01-26 22:43:19.592 +03:00 [INF] Create New Customer
+2024-01-26 22:43:19.638 +03:00 [INF] Customer Is In Finised
+2024-01-26 22:43:19.638 +03:00 [DBG] Debugging AddCustomer Has been Finised Successfully With Customer ID  1 
+2024-01-26 22:44:33.784 +03:00 [INF] Starting Login
+2024-01-26 22:44:33.814 +03:00 [INF] LoginCustomer Is In Finised
+2024-01-26 22:44:33.815 +03:00 [DBG] Debugging LoginCustomer Has been Finised Successfully With finalToken  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySWQiOiIxIiwiTmFtZSI6Im1hamVkIiwibmJmIjoxNzA2Mjk4MjczLCJleHAiOjE3MDYzMDkwNzMsImlhdCI6MTcwNjI5ODI3M30.TobsXHqgSEdKyjNVt2EOk9MDQDF8cl14tKRHyW2djEU 
+2024-01-26 22:46:17.170 +03:00 [INF] Customer Is Updated
+2024-01-26 22:46:17.170 +03:00 [DBG] Debugging UpdateCustomer Has been Finised Successfully With Customer ID  = 1
+2024-01-26 22:46:51.810 +03:00 [INF] Customers are Reached
+2024-01-26 22:46:51.810 +03:00 [DBG] Debugging GetAllCustomers Has been Finised Successfully
+2024-01-26 22:48:25.421 +03:00 [INF] Customer Is Reached
+2024-01-26 22:48:25.421 +03:00 [DBG] Debugging GetCustomerById Has been Finised Successfully With Customer ID  = 1
+2024-01-26 22:50:10.345 +03:00 [ERR] Customer Not Found 
+2024-01-26 22:50:10.381 +03:00 [ERR] Customer Not Found: Not Found (Parameter 'Customer')
+2024-01-26 22:53:41.471 +03:00 [INF] Menu Is In Procesing
+2024-01-26 22:53:41.593 +03:00 [ERR] An error occurred in datebase: An error occurred while saving the entity changes. See the inner exception for details.
+2024-01-26 22:53:59.165 +03:00 [INF] Menu Is In Procesing
+2024-01-26 22:53:59.268 +03:00 [ERR] An error occurred in datebase: An error occurred while saving the entity changes. See the inner exception for details.
+2024-01-26 22:54:09.406 +03:00 [INF] Menu Is In Procesing
+2024-01-26 22:54:09.410 +03:00 [INF] Menu Is In Finised
+2024-01-26 22:54:09.410 +03:00 [DBG] Debugging AddMenus Has been Finised Successfully With Menu ID  3 
+2024-01-26 22:55:00.741 +03:00 [INF] menus are Reached
+2024-01-26 22:55:00.741 +03:00 [DBG] Debugging GetAllMenus Has been Finised Successfully
+2024-01-26 22:55:30.766 +03:00 [INF] menu Is Reached
+2024-01-26 22:55:30.766 +03:00 [DBG] Debugging GetMenuById Has been Finised Successfully With Menu ID  = 3
+2024-01-26 22:56:47.511 +03:00 [INF] Menu Is  Existing
+2024-01-26 22:56:47.517 +03:00 [INF] Menu Is Updated
+2024-01-26 22:56:47.517 +03:00 [DBG] Debugging UpdateMenu Has been Finised Successfully With Menu ID  = 3
+2024-01-26 22:57:17.921 +03:00 [INF] Menu Is  Existing
+2024-01-26 22:57:17.925 +03:00 [INF] Menu Is Updated
+2024-01-26 22:57:17.925 +03:00 [DBG] Debugging UpdateMenu Has been Finised Successfully With Menu ID  = 3
+2024-01-26 22:57:48.715 +03:00 [ERR] An error occurred ,Exception: You Must Login In To Your Account
+2024-01-26 23:02:00.024 +03:00 [INF] Starting web host
+2024-01-26 23:04:16.073 +03:00 [INF] Starting web host
+2024-01-26 23:04:25.612 +03:00 [INF] Starting Login
+2024-01-26 23:04:26.720 +03:00 [INF] Employee Is not Found
+2024-01-26 23:04:26.721 +03:00 [DBG] Youre Session Has been Closed Please Login in Again
+2024-01-26 23:05:10.159 +03:00 [INF] Starting web host
+2024-01-26 23:06:04.872 +03:00 [INF] Starting web host
+2024-01-26 23:06:17.737 +03:00 [ERR] An error occurred ,Exception: You Must Login In To Your Account
+2024-01-26 23:06:56.331 +03:00 [INF] Table Is In Procesing
+2024-01-26 23:06:56.473 +03:00 [INF] Table Is In Finised
+2024-01-26 23:06:56.473 +03:00 [DBG] Debugging AddTables Has been Finised Successfully With Table ID  1
+2024-01-26 23:07:33.663 +03:00 [INF] Tables are Reached
+2024-01-26 23:07:33.663 +03:00 [DBG] Debugging GetAllTables Has been Finised Successfully
+2024-01-26 23:08:24.004 +03:00 [INF] Table Is  Existing: 1
+2024-01-26 23:08:24.004 +03:00 [INF] Table Is Reached
+2024-01-26 23:08:24.004 +03:00 [DBG] Debugging GetTableById Has been Finised Successfully With Table ID  = 1
+2024-01-26 23:09:35.644 +03:00 [INF] Table Is  Existing
+2024-01-26 23:09:35.659 +03:00 [INF] Table Is Updated
+2024-01-26 23:09:35.659 +03:00 [DBG] Debugging UpdateTable Has been Finised Successfully With Table ID  = 1
+2024-01-26 23:13:55.788 +03:00 [INF] Starting web host
+2024-01-26 23:14:21.049 +03:00 [INF] Starting web host
+2024-01-26 23:14:44.044 +03:00 [INF] Order Is In Processing
+2024-01-26 23:14:44.268 +03:00 [ERR] An error occurred: The Table is not active.
+2024-01-26 23:15:48.164 +03:00 [INF] Starting web host
+2024-01-26 23:16:52.344 +03:00 [INF] Starting web host
+2024-01-26 23:17:40.019 +03:00 [INF] Order Is In Processing
+2024-01-26 23:19:14.409 +03:00 [INF] OrderItem Is In Processing
+2024-01-26 23:19:14.489 +03:00 [INF] orderItem Is Updated
+2024-01-26 23:19:14.489 +03:00 [DBG] Debugging AddOrderItem Has been Finised Successfully With Order ID  = 1
+2024-01-26 23:19:14.506 +03:00 [INF] Order Is Updated
+2024-01-26 23:19:14.506 +03:00 [DBG] Debugging UpdateOrder Has been Finised Successfully With Order ID  = 1
+2024-01-26 23:20:15.329 +03:00 [INF] Order Is  Existing: 1
+2024-01-26 23:20:15.330 +03:00 [INF] Order Is Reached
+2024-01-26 23:20:15.330 +03:00 [DBG] Debugging Get Order By Id Has been Finised Successfully With Order ID  = 1
+2024-01-26 23:21:35.642 +03:00 [INF] Order Is Reached
+2024-01-26 23:21:35.642 +03:00 [DBG] Debugging Get Order By Id Has been Finised Successfully
+2024-01-26 23:22:18.606 +03:00 [INF] EmployeeOrder Is In Procesing
+2024-01-26 23:22:38.756 +03:00 [INF] Starting web host
+2024-01-26 23:23:07.654 +03:00 [INF] EmployeeOrder Is In Procesing
+2024-01-26 23:23:07.802 +03:00 [INF] EmployeeOrder Is In Finised
+2024-01-26 23:23:07.802 +03:00 [DBG] Debugging AddEmployeeOrder Has been Finised Successfully EmployeeOrder ID  1 
+2024-01-26 23:23:45.960 +03:00 [INF] Order Is Reached
+2024-01-26 23:23:45.960 +03:00 [DBG] Debugging Get Order By Id Has been Finised Successfully
+2024-01-26 23:26:54.281 +03:00 [INF] Starting web host
+2024-01-26 23:28:46.403 +03:00 [INF] Order Is  Existing
+2024-01-26 23:28:46.532 +03:00 [INF] Order Is Updated
+2024-01-26 23:28:46.533 +03:00 [DBG] Debugging UpdateOrder Has been Finised Successfully With Order ID  = 1
+2024-01-26 23:30:41.692 +03:00 [INF] OrderItem Is Reached
+2024-01-26 23:30:41.692 +03:00 [DBG] Debugging Get OrderItem By Id Has been Finised Successfully
+2024-01-26 23:33:27.719 +03:00 [INF] Starting web host
+2024-01-26 23:38:59.580 +03:00 [INF] Starting web host
+2024-01-26 23:40:01.043 +03:00 [INF] Starting web host
+2024-01-26 23:41:11.695 +03:00 [INF] OrderItem Is Reached
+2024-01-26 23:41:11.696 +03:00 [DBG] Debugging Get OrderItem By Id Has been Finised Successfully
+2024-01-26 23:41:41.273 +03:00 [INF] OrderItemId Is  Existing: 1
+2024-01-26 23:41:41.273 +03:00 [INF] OrderItemId Is Reached
+2024-01-26 23:41:41.273 +03:00 [DBG] Debugging Get OrderItemId By Id Has been Finised Successfully With Order ID  = 1
+2024-01-26 23:42:45.469 +03:00 [INF] Starting ResetPassword
+2024-01-26 23:42:45.592 +03:00 [INF]  ResetPasswordEmployee Is In Finised
+2024-01-26 23:42:45.593 +03:00 [DBG] Debugging ResetPasswordEmployee  Has been Finised Successfully With Employee  3 
+2024-01-26 23:43:36.383 +03:00 [INF] Starting Logout
+2024-01-26 23:43:36.430 +03:00 [INF] LogoutCustomer Is In Finised
+2024-01-26 23:43:36.430 +03:00 [DBG] Debugging LoginCustomer Has been Finised Successfully With finalToken  1 

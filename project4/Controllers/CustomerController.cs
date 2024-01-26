@@ -282,8 +282,8 @@ namespace RestaurantManagement.Controllers
         ///<summary>
         /// Delete a  customer from the database.
         /// </summary>
-        /// <param name="CustomerId">The ID of the customer to Delete (Required).</param>
-        /// <param name="Email">The Email of the  Customer to Delete Customer (Required).</param>
+        /// <param name="CustomerId">The ID of the user to Delete (Required).</param>
+        /// <param name="Email">The Email of the  user to Delete Customer (Required).</param>
         /// <param name="Password">The Password of the  Customer to Delete Customer (Required).</param> 
         /// <returns>A message indicating the success of the operation </returns>
         [HttpDelete]

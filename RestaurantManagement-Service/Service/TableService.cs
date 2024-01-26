@@ -168,11 +168,11 @@ namespace Restaurants_Service.Service
 
                 Log.Information("Table Is In Procesing");
                 //Create a New Table
-                Table table1 = new Table()
+                var table1 = new Table()
                 {
                    TableNumber = table.TableNumber,
                     IsActive = true,
-                    IsActiveOrder=false
+                    IsActiveOrder = false
                 };
 
                 //Add Table And SaveChanges In Database
