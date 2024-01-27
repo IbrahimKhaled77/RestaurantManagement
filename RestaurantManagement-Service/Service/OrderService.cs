@@ -173,11 +173,7 @@ namespace Restaurants_Service.Service
                 var order1 = new Order();
 
                
-                var table1 = new Table();
-                //The table is now reserved
-                table1.IsActiveOrder = true;
-
-                await _unitOfwork.TableRepository.UpdateTable(table1);
+            
                 //Get Customer by CustomerId  is Equal orderDto.CustomerId
                 order1.Customer = await _unitOfwork.CustomerRepository.GetCustomerById(orderDto.CustomerId);
                 //Get Table by TablerId  is Equal orderDto.TableId
@@ -200,9 +196,15 @@ namespace Restaurants_Service.Service
                 order1.TableNumber = order1.Table.TableNumber;
                 order1.IsActive = true;
                 order1.TotalPrice = 0;
-
+                order1.Table.IsActiveOrder = true;
                 //Add Order And SaveChanges In Database
                 await _unitOfwork.OrderRepository.AddOrder(order1);
+
+                var table1 = new Table();
+                //The table is now reserved
+               
+
+             
 
                 return "AddOrder Has been Finished Successfully With Order";
             }

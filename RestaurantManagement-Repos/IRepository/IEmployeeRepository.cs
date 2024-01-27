@@ -1,11 +1,12 @@
-﻿using RestaurantManagement.Model.Entity;
+﻿using RestaurantManagement.DTOs.EmployeeDTO;
+using RestaurantManagement.Model.Entity;
 
 namespace RestaurantManagement.IRepository
 {
     public interface IEmployeeRepository
 
     {
-        Task<List<Employee>> GetAllEmployees();
+        Task<List<EmployeeCardDTO>> GetAllEmployees();
 
         Task<Employee> GetEmployeeById(int employeeId);
 

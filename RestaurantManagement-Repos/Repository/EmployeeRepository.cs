@@ -1,5 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using RestaurantManagement.Context;
+using RestaurantManagement.DTOs.EmployeeDTO;
+using RestaurantManagement.Helper.Mapper;
 using RestaurantManagement.IRepository;
 using RestaurantManagement.Model.Entity;
 
@@ -16,16 +19,25 @@ namespace RestaurantManagement.Implementation
         }
 
         // Get All of List Customer
-        public async Task<List<Employee>> GetAllEmployees()
+        public async Task<List<EmployeeCardDTO>> GetAllEmployees()
         {
-            return await _context.Employee.ToListAsync();
+            return await _context.Employee.Include(x => x.EmployeeOrder).ThenInclude(x=>x.Order).Include(c=>c.EmployeeOrder).ThenInclude(c=>c.Employee).Select(x=>new EmployeeCardDTO {
+                EmployeeId = x.EmployeeId,
+                Name = x.Name,
+                Position = x.Position,
+                Email = x.Email,
+                IsActive = x.IsActive,
+                EmployeeOrders=  MappingHelper.EmployeeOrderDtoMapper( x.EmployeeOrder.ToList()),
+            
+            
+            }).ToListAsync();
 
         }
 
         // Get Employee By Employee Id
         public async Task<Employee> GetEmployeeById(int employeeId)
         {
-            var employee= await _context.Employee.FirstOrDefaultAsync(x => x.EmployeeId == employeeId); ;
+            var employee= await _context.Employee.Where(x => x.EmployeeId == employeeId).Include(x => x.EmployeeOrder).ThenInclude(x => x.Order).Include(c => c.EmployeeOrder).SingleAsync();
 
             return employee!;
 

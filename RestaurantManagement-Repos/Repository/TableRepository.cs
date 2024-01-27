@@ -26,7 +26,7 @@ namespace RestaurantManagement.Implementation
 
 
 
-            List<TableCardDTOs> Tables =  await _context.Table.Include(t => t.Order).Select(x => new TableCardDTOs{
+            List<TableCardDTOs> Tables =  await _context.Table.Include(t => t.Order).ThenInclude(f => f.EmployeeOrder).ThenInclude(x => x.Employee).ThenInclude(x => x.EmployeeOrder).Include(x=>x.Order).ThenInclude(x=>x.OrderItems).ThenInclude(x=>x.Menu).ThenInclude(x=>x.OrderItems).Include(x=>x.Order).Select(x => new TableCardDTOs{
 
                         TableId = x.TableId,
                         TableNumber = x.TableNumber,
@@ -53,7 +53,8 @@ namespace RestaurantManagement.Implementation
         // meaning a table for the one who has a request.
         public async Task<Table> GetTableById(int TableId)
         {
-            var table1 = await _context.Table.Include(t => t.Order).FirstOrDefaultAsync(x => x.TableId == TableId);
+            //Include(x => x.EmployeeOrder).ThenInclude(x => x.Employee).Include(x => x.OrderItems).ThenInclude(x => x.Menu)
+            var table1 = await _context.Table.Where(x=>x.TableId ==TableId).Include(x => x.Order).ThenInclude(x => x.EmployeeOrder).ThenInclude(x => x.Employee).Include(x => x.Order).ThenInclude(x=>x.OrderItems).ThenInclude(x=>x.Menu).SingleAsync();
 
             return table1!;
         }

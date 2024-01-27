@@ -22,7 +22,7 @@ namespace RestaurantManagement_Repository.Implementation
         public async Task<List<OrderCardDTO>> GetAllOrders()
         {
 
-        List<OrderCardDTO> Orders = await _context.Order.Select(Order1 => new OrderCardDTO
+        List<OrderCardDTO> Orders = await _context.Order.Include(x=>x.EmployeeOrder).ThenInclude(x=>x.Employee).Include(x=>x.EmployeeOrder).ThenInclude(x=>x.Order).Include(x=>x.OrderItems).ThenInclude(x=>x.Menu).Include(x=>x.OrderItems).ThenInclude(x=>x.Order).Select(Order1 => new OrderCardDTO
         {
             OrderId = Order1.OrderId,
             TableNumber = Order1.TableNumber,
@@ -42,7 +42,7 @@ namespace RestaurantManagement_Repository.Implementation
         public async Task<Order> GetOrderById(int OrderId)
         {
 
-          var order =  await _context.Order.Where(x=>x.OrderId==OrderId).Include(t => t.EmployeeOrder).Include(t => t.OrderItems).SingleAsync();
+          var order =  await _context.Order.Where(x=>x.OrderId==OrderId).Include(x => x.EmployeeOrder).ThenInclude(x => x.Employee).Include(x => x.OrderItems).ThenInclude(x => x.Menu).SingleAsync();
 
             return order;
         }

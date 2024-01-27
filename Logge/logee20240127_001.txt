@@ -1,0 +1,314 @@
+2024-01-27 19:49:03.392 +03:00 [INF] Starting web host
+2024-01-27 19:49:03.637 +03:00 [FTL] Host terminated unexpectedly
+System.IO.IOException: Failed to bind to address http://127.0.0.1:5188: address already in use.
+ ---> Microsoft.AspNetCore.Connections.AddressInUseException: Only one usage of each socket address (protocol/network address/port) is normally permitted.
+ ---> System.Net.Sockets.SocketException (10048): Only one usage of each socket address (protocol/network address/port) is normally permitted.
+   at System.Net.Sockets.Socket.UpdateStatusAfterSocketErrorAndThrowException(SocketError error, Boolean disconnectOnFailure, String callerName)
+   at System.Net.Sockets.Socket.DoBind(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.Sockets.Socket.Bind(EndPoint localEP)
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketTransportOptions.CreateDefaultBoundListenSocket(EndPoint endpoint)
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketConnectionListener.Bind()
+   --- End of inner exception stack trace ---
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketConnectionListener.Bind()
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketTransportFactory.BindAsync(EndPoint endpoint, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Infrastructure.TransportManager.BindAsync(EndPoint endPoint, ConnectionDelegate connectionDelegate, EndpointConfig endpointConfig, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.<>c__DisplayClass30_0`1.<<StartAsync>g__OnBind|0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.BindEndpointAsync(ListenOptions endpoint, AddressBindContext context, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.BindEndpointAsync(ListenOptions endpoint, AddressBindContext context, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.LocalhostListenOptions.BindAsync(AddressBindContext context, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.AddressesStrategy.BindAsync(AddressBindContext context, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.BindAsync(IEnumerable`1 listenOptions, AddressBindContext context, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.BindAsync(CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.StartAsync[TContext](IHttpApplication`1 application, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Hosting.GenericWebHostService.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.Internal.Host.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync(IHost host, CancellationToken token)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.RunAsync(IHost host, CancellationToken token)
+   at Microsoft.Extensions.Hosting.HostingAbstractionsHostExtensions.Run(IHost host)
+   at Program.<Main>$(String[] args) in C:\Users\thegh\OneDrive\Desktop\C#\Restaurant Management\project4\Program.cs:line 99
+2024-01-27 19:49:49.851 +03:00 [INF] Starting web host
+2024-01-27 19:50:46.602 +03:00 [ERR] An error occurred Exception : You Must Login In To Your Account
+2024-01-27 19:51:02.044 +03:00 [INF] Starting Login
+2024-01-27 19:51:02.264 +03:00 [INF] LoginEmployee Is In Finised
+2024-01-27 19:51:02.264 +03:00 [DBG] Debugging LoginEmployee Has been Finised Successfully With finalToken  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySWQiOiIzIiwiTmFtZSI6IklicmFoaW0iLCJuYmYiOjE3MDYzNzQyNjIsImV4cCI6MTcwNjM4NTA2MiwiaWF0IjoxNzA2Mzc0MjYyfQ.MkTrtUDNGWr62R2bsxVuHTNJmTm8WfKzqgKOIbNqV2M 
+2024-01-27 19:51:04.458 +03:00 [INF] Starting Login
+2024-01-27 19:51:04.509 +03:00 [INF] Employee Is not Found
+2024-01-27 19:51:04.509 +03:00 [DBG] Youre Session Has been Closed Please Login in Again
+2024-01-27 19:51:05.689 +03:00 [INF] Starting Login
+2024-01-27 19:51:05.698 +03:00 [INF] LoginEmployee Is In Finised
+2024-01-27 19:51:05.698 +03:00 [DBG] Debugging LoginEmployee Has been Finised Successfully With finalToken  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySWQiOiIzIiwiTmFtZSI6IklicmFoaW0iLCJuYmYiOjE3MDYzNzQyNjUsImV4cCI6MTcwNjM4NTA2NSwiaWF0IjoxNzA2Mzc0MjY1fQ.9Da1x5XBd0oX6m2hA0c2dWa3Xi2IyRstes5_4BRdjC0 
+2024-01-27 19:51:07.985 +03:00 [INF] Starting Login
+2024-01-27 19:51:07.992 +03:00 [INF] Employee Is not Found
+2024-01-27 19:51:07.992 +03:00 [DBG] Youre Session Has been Closed Please Login in Again
+2024-01-27 19:51:09.401 +03:00 [INF] Starting Login
+2024-01-27 19:51:09.412 +03:00 [INF] LoginEmployee Is In Finised
+2024-01-27 19:51:09.412 +03:00 [DBG] Debugging LoginEmployee Has been Finised Successfully With finalToken  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySWQiOiIzIiwiTmFtZSI6IklicmFoaW0iLCJuYmYiOjE3MDYzNzQyNjksImV4cCI6MTcwNjM4NTA2OSwiaWF0IjoxNzA2Mzc0MjY5fQ.qlwrs4OF-vonRYlDCcvJNjENzO_NYjmRxjYbYfmIWZI 
+2024-01-27 19:51:10.193 +03:00 [INF] Starting Login
+2024-01-27 19:51:10.203 +03:00 [INF] Employee Is not Found
+2024-01-27 19:51:10.203 +03:00 [DBG] Youre Session Has been Closed Please Login in Again
+2024-01-27 19:51:11.336 +03:00 [INF] Starting Login
+2024-01-27 19:51:11.345 +03:00 [INF] LoginEmployee Is In Finised
+2024-01-27 19:51:11.345 +03:00 [DBG] Debugging LoginEmployee Has been Finised Successfully With finalToken  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySWQiOiIzIiwiTmFtZSI6IklicmFoaW0iLCJuYmYiOjE3MDYzNzQyNzEsImV4cCI6MTcwNjM4NTA3MSwiaWF0IjoxNzA2Mzc0MjcxfQ.1WjMNnLlSgdx8FHWhBWLbVQllxv7UJFxmZRkOdYRhqg 
+2024-01-27 19:51:19.130 +03:00 [INF] menus are Reached
+2024-01-27 19:51:19.130 +03:00 [DBG] Debugging GetAllMenus Has been Finised Successfully
+2024-01-27 19:51:19.386 +03:00 [INF] menus are Reached
+2024-01-27 19:51:19.386 +03:00 [DBG] Debugging GetAllMenus Has been Finised Successfully
+2024-01-27 19:56:50.385 +03:00 [INF] menu Is Reached
+2024-01-27 19:56:50.385 +03:00 [DBG] Debugging GetMenuById Has been Finised Successfully With Menu ID  = 3
+2024-01-27 19:57:16.477 +03:00 [INF] menu Is Reached
+2024-01-27 19:57:16.477 +03:00 [DBG] Debugging GetMenuById Has been Finised Successfully With Menu ID  = 3
+2024-01-27 19:57:36.120 +03:00 [ERR] An error occurred Exception: You Must Login In To Your Account
+2024-01-27 19:58:06.740 +03:00 [ERR] An error occurred Exception: You Must Login In To Your Account
+2024-01-27 19:58:28.870 +03:00 [ERR] An error occurred ,Exception: You Must Login In To Your Account
+2024-01-27 19:58:37.371 +03:00 [ERR] An error occurred ,Exception: You Must Login In To Your Account
+2024-01-27 19:59:07.450 +03:00 [ERR] An error occurred ,Exception: You Must Login In To Your Account
+2024-01-27 19:59:16.722 +03:00 [ERR] An error occurred ,Exception: You Must Login In To Your Account
+2024-01-27 20:01:14.897 +03:00 [INF] Tables are Reached
+2024-01-27 20:01:14.897 +03:00 [DBG] Debugging GetAllTables Has been Finised Successfully
+2024-01-27 20:04:02.375 +03:00 [INF] Employees are Reached
+2024-01-27 20:04:02.375 +03:00 [DBG] Debugging GetAllEmployees Has been Finised Successfully
+2024-01-27 20:04:28.549 +03:00 [INF] Order Is Reached
+2024-01-27 20:04:28.550 +03:00 [DBG] Debugging Get Order By Id Has been Finised Successfully
+2024-01-27 20:05:53.301 +03:00 [INF] EmployeeOrder Is In Procesing
+2024-01-27 20:05:53.347 +03:00 [INF] EmployeeOrder Is In Finised
+2024-01-27 20:05:53.347 +03:00 [DBG] Debugging AddEmployeeOrder Has been Finised Successfully EmployeeOrder ID  2 
+2024-01-27 20:06:12.710 +03:00 [INF] Employees are Reached
+2024-01-27 20:06:12.710 +03:00 [DBG] Debugging GetAllEmployees Has been Finised Successfully
+2024-01-27 20:06:17.862 +03:00 [INF] Employees are Reached
+2024-01-27 20:06:17.862 +03:00 [DBG] Debugging GetAllEmployees Has been Finised Successfully
+2024-01-27 20:08:54.865 +03:00 [INF] OrderItem Is Reached
+2024-01-27 20:08:54.865 +03:00 [DBG] Debugging Get OrderItem By Id Has been Finised Successfully
+2024-01-27 20:11:51.868 +03:00 [INF] Starting web host
+2024-01-27 20:12:02.170 +03:00 [INF] Tables are Reached
+2024-01-27 20:12:02.170 +03:00 [DBG] Debugging GetAllTables Has been Finised Successfully
+2024-01-27 20:13:20.970 +03:00 [INF] Starting web host
+2024-01-27 20:13:30.421 +03:00 [INF] Tables are Reached
+2024-01-27 20:13:30.422 +03:00 [DBG] Debugging GetAllTables Has been Finised Successfully
+2024-01-27 20:15:46.891 +03:00 [INF] Starting web host
+2024-01-27 20:15:56.429 +03:00 [INF] Tables are Reached
+2024-01-27 20:15:56.430 +03:00 [DBG] Debugging GetAllTables Has been Finised Successfully
+2024-01-27 20:16:50.647 +03:00 [INF] Starting web host
+2024-01-27 20:16:58.718 +03:00 [INF] Tables are Reached
+2024-01-27 20:16:58.718 +03:00 [DBG] Debugging GetAllTables Has been Finised Successfully
+2024-01-27 20:18:51.486 +03:00 [INF] Starting web host
+2024-01-27 20:20:45.428 +03:00 [INF] Starting web host
+2024-01-27 20:20:57.602 +03:00 [INF] Tables are Reached
+2024-01-27 20:20:57.602 +03:00 [DBG] Debugging GetAllTables Has been Finised Successfully
+2024-01-27 20:22:58.521 +03:00 [INF] Starting web host
+2024-01-27 20:23:08.264 +03:00 [INF] Tables are Reached
+2024-01-27 20:23:08.265 +03:00 [DBG] Debugging GetAllTables Has been Finised Successfully
+2024-01-27 20:24:54.871 +03:00 [INF] Starting web host
+2024-01-27 20:25:12.700 +03:00 [INF] Table Is  Existing: 1
+2024-01-27 20:25:12.736 +03:00 [ERR] Table Not Found: Value cannot be null. (Parameter 'source')
+2024-01-27 20:25:22.862 +03:00 [INF] Tables are Reached
+2024-01-27 20:25:22.862 +03:00 [DBG] Debugging GetAllTables Has been Finised Successfully
+2024-01-27 20:25:51.618 +03:00 [INF] Table Is  Existing: 1
+2024-01-27 20:25:51.641 +03:00 [ERR] Table Not Found: Value cannot be null. (Parameter 'source')
+2024-01-27 20:27:13.366 +03:00 [INF] Table Is In Procesing
+2024-01-27 20:27:13.463 +03:00 [INF] Table Is In Finised
+2024-01-27 20:27:13.463 +03:00 [DBG] Debugging AddTables Has been Finised Successfully With Table ID  3
+2024-01-27 20:27:39.377 +03:00 [ERR] Table Not Found 
+2024-01-27 20:27:39.399 +03:00 [ERR] Table Not Found: Not Found (Parameter 'table')
+2024-01-27 20:30:12.520 +03:00 [INF] Starting web host
+2024-01-27 20:30:25.653 +03:00 [INF] Table Is  Existing: 1
+2024-01-27 20:30:25.689 +03:00 [ERR] Table Not Found: Value cannot be null. (Parameter 'source')
+2024-01-27 20:30:41.777 +03:00 [INF] Table Is  Existing: 3
+2024-01-27 20:30:41.777 +03:00 [INF] Table Is Reached
+2024-01-27 20:30:41.777 +03:00 [DBG] Debugging GetTableById Has been Finised Successfully With Table ID  = 3
+2024-01-27 20:31:13.194 +03:00 [INF] Order Is In Processing
+2024-01-27 20:31:13.372 +03:00 [ERR] An error occurred in the database: An error occurred while saving the entity changes. See the inner exception for details.
+2024-01-27 20:31:38.429 +03:00 [INF] Starting Login
+2024-01-27 20:31:38.541 +03:00 [INF] LoginCustomer Is In Finised
+2024-01-27 20:31:38.541 +03:00 [DBG] Debugging LoginCustomer Has been Finised Successfully With finalToken  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySWQiOiIxIiwiTmFtZSI6Ik1hamVkIiwibmJmIjoxNzA2Mzc2Njk4LCJleHAiOjE3MDYzODc0OTgsImlhdCI6MTcwNjM3NjY5OH0.s4oN1DYxy8k4ksyvFcSgL9E5FuLp948qXe36XEkSAYI 
+2024-01-27 20:31:43.096 +03:00 [INF] Order Is In Processing
+2024-01-27 20:31:43.170 +03:00 [ERR] An error occurred in the database: An error occurred while saving the entity changes. See the inner exception for details.
+2024-01-27 20:32:01.796 +03:00 [INF] Starting web host
+2024-01-27 20:32:23.208 +03:00 [INF] Starting Login
+2024-01-27 20:32:24.294 +03:00 [INF] Customer Is not Found
+2024-01-27 20:32:24.295 +03:00 [DBG] Youre Session Has been Closed Please Login in Again
+2024-01-27 20:32:49.759 +03:00 [INF] Order Is In Processing
+2024-01-27 20:32:49.899 +03:00 [ERR] An error occurred in the database: An error occurred while saving the entity changes. See the inner exception for details.
+2024-01-27 20:33:15.471 +03:00 [INF] Starting Login
+2024-01-27 20:33:15.591 +03:00 [INF] LoginCustomer Is In Finised
+2024-01-27 20:33:15.591 +03:00 [DBG] Debugging LoginCustomer Has been Finised Successfully With finalToken  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySWQiOiIxIiwiTmFtZSI6Ik1hamVkIiwibmJmIjoxNzA2Mzc2Nzk1LCJleHAiOjE3MDYzODc1OTUsImlhdCI6MTcwNjM3Njc5NX0.QeeiJ329AcLdPoBHRktDwoxtES8riTCN0UPLuLe3-TE 
+2024-01-27 20:33:50.858 +03:00 [INF] Starting web host
+2024-01-27 20:34:19.074 +03:00 [INF] Order Is In Processing
+2024-01-27 20:34:19.296 +03:00 [ERR] An error occurred in the database: An error occurred while saving the entity changes. See the inner exception for details.
+2024-01-27 20:34:33.503 +03:00 [INF] Table Is  Existing: 3
+2024-01-27 20:34:33.503 +03:00 [INF] Table Is Reached
+2024-01-27 20:34:33.504 +03:00 [DBG] Debugging GetTableById Has been Finised Successfully With Table ID  = 3
+2024-01-27 20:34:38.041 +03:00 [INF] Table Is  Existing: 1
+2024-01-27 20:34:38.073 +03:00 [ERR] Table Not Found: Value cannot be null. (Parameter 'source')
+2024-01-27 20:35:56.560 +03:00 [INF] Starting web host
+2024-01-27 20:36:19.367 +03:00 [INF] Table Is  Existing: 1
+2024-01-27 20:36:19.403 +03:00 [ERR] Table Not Found: Value cannot be null. (Parameter 'source')
+2024-01-27 20:36:26.420 +03:00 [INF] Table Is  Existing: 3
+2024-01-27 20:36:26.420 +03:00 [INF] Table Is Reached
+2024-01-27 20:36:26.421 +03:00 [DBG] Debugging GetTableById Has been Finised Successfully With Table ID  = 3
+2024-01-27 20:36:32.674 +03:00 [INF] Table Is  Existing: 1
+2024-01-27 20:36:32.698 +03:00 [ERR] Table Not Found: Value cannot be null. (Parameter 'source')
+2024-01-27 20:36:51.142 +03:00 [INF] Table Is In Existing
+2024-01-27 20:36:51.267 +03:00 [INF] Table Is Deleted
+2024-01-27 20:36:51.267 +03:00 [DBG] Debugging DeleteTable Has been Finised Successfully With Table ID  = 1
+2024-01-27 20:39:29.077 +03:00 [INF] Starting web host
+2024-01-27 20:39:51.622 +03:00 [INF] Tables are Reached
+2024-01-27 20:39:51.622 +03:00 [DBG] Debugging GetAllTables Has been Finised Successfully
+2024-01-27 20:43:38.665 +03:00 [INF] Starting web host
+2024-01-27 20:44:40.229 +03:00 [INF] Create New Customer
+2024-01-27 20:44:41.155 +03:00 [INF] Customer Is In Finised
+2024-01-27 20:44:41.155 +03:00 [DBG] Debugging AddCustomer Has been Finised Successfully With Customer ID  2 
+2024-01-27 20:45:09.257 +03:00 [INF] Starting Login
+2024-01-27 20:45:09.579 +03:00 [INF] LoginCustomer Is In Finised
+2024-01-27 20:45:09.579 +03:00 [DBG] Debugging LoginCustomer Has been Finised Successfully With finalToken  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySWQiOiIyIiwiTmFtZSI6IktoYWxlZCIsIm5iZiI6MTcwNjM3NzUwOSwiZXhwIjoxNzA2Mzg4MzA5LCJpYXQiOjE3MDYzNzc1MDl9.SrT9kDv1YnpuTiPmiqR1YW3F6BbzodzWFeu7Uih1tLE 
+2024-01-27 20:46:27.741 +03:00 [ERR] An error occurred Exception: You Must Login In To Your Account
+2024-01-27 20:46:42.483 +03:00 [INF] Create New Employee
+2024-01-27 20:46:42.511 +03:00 [INF] Employee Is In Finised
+2024-01-27 20:46:42.511 +03:00 [DBG] Debugging AddEmployee Has been Finised Successfully With Employee ID  6 
+2024-01-27 20:47:04.996 +03:00 [INF] Starting Login
+2024-01-27 20:47:05.041 +03:00 [INF] LoginEmployee Is In Finised
+2024-01-27 20:47:05.041 +03:00 [DBG] Debugging LoginEmployee Has been Finised Successfully With finalToken  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySWQiOiI2IiwiTmFtZSI6IlNhcmUiLCJuYmYiOjE3MDYzNzc2MjUsImV4cCI6MTcwNjM4ODQyNSwiaWF0IjoxNzA2Mzc3NjI1fQ.wHgik2ocwFdvxcNwNfbht9UZJdcq4pYLpQfVKNJGZu8 
+2024-01-27 20:48:01.394 +03:00 [INF] Table Is In Procesing
+2024-01-27 20:48:01.413 +03:00 [INF] Table Is In Finised
+2024-01-27 20:48:01.413 +03:00 [DBG] Debugging AddTables Has been Finised Successfully With Table ID  8
+2024-01-27 20:49:16.502 +03:00 [INF] Menu Is In Procesing
+2024-01-27 20:49:16.525 +03:00 [INF] Menu Is In Finised
+2024-01-27 20:49:16.525 +03:00 [DBG] Debugging AddMenus Has been Finised Successfully With Menu ID  4 
+2024-01-27 20:50:26.895 +03:00 [INF] Order Is In Processing
+2024-01-27 20:50:26.991 +03:00 [ERR] An error occurred in the database: An error occurred while saving the entity changes. See the inner exception for details.
+2024-01-27 20:53:06.092 +03:00 [INF] Starting web host
+2024-01-27 20:53:23.045 +03:00 [INF] Order Is In Processing
+2024-01-27 20:53:23.279 +03:00 [ERR] An error occurred in the database: An error occurred while saving the entity changes. See the inner exception for details.
+2024-01-27 20:54:21.829 +03:00 [INF] Starting web host
+2024-01-27 20:54:37.251 +03:00 [INF] Order Is In Processing
+2024-01-27 20:54:37.470 +03:00 [ERR] An error occurred in the database: An error occurred while saving the entity changes. See the inner exception for details.
+2024-01-27 20:54:54.382 +03:00 [INF] Starting web host
+2024-01-27 20:55:08.538 +03:00 [INF] Order Is In Processing
+2024-01-27 20:56:45.443 +03:00 [INF] Starting web host
+2024-01-27 20:59:22.295 +03:00 [INF] Starting web host
+2024-01-27 20:59:42.599 +03:00 [INF] Order Is In Processing
+2024-01-27 20:59:43.026 +03:00 [ERR] An error occurred in the database: An error occurred while saving the entity changes. See the inner exception for details.
+2024-01-27 21:00:49.189 +03:00 [INF] Table Is  Existing
+2024-01-27 21:00:49.202 +03:00 [INF] Table Is Updated
+2024-01-27 21:00:49.202 +03:00 [DBG] Debugging UpdateTable Has been Finised Successfully With Table ID  = 8
+2024-01-27 21:01:59.282 +03:00 [INF] Starting web host
+2024-01-27 21:03:33.103 +03:00 [INF] Order Is In Processing
+2024-01-27 21:03:33.287 +03:00 [ERR] An error occurred: The Table is not active.
+2024-01-27 21:04:02.336 +03:00 [INF] Order Is In Processing
+2024-01-27 21:04:25.576 +03:00 [INF] Order Is Reached
+2024-01-27 21:04:25.576 +03:00 [DBG] Debugging Get Order By Id Has been Finised Successfully
+2024-01-27 21:05:30.718 +03:00 [INF] OrderItem Is In Processing
+2024-01-27 21:05:30.770 +03:00 [INF] orderItem Is Updated
+2024-01-27 21:05:30.770 +03:00 [DBG] Debugging AddOrderItem Has been Finised Successfully With Order ID  = 2
+2024-01-27 21:05:30.783 +03:00 [INF] Order Is Updated
+2024-01-27 21:05:30.783 +03:00 [DBG] Debugging UpdateOrder Has been Finised Successfully With Order ID  = 4
+2024-01-27 21:05:51.758 +03:00 [INF] Tables are Reached
+2024-01-27 21:05:51.758 +03:00 [DBG] Debugging GetAllTables Has been Finised Successfully
+2024-01-27 21:06:12.472 +03:00 [INF] Table Is  Existing: 8
+2024-01-27 21:06:12.473 +03:00 [INF] Table Is Reached
+2024-01-27 21:06:12.473 +03:00 [DBG] Debugging GetTableById Has been Finised Successfully With Table ID  = 8
+2024-01-27 21:07:29.602 +03:00 [INF] EmployeeOrder Is In Procesing
+2024-01-27 21:07:29.613 +03:00 [INF] EmployeeOrder Is In Finised
+2024-01-27 21:07:29.613 +03:00 [DBG] Debugging AddEmployeeOrder Has been Finised Successfully EmployeeOrder ID  3 
+2024-01-27 21:07:40.440 +03:00 [INF] Table Is  Existing: 8
+2024-01-27 21:07:40.441 +03:00 [INF] Table Is Reached
+2024-01-27 21:07:40.441 +03:00 [DBG] Debugging GetTableById Has been Finised Successfully With Table ID  = 8
+2024-01-27 21:08:21.437 +03:00 [INF] Employees are Reached
+2024-01-27 21:08:21.437 +03:00 [DBG] Debugging GetAllEmployees Has been Finised Successfully
+2024-01-27 21:08:46.402 +03:00 [INF] Customers are Reached
+2024-01-27 21:08:46.402 +03:00 [DBG] Debugging GetAllCustomers Has been Finised Successfully
+2024-01-27 21:09:30.543 +03:00 [INF] Customer Is Reached
+2024-01-27 21:09:30.543 +03:00 [DBG] Debugging GetCustomerById Has been Finised Successfully With Customer ID  = 2
+2024-01-27 21:44:35.949 +03:00 [INF] Starting web host
+2024-01-27 21:47:20.423 +03:00 [INF] Starting web host
+2024-01-27 21:49:58.021 +03:00 [INF] Starting web host
+2024-01-27 21:50:14.787 +03:00 [INF] Employees are Reached
+2024-01-27 21:50:14.787 +03:00 [DBG] Debugging GetAllEmployees Has been Finised Successfully
+2024-01-27 21:51:22.238 +03:00 [INF] Starting web host
+2024-01-27 21:51:31.240 +03:00 [INF] Employees are Reached
+2024-01-27 21:51:31.240 +03:00 [DBG] Debugging GetAllEmployees Has been Finised Successfully
+2024-01-27 21:51:57.973 +03:00 [INF] Employee Is Reached
+2024-01-27 21:51:57.973 +03:00 [DBG] Debugging GetEmployeeById Has been Finised Successfully With Employee ID  = 6
+2024-01-27 21:53:35.345 +03:00 [INF] Starting web host
+2024-01-27 21:53:49.532 +03:00 [ERR] Employee Not Found: Value cannot be null. (Parameter 'source')
+2024-01-27 21:54:01.301 +03:00 [ERR] Employee Not Found: Value cannot be null. (Parameter 'source')
+2024-01-27 21:56:42.801 +03:00 [INF] Starting web host
+2024-01-27 21:57:04.725 +03:00 [ERR] An error occurred Exception : An error was generated for warning 'Microsoft.EntityFrameworkCore.Query.NavigationBaseIncludeIgnored': The navigation 'EmployeeOrder.Employee' was ignored from 'Include' in the query since the fix-up will automatically populate it. If any further navigations are specified in 'Include' afterwards then they will be ignored. Walking back include tree is not allowed. This exception can be suppressed or logged by passing event ID 'CoreEventId.NavigationBaseIncludeIgnored' to the 'ConfigureWarnings' method in 'DbContext.OnConfiguring' or 'AddDbContext'.
+2024-01-27 21:57:40.434 +03:00 [INF] Starting web host
+2024-01-27 21:57:49.719 +03:00 [INF] Employee Is Reached
+2024-01-27 21:57:49.720 +03:00 [DBG] Debugging GetEmployeeById Has been Finised Successfully With Employee ID  = 6
+2024-01-27 22:02:41.068 +03:00 [INF] Starting web host
+2024-01-27 22:02:52.380 +03:00 [ERR] An error occurred Exception : Sequence contains no elements.
+2024-01-27 22:03:18.916 +03:00 [INF] Employee Is Reached
+2024-01-27 22:03:18.916 +03:00 [DBG] Debugging GetEmployeeById Has been Finised Successfully With Employee ID  = 6
+2024-01-27 22:04:43.558 +03:00 [INF] Starting web host
+2024-01-27 22:04:57.423 +03:00 [INF] Employee Is Reached
+2024-01-27 22:04:57.423 +03:00 [DBG] Debugging GetEmployeeById Has been Finised Successfully With Employee ID  = 6
+2024-01-27 22:12:39.826 +03:00 [INF] Starting web host
+2024-01-27 22:13:13.029 +03:00 [INF] Starting web host
+2024-01-27 22:13:47.488 +03:00 [INF] Starting web host
+2024-01-27 22:16:04.796 +03:00 [INF] Starting web host
+2024-01-27 22:16:14.893 +03:00 [INF] Employees are Reached
+2024-01-27 22:16:14.893 +03:00 [DBG] Debugging GetAllEmployees Has been Finised Successfully
+2024-01-27 22:16:31.733 +03:00 [INF] Starting web host
+2024-01-27 22:20:35.028 +03:00 [INF] Starting web host
+2024-01-27 22:20:46.918 +03:00 [INF] OrderItem Is Reached
+2024-01-27 22:20:46.918 +03:00 [DBG] Debugging Get OrderItem By Id Has been Finised Successfully
+2024-01-27 22:27:06.579 +03:00 [INF] Starting web host
+2024-01-27 22:39:38.951 +03:00 [INF] Order Is Reached
+2024-01-27 22:39:38.951 +03:00 [DBG] Debugging Get Order By Id Has been Finised Successfully
+2024-01-27 22:43:27.428 +03:00 [INF] Starting web host
+2024-01-27 22:43:41.444 +03:00 [INF] Order Is Reached
+2024-01-27 22:43:41.444 +03:00 [DBG] Debugging Get Order By Id Has been Finised Successfully
+2024-01-27 22:46:02.396 +03:00 [INF] Starting web host
+2024-01-27 22:46:16.811 +03:00 [ERR] An error occurred Exception : An error was generated for warning 'Microsoft.EntityFrameworkCore.Query.NavigationBaseIncludeIgnored': The navigation 'EmployeeOrder.Order' was ignored from 'Include' in the query since the fix-up will automatically populate it. If any further navigations are specified in 'Include' afterwards then they will be ignored. Walking back include tree is not allowed. This exception can be suppressed or logged by passing event ID 'CoreEventId.NavigationBaseIncludeIgnored' to the 'ConfigureWarnings' method in 'DbContext.OnConfiguring' or 'AddDbContext'.
+2024-01-27 22:47:23.346 +03:00 [INF] Starting web host
+2024-01-27 22:47:34.585 +03:00 [ERR] An error occurred Exception : An error was generated for warning 'Microsoft.EntityFrameworkCore.Query.NavigationBaseIncludeIgnored': The navigation 'EmployeeOrder.Order' was ignored from 'Include' in the query since the fix-up will automatically populate it. If any further navigations are specified in 'Include' afterwards then they will be ignored. Walking back include tree is not allowed. This exception can be suppressed or logged by passing event ID 'CoreEventId.NavigationBaseIncludeIgnored' to the 'ConfigureWarnings' method in 'DbContext.OnConfiguring' or 'AddDbContext'.
+2024-01-27 22:50:00.997 +03:00 [INF] Starting web host
+2024-01-27 22:50:16.821 +03:00 [INF] Order Is  Existing: 4
+2024-01-27 22:50:16.824 +03:00 [INF] Order Is Reached
+2024-01-27 22:50:16.824 +03:00 [DBG] Debugging Get Order By Id Has been Finised Successfully With Order ID  = 4
+2024-01-27 22:51:06.990 +03:00 [INF] Order Is Reached
+2024-01-27 22:51:06.990 +03:00 [DBG] Debugging Get Order By Id Has been Finised Successfully
+2024-01-27 22:55:05.722 +03:00 [INF] Starting web host
+2024-01-27 22:55:32.497 +03:00 [INF] OrderItem Is Reached
+2024-01-27 22:55:32.497 +03:00 [DBG] Debugging Get OrderItem By Id Has been Finised Successfully
+2024-01-27 22:56:37.871 +03:00 [INF] Starting web host
+2024-01-27 22:56:54.641 +03:00 [ERR] OrderItemId Not Found 
+2024-01-27 22:56:54.672 +03:00 [ERR] OrderItemId Not Found: Not Found (Parameter 'Order1')
+2024-01-27 22:57:13.411 +03:00 [INF] OrderItemId Is  Existing: 4
+2024-01-27 22:57:13.412 +03:00 [INF] OrderItemId Is Reached
+2024-01-27 22:57:13.412 +03:00 [DBG] Debugging Get OrderItemId By Id Has been Finised Successfully With Order ID  = 2
+2024-01-27 22:58:46.894 +03:00 [INF] Starting web host
+2024-01-27 22:59:00.696 +03:00 [INF] OrderItemId Is  Existing: 4
+2024-01-27 22:59:00.697 +03:00 [INF] OrderItemId Is Reached
+2024-01-27 22:59:00.697 +03:00 [DBG] Debugging Get OrderItemId By Id Has been Finised Successfully With Order ID  = 2
+2024-01-27 23:03:06.616 +03:00 [INF] Starting web host
+2024-01-27 23:03:22.708 +03:00 [INF] Starting web host
+2024-01-27 23:03:38.281 +03:00 [INF] Tables are Reached
+2024-01-27 23:03:38.281 +03:00 [DBG] Debugging GetAllTables Has been Finised Successfully
+2024-01-27 23:06:46.711 +03:00 [INF] Starting web host
+2024-01-27 23:06:55.964 +03:00 [INF] Tables are Reached
+2024-01-27 23:06:55.964 +03:00 [DBG] Debugging GetAllTables Has been Finised Successfully
+2024-01-27 23:08:13.583 +03:00 [INF] Starting web host
+2024-01-27 23:08:24.632 +03:00 [INF] Tables are Reached
+2024-01-27 23:08:24.632 +03:00 [DBG] Debugging GetAllTables Has been Finised Successfully
+2024-01-27 23:11:07.539 +03:00 [INF] Starting web host
+2024-01-27 23:13:28.900 +03:00 [INF] Tables are Reached
+2024-01-27 23:13:28.901 +03:00 [DBG] Debugging GetAllTables Has been Finised Successfully
+2024-01-27 23:14:33.605 +03:00 [INF] Starting web host
+2024-01-27 23:14:47.923 +03:00 [INF] Table Is  Existing: 8
+2024-01-27 23:14:47.960 +03:00 [ERR] Table Not Found: Value cannot be null. (Parameter 'source')
+2024-01-27 23:15:06.386 +03:00 [INF] Table Is  Existing: 8
+2024-01-27 23:15:06.409 +03:00 [ERR] Table Not Found: Value cannot be null. (Parameter 'source')
+2024-01-27 23:18:00.479 +03:00 [INF] Starting web host
+2024-01-27 23:18:29.362 +03:00 [INF] Table Is  Existing: 8
+2024-01-27 23:18:29.396 +03:00 [ERR] Table Not Found: Value cannot be null. (Parameter 'source')
+2024-01-27 23:19:24.482 +03:00 [INF] Starting web host
+2024-01-27 23:19:46.828 +03:00 [INF] Table Is  Existing: 8
+2024-01-27 23:19:46.865 +03:00 [ERR] Table Not Found: Value cannot be null. (Parameter 'source')
+2024-01-27 23:25:57.613 +03:00 [INF] Starting web host
+2024-01-27 23:26:10.154 +03:00 [INF] Table Is  Existing: 8
+2024-01-27 23:26:10.158 +03:00 [INF] Table Is Reached
+2024-01-27 23:26:10.158 +03:00 [DBG] Debugging GetTableById Has been Finised Successfully With Table ID  = 8

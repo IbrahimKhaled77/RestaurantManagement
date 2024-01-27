@@ -20,9 +20,28 @@ namespace RestaurantManagement.Helper.Mapper
                 TotalPrice = x.TotalPrice,
                 TableNumber = x.TableNumber,
                 IsActive = x.IsActive,
+                EmployeeOrder= EmployeeOrderDtoMapper(x.EmployeeOrder.ToList()),
+                OrderItems= OrderItemDtoMapper(x.OrderItems.ToList()),
+
             }).ToList();
 
         }
+
+
+      /*  public static OrderCardDTO orderoneDtoMapper(Order Orders)
+        {
+            OrderCardDTO order = new OrderCardDTO() { Is };
+            return Orders.Select(x => new OrderCardDTO
+            {
+                OrderId = x.OrderId,
+                TotalPrice = x.TotalPrice,
+                TableNumber = x.TableNumber,
+                IsActive = x.IsActive,
+                EmployeeOrder = EmployeeOrderDtoMapper(x.EmployeeOrder.ToList()),
+
+            }).ToList();
+
+        }*/
 
         // DTO EmployeeOrder ticket data is stored in EmployeeOrders
         public static List<EmployeeOrderCardDTo> EmployeeOrderDtoMapper(List<EmployeeOrder> EmployeeOrders)
@@ -32,8 +51,13 @@ namespace RestaurantManagement.Helper.Mapper
             {
                 EmployeeOrderId = x.EmployeeOrderId,
                 EmployeeId = x.EmployeeId,
+                EmployeeName=x.Employee.Name,
+                Position = x.Employee.Position,
                 OrderId = x.OrderId,
-               
+                tableNumber=x.Order.TableNumber,
+                TotalPrice=x.Order.TotalPrice, 
+                
+                 
 
 
             }).ToList();
@@ -48,9 +72,12 @@ namespace RestaurantManagement.Helper.Mapper
             {
                 OrderItemId = x.OrderItemId,
                 MenuId = x.MenuId,
+                MenuName=x.Menu.Name,
+                price=x.Menu.Price,
                 OrderId = x.OrderId,
                 Quantity = x.Quantity,
                 IsActive = x.IsActive,
+              
 
 
 

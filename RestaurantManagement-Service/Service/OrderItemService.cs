@@ -97,6 +97,8 @@ namespace Restaurants_Service.Service
                      OrderItemId = OrderItemId1.OrderItemId,
                      OrderId = OrderItemId1.OrderId,
                      MenuId = OrderItemId1.MenuId,
+                     MenuName= OrderItemId1.Menu.Name,
+                     price= OrderItemId1.Menu.Price,
                      Quantity = OrderItemId1.Quantity,
                      IsActive = OrderItemId1.IsActive,
                 };

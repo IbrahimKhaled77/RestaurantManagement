@@ -89,7 +89,7 @@ namespace Restaurants_Service.Service
 
 
                 // Get Table By TableID 
-                var table1 = await _unitOfwork. TableRepository.GetTableById(TableId);
+                var table1 = await _unitOfwork.TableRepository.GetTableById(TableId);
 
                 //Check Table is Not  Null
                 if (table1 != null)
@@ -97,13 +97,14 @@ namespace Restaurants_Service.Service
                     Log.Information($"Table Is  Existing: {table1.TableId}");
 
                     //Create Table Card DTOs
-                    TableCardDTOs tableCardDTOs = new TableCardDTOs();
-                    tableCardDTOs.TableId = table1.TableId;
-                    tableCardDTOs.TableNumber = table1.TableNumber;
-                    tableCardDTOs.IsActiveOrder = table1.IsActiveOrder;
-                    tableCardDTOs.IsActive = table1.IsActive;
-                    tableCardDTOs.Orders = MappingHelper.TableDtoMapper(table1.Order.ToList());
-                    
+                    TableCardDTOs tableCardDTOs = new TableCardDTOs() {
+                        TableId = table1.TableId,
+                    TableNumber = table1.TableNumber,
+                    IsActiveOrder = table1.IsActiveOrder,
+                    IsActive = table1.IsActive,
+                    Orders = MappingHelper.TableDtoMapper(table1.Order.ToList()),
+
+                };
                     Log.Information("Table Is Reached");
                     Log.Debug($"Debugging GetTableById Has been Finised Successfully With Table ID  = {table1.TableId}");
 

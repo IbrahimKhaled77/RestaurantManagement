@@ -1,0 +1,65 @@
+2024-01-27 18:00:04.098 +03:00 [INF] Starting web host
+2024-01-27 18:00:26.388 +03:00 [ERR] An error occurred Exception : You Must Login In To Your Account
+2024-01-27 18:01:09.889 +03:00 [ERR] An error occurred Exception : You Must Login In To Your Account
+2024-01-27 18:01:16.629 +03:00 [INF] Starting web host
+2024-01-27 18:01:26.269 +03:00 [ERR] An error occurred Exception : You Must Login In To Your Account
+2024-01-27 18:01:39.316 +03:00 [ERR] An error occurred Exception : You Must Login In To Your Account
+2024-01-27 18:01:53.111 +03:00 [ERR] An error occurred Exception : You Must Login In To Your Account
+2024-01-27 18:02:10.794 +03:00 [INF] Starting Login
+2024-01-27 18:02:10.846 +03:00 [INF] Either Email or Password is Incorrect
+2024-01-27 18:02:10.846 +03:00 [DBG] Either Email or Password is Incorrect
+2024-01-27 18:02:44.369 +03:00 [INF] Starting Login
+2024-01-27 18:02:44.376 +03:00 [INF] Either Email or Password is Incorrect
+2024-01-27 18:02:44.376 +03:00 [DBG] Either Email or Password is Incorrect
+2024-01-27 18:02:51.345 +03:00 [INF] Starting web host
+2024-01-27 18:03:01.583 +03:00 [INF] Starting Login
+2024-01-27 18:03:02.707 +03:00 [INF] Either Email or Password is Incorrect
+2024-01-27 18:03:02.707 +03:00 [DBG] Either Email or Password is Incorrect
+2024-01-27 18:03:19.107 +03:00 [INF] Starting Login
+2024-01-27 18:03:19.128 +03:00 [INF] Either Email or Password is Incorrect
+2024-01-27 18:03:19.128 +03:00 [DBG] Either Email or Password is Incorrect
+2024-01-27 18:03:36.613 +03:00 [INF] Starting Login
+2024-01-27 18:03:36.662 +03:00 [INF] Either Email or Password is Incorrect
+2024-01-27 18:03:36.662 +03:00 [DBG] Either Email or Password is Incorrect
+2024-01-27 18:05:24.773 +03:00 [ERR] An error occurred Exception : You Must Login In To Your Account
+2024-01-27 18:05:58.736 +03:00 [INF] Starting Login
+2024-01-27 18:05:58.749 +03:00 [INF] Either Email or Password is Incorrect
+2024-01-27 18:05:58.749 +03:00 [DBG] Either Email or Password is Incorrect
+2024-01-27 18:13:27.927 +03:00 [INF] Starting Login
+2024-01-27 18:13:28.076 +03:00 [INF] Employee Is not Found
+2024-01-27 18:13:28.076 +03:00 [DBG] Youre Session Has been Closed Please Login in Again
+2024-01-27 18:13:47.420 +03:00 [INF] Starting Login
+2024-01-27 18:13:47.998 +03:00 [INF] LoginEmployee Is In Finised
+2024-01-27 18:13:47.998 +03:00 [DBG] Debugging LoginEmployee Has been Finised Successfully With finalToken  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySWQiOiIzIiwiTmFtZSI6IklicmFoaW0iLCJuYmYiOjE3MDYzNjg0MjcsImV4cCI6MTcwNjM3OTIyNywiaWF0IjoxNzA2MzY4NDI3fQ.ZJ6b0AebCPLebUnpSpWwjmpMsIouE0vjqkdczDyRTUY 
+2024-01-27 18:14:03.767 +03:00 [INF] menus are Reached
+2024-01-27 18:14:03.767 +03:00 [DBG] Debugging GetAllMenus Has been Finised Successfully
+2024-01-27 19:31:13.529 +03:00 [INF] Starting web host
+2024-01-27 19:31:29.811 +03:00 [INF] Starting web host
+2024-01-27 19:39:37.717 +03:00 [INF] Starting web host
+2024-01-27 19:42:35.166 +03:00 [INF] Starting Login
+2024-01-27 19:42:36.194 +03:00 [INF] Either Email or Password is Incorrect
+2024-01-27 19:42:36.194 +03:00 [DBG] Either Email or Password is Incorrect
+2024-01-27 19:42:49.793 +03:00 [INF] Starting Login
+2024-01-27 19:42:49.941 +03:00 [INF] Employee Is not Found
+2024-01-27 19:42:49.941 +03:00 [DBG] Youre Session Has been Closed Please Login in Again
+2024-01-27 19:42:52.715 +03:00 [INF] Starting Login
+2024-01-27 19:42:53.302 +03:00 [INF] LoginEmployee Is In Finised
+2024-01-27 19:42:53.303 +03:00 [DBG] Debugging LoginEmployee Has been Finised Successfully With finalToken  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySWQiOiIzIiwiTmFtZSI6IklicmFoaW0iLCJuYmYiOjE3MDYzNzM3NzMsImV4cCI6MTcwNjM4NDU3MywiaWF0IjoxNzA2MzczNzczfQ.2ykjJBBKbFLETqDu50M4pX87MhpmoJ3aexmw2l13_Rg 
+2024-01-27 19:43:06.275 +03:00 [INF] Starting web host
+2024-01-27 19:46:05.387 +03:00 [INF] Starting web host
+2024-01-27 19:46:18.505 +03:00 [INF] Starting Login
+2024-01-27 19:46:19.581 +03:00 [INF] Employee Is not Found
+2024-01-27 19:46:19.581 +03:00 [DBG] Youre Session Has been Closed Please Login in Again
+2024-01-27 19:46:57.177 +03:00 [INF] Starting Login
+2024-01-27 19:46:57.248 +03:00 [INF] LoginEmployee Is In Finised
+2024-01-27 19:46:57.248 +03:00 [DBG] Debugging LoginEmployee Has been Finised Successfully With finalToken  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySWQiOiIzIiwiTmFtZSI6IklicmFoaW0iLCJuYmYiOjE3MDYzNzQwMTcsImV4cCI6MTcwNjM4NDgxNywiaWF0IjoxNzA2Mzc0MDE3fQ.B8-flCOlvtMsgQE0M9BjmAdt5sKnY2PjkeJgwUSnAgE 
+2024-01-27 19:47:08.781 +03:00 [INF] Starting Login
+2024-01-27 19:47:08.833 +03:00 [INF] Employee Is not Found
+2024-01-27 19:47:08.833 +03:00 [DBG] Youre Session Has been Closed Please Login in Again
+2024-01-27 19:47:13.775 +03:00 [INF] Starting Login
+2024-01-27 19:47:13.786 +03:00 [INF] LoginEmployee Is In Finised
+2024-01-27 19:47:13.786 +03:00 [DBG] Debugging LoginEmployee Has been Finised Successfully With finalToken  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySWQiOiIzIiwiTmFtZSI6IklicmFoaW0iLCJuYmYiOjE3MDYzNzQwMzMsImV4cCI6MTcwNjM4NDgzMywiaWF0IjoxNzA2Mzc0MDMzfQ.SjVjWed1E9quTjdNzkUNxPAHmhGATeA8mnDGDhcoKhU 
+2024-01-27 19:48:03.493 +03:00 [INF] Starting web host
+2024-01-27 19:48:20.862 +03:00 [INF] Starting Login
+2024-01-27 19:48:21.926 +03:00 [INF] Employee Is not Found
+2024-01-27 19:48:21.926 +03:00 [DBG] Youre Session Has been Closed Please Login in Again

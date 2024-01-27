@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using RestaurantManagement.DTOs.AuthanticationDTO;
 using RestaurantManagement.DTOs.EmployeeDTO;
+using RestaurantManagement.Helper.Mapper;
 using RestaurantManagement.Model.Entity;
 using RestaurantManagement.UnitOfWorkPattern.IUnitOfWork;
 using Restaurants_Repository.Helper;
@@ -44,19 +45,10 @@ namespace Restaurants_Service.Service
                     throw new ArgumentNullException("Employees", "Not Found Employees");
                 }
                
-                var Result = from employeeDto in Employees
-                             select new EmployeeCardDTO
-                             {
-
-                                 EmployeeId = employeeDto.EmployeeId,
-                                 Name = employeeDto.Name,
-                                 Email = employeeDto.Email,
-                                 Position = employeeDto.Position,
-                                 IsActive = employeeDto.IsActive,
-                             };
+           
                 Log.Information("Employees are Reached");
                 Log.Debug($"Debugging GetAllEmployees Has been Finised Successfully");
-                return (Result.ToList());
+                return (Employees.ToList());
 
             }
             catch (ArgumentNullException ex)
@@ -111,8 +103,10 @@ namespace Restaurants_Service.Service
                     Email = Employee.Email,
                     Position = Employee.Position,
                     IsActive = Employee.IsActive,
+                    EmployeeOrders= MappingHelper.EmployeeOrderDtoMapper(Employee.EmployeeOrder.ToList()),
+                   
 
-            };
+                };
                 Log.Information("Employee Is Reached");
                 Log.Debug($"Debugging GetEmployeeById Has been Finised Successfully With Employee ID  = {Employee.EmployeeId}");
                 return employeeCardDTO;

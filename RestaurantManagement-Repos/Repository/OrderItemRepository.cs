@@ -22,11 +22,15 @@ namespace RestaurantManagement.Repository
         public async Task<List<OrderItemCardDTO>> GetAllOrderItems()
         {
 
-            List<OrderItemCardDTO> OrderItemCardDTO = await _context.OrderItem.Select(Order1 => new OrderItemCardDTO
+            List<OrderItemCardDTO> OrderItemCardDTO = await _context.OrderItem.Include(x=>x.Menu).ThenInclude(x=>x.OrderItems).ThenInclude(x=>x.Order).Select(Order1 => new OrderItemCardDTO
             {
+
+
                 OrderItemId = Order1.OrderItemId,
-                OrderId = Order1.OrderId,
                 MenuId = Order1.MenuId,
+                MenuName = Order1.Menu.Name,
+                price = Order1.Menu.Price,
+                OrderId = Order1.OrderId,
                 Quantity = Order1.Quantity,
                 IsActive = Order1.IsActive
 
@@ -40,7 +44,7 @@ namespace RestaurantManagement.Repository
         // Get OrderItem By OrderItem Id
         public async Task<OrderItem> GetOrderItemById(int OrderItemId)
         {
-            var orderItem = await _context.OrderItem.FirstOrDefaultAsync(x => x.OrderItemId == OrderItemId);
+            var orderItem = await _context.OrderItem.Include(x => x.Menu).ThenInclude(x => x.OrderItems).ThenInclude(x => x.Order).FirstOrDefaultAsync(x => x.OrderItemId == OrderItemId);
 
             return orderItem!;
         }
