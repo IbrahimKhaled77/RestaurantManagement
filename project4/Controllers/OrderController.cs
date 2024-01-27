@@ -230,8 +230,8 @@ namespace RestaurantManagement.Controllers
         ///<summary>
         /// Delete a  Order from the database.
         /// </summary>
-        /// <param name="Email">The Email of the  Employee (Admin Or Customer)  to Delete Order (Required).</param>
-        /// <param name="Password">The Password of the  Employee (Admin Or Customer) to Delete Order (Required).</param>
+        /// <param name="Email">The Email of the  Employee(Admin) to Delete Table (Required).</param>
+        /// <param name="Password">The Password of the  Employee(Admin)  to Delete Table (Required).</param>
         /// <param name="OrderId">The ID of the Order to Delete (Required).</param>
         /// <returns>A message indicating the success of the operation </returns>
         [HttpDelete]

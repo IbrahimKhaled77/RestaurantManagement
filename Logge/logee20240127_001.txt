@@ -312,3 +312,102 @@ System.IO.IOException: Failed to bind to address http://127.0.0.1:5188: address 
 2024-01-27 23:26:10.154 +03:00 [INF] Table Is  Existing: 8
 2024-01-27 23:26:10.158 +03:00 [INF] Table Is Reached
 2024-01-27 23:26:10.158 +03:00 [DBG] Debugging GetTableById Has been Finised Successfully With Table ID  = 8
+2024-01-27 23:28:01.768 +03:00 [INF] Starting web host
+2024-01-27 23:29:02.078 +03:00 [INF] Create New Employee
+2024-01-27 23:29:02.233 +03:00 [INF] Employee Is In Finised
+2024-01-27 23:29:02.233 +03:00 [DBG] Debugging AddEmployee Has been Finised Successfully With Employee ID  7 
+2024-01-27 23:30:34.469 +03:00 [INF] Starting Login
+2024-01-27 23:30:35.071 +03:00 [INF] LoginEmployee Is In Finised
+2024-01-27 23:30:35.071 +03:00 [DBG] Debugging LoginEmployee Has been Finised Successfully With finalToken  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySWQiOiI3IiwiTmFtZSI6IkphbWVsIiwibmJmIjoxNzA2Mzg3NDM1LCJleHAiOjE3MDYzOTgyMzUsImlhdCI6MTcwNjM4NzQzNX0.S79qUCYbPRG3vVJQulMk3pHbvVJby-KNcqhGuTMls3Q 
+2024-01-27 23:32:27.460 +03:00 [INF] Create New Customer
+2024-01-27 23:32:27.532 +03:00 [INF] Customer Is In Finised
+2024-01-27 23:32:27.532 +03:00 [DBG] Debugging AddCustomer Has been Finised Successfully With Customer ID  3 
+2024-01-27 23:32:50.156 +03:00 [INF] Starting Login
+2024-01-27 23:32:50.180 +03:00 [INF] LoginCustomer Is In Finised
+2024-01-27 23:32:50.181 +03:00 [DBG] Debugging LoginCustomer Has been Finised Successfully With finalToken  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySWQiOiIzIiwiTmFtZSI6IkFiZCIsIm5iZiI6MTcwNjM4NzU3MCwiZXhwIjoxNzA2Mzk4MzcwLCJpYXQiOjE3MDYzODc1NzB9.DE2KmxOJRViyqjBbkVlVBp_QfxOpWnc6vMgd5071UyI 
+2024-01-27 23:34:08.746 +03:00 [INF] Customers are Reached
+2024-01-27 23:34:08.746 +03:00 [DBG] Debugging GetAllCustomers Has been Finised Successfully
+2024-01-27 23:34:49.668 +03:00 [INF] Customer Is Reached
+2024-01-27 23:34:49.668 +03:00 [DBG] Debugging GetCustomerById Has been Finised Successfully With Customer ID  = 3
+2024-01-27 23:36:16.345 +03:00 [ERR] An error occurred In datebase: An error occurred while saving the entity changes. See the inner exception for details.
+2024-01-27 23:36:30.776 +03:00 [ERR] An error occurred In datebase: An error occurred while saving the entity changes. See the inner exception for details.
+2024-01-27 23:36:41.197 +03:00 [INF] Customer Is Updated
+2024-01-27 23:36:41.197 +03:00 [DBG] Debugging UpdateCustomer Has been Finised Successfully With Customer ID  = 3
+2024-01-27 23:37:00.999 +03:00 [ERR] An error occurred ,Exception: You Must Login In To Your Account
+2024-01-27 23:38:50.897 +03:00 [INF] Menu Is In Procesing
+2024-01-27 23:38:50.921 +03:00 [INF] Menu Is In Finised
+2024-01-27 23:38:50.921 +03:00 [DBG] Debugging AddMenus Has been Finised Successfully With Menu ID  5 
+2024-01-27 23:39:24.541 +03:00 [ERR] An error occurred Exception : You Must Login In To Your Account
+2024-01-27 23:39:32.607 +03:00 [INF] menus are Reached
+2024-01-27 23:39:32.607 +03:00 [DBG] Debugging GetAllMenus Has been Finised Successfully
+2024-01-27 23:39:48.383 +03:00 [INF] menus are Reached
+2024-01-27 23:39:48.383 +03:00 [DBG] Debugging GetAllMenus Has been Finised Successfully
+2024-01-27 23:40:06.030 +03:00 [INF] menu Is Reached
+2024-01-27 23:40:06.030 +03:00 [DBG] Debugging GetMenuById Has been Finised Successfully With Menu ID  = 3
+2024-01-27 23:41:03.705 +03:00 [INF] Menu Is  Existing
+2024-01-27 23:41:03.714 +03:00 [INF] Menu Is Updated
+2024-01-27 23:41:03.714 +03:00 [DBG] Debugging UpdateMenu Has been Finised Successfully With Menu ID  = 5
+2024-01-27 23:41:53.365 +03:00 [INF] Table Is In Procesing
+2024-01-27 23:41:53.385 +03:00 [INF] Table Is In Finised
+2024-01-27 23:41:53.385 +03:00 [DBG] Debugging AddTables Has been Finised Successfully With Table ID  13
+2024-01-27 23:42:42.197 +03:00 [ERR] An error occurred ,Exception: Sequence contains no elements.
+2024-01-27 23:42:51.726 +03:00 [INF] Table Is  Existing
+2024-01-27 23:42:51.741 +03:00 [INF] Table Is Updated
+2024-01-27 23:42:51.741 +03:00 [DBG] Debugging UpdateTable Has been Finised Successfully With Table ID  = 8
+2024-01-27 23:43:41.091 +03:00 [INF] Order Is In Processing
+2024-01-27 23:43:41.130 +03:00 [ERR] An error occurred: The Table is not active.
+2024-01-27 23:44:07.704 +03:00 [INF] Order Is In Processing
+2024-01-27 23:45:18.446 +03:00 [INF] OrderItem Is In Processing
+2024-01-27 23:45:18.493 +03:00 [INF] orderItem Is Updated
+2024-01-27 23:45:18.493 +03:00 [DBG] Debugging AddOrderItem Has been Finised Successfully With Order ID  = 3
+2024-01-27 23:45:18.502 +03:00 [INF] Order Is Updated
+2024-01-27 23:45:18.502 +03:00 [DBG] Debugging UpdateOrder Has been Finised Successfully With Order ID  = 5
+2024-01-27 23:46:27.382 +03:00 [INF] Order Is  Existing
+2024-01-27 23:46:27.408 +03:00 [INF] Order Is Updated
+2024-01-27 23:46:27.408 +03:00 [DBG] Debugging UpdateOrder Has been Finised Successfully With Order ID  = 5
+2024-01-27 23:47:53.634 +03:00 [INF] OrderItem Is  Existing
+2024-01-27 23:47:53.639 +03:00 [INF] OrderItem Is Updated
+2024-01-27 23:47:53.639 +03:00 [DBG] Debugging UpdateOrderItem Has been Finised Successfully With Order ID  = 3
+2024-01-27 23:47:53.644 +03:00 [INF] Order Is Updated
+2024-01-27 23:47:53.644 +03:00 [DBG] Debugging UpdateOrder Has been Finised Successfully With Order ID  = 5
+2024-01-27 23:48:37.163 +03:00 [INF] EmployeeOrder Is In Procesing
+2024-01-27 23:48:37.171 +03:00 [INF] EmployeeOrder Is In Finised
+2024-01-27 23:48:37.171 +03:00 [DBG] Debugging AddEmployeeOrder Has been Finised Successfully EmployeeOrder ID  4 
+2024-01-27 23:49:26.701 +03:00 [INF] Order Is Reached
+2024-01-27 23:49:26.702 +03:00 [DBG] Debugging Get Order By Id Has been Finised Successfully
+2024-01-27 23:49:59.392 +03:00 [INF] Order Is  Existing: 5
+2024-01-27 23:49:59.392 +03:00 [INF] Order Is Reached
+2024-01-27 23:49:59.392 +03:00 [DBG] Debugging Get Order By Id Has been Finised Successfully With Order ID  = 5
+2024-01-27 23:50:27.872 +03:00 [INF] OrderItem Is Reached
+2024-01-27 23:50:27.872 +03:00 [DBG] Debugging Get OrderItem By Id Has been Finised Successfully
+2024-01-27 23:51:00.695 +03:00 [ERR] An error occurred Exception : You Must Login In To Your Account
+2024-01-27 23:51:08.876 +03:00 [INF] OrderItemId Is  Existing: 5
+2024-01-27 23:51:08.876 +03:00 [INF] OrderItemId Is Reached
+2024-01-27 23:51:08.876 +03:00 [DBG] Debugging Get OrderItemId By Id Has been Finised Successfully With Order ID  = 3
+2024-01-27 23:52:03.132 +03:00 [INF] Tables are Reached
+2024-01-27 23:52:03.132 +03:00 [DBG] Debugging GetAllTables Has been Finised Successfully
+2024-01-27 23:52:28.809 +03:00 [INF] Table Is  Existing: 13
+2024-01-27 23:52:28.810 +03:00 [INF] Table Is Reached
+2024-01-27 23:52:28.810 +03:00 [DBG] Debugging GetTableById Has been Finised Successfully With Table ID  = 13
+2024-01-27 23:54:11.864 +03:00 [INF] Employees are Reached
+2024-01-27 23:54:11.864 +03:00 [DBG] Debugging GetAllEmployees Has been Finised Successfully
+2024-01-27 23:54:35.021 +03:00 [ERR] An error occurred Exception : Sequence contains no elements.
+2024-01-27 23:54:41.219 +03:00 [INF] Employee Is Reached
+2024-01-27 23:54:41.220 +03:00 [DBG] Debugging GetEmployeeById Has been Finised Successfully With Employee ID  = 5
+2024-01-27 23:56:13.477 +03:00 [INF] Employee Is  Existing
+2024-01-27 23:56:13.483 +03:00 [INF] Employee Is Updated
+2024-01-27 23:56:13.483 +03:00 [DBG] Debugging UpdateEmployee Has been Finised Successfully With Employee ID  = 5
+2024-01-27 23:57:07.884 +03:00 [INF] OrderItem Is  Existing
+2024-01-27 23:57:07.897 +03:00 [INF] OrderItem Is Deleted
+2024-01-27 23:57:07.897 +03:00 [DBG] Debugging DeleteOrderItem Has been Finised Successfully With order ID  = 1
+2024-01-27 23:57:43.345 +03:00 [INF] Table Is  Existing
+2024-01-27 23:57:43.364 +03:00 [INF] Table Is Deleted
+2024-01-27 23:57:43.364 +03:00 [DBG] Debugging DeleteOrder Has been Finised Successfully With order ID  = 5
+2024-01-27 23:58:45.525 +03:00 [INF] Menu Is In Existing
+2024-01-27 23:58:45.536 +03:00 [INF] Menu Is Deleted
+2024-01-27 23:58:45.536 +03:00 [DBG] Debugging DeleteMenu Has been Finised Successfully With Table ID  = 5
+2024-01-27 23:59:10.640 +03:00 [ERR] An error occurred ,Exception: Sequence contains no elements.
+2024-01-27 23:59:18.053 +03:00 [INF] Table Is In Existing
+2024-01-27 23:59:18.059 +03:00 [INF] Table Is Deleted
+2024-01-27 23:59:18.059 +03:00 [DBG] Debugging DeleteTable Has been Finised Successfully With Table ID  = 13
+2024-01-27 23:59:35.928 +03:00 [ERR] An error occurred Exception: You Must Login In To Your Account

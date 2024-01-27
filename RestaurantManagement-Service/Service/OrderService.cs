@@ -294,14 +294,22 @@ namespace Restaurants_Service.Service
             try
             {
 
-             
-                //Searches for the EmployeeId in the Employee table. The Employee must be logged in
-                var isEmployeeLoggedIn = await _unitOfwork.EmployeeRepository.IsEmployeeLoggedIn(email, password);
-                //check if the isCustomerLoggedIn AND isEmployeeLoggedIn not equal null
-                if (!isEmployeeLoggedIn)
-                {
 
+                //Searches for the EmployeeID in the Employee table. The Employee must be logged in
+                var isAdminLoggedIn = await _unitOfwork.EmployeeRepository.IsEmployeeLoggedIn(email, password, "Admin");
+                //Check isAdminLoggedIn Not Found
+                if (!isAdminLoggedIn)
+                {
+                    return "You Must Login In To Your Account";
                     throw new Exception("You Must Login In To Your Account");
+                }
+                //Searches for the EmployeeId in the Employee table. The Employee  Must be  Position Accountant
+                var isAdmin = await _unitOfwork.EmployeeRepository.IsEmployeeLoggedAdminIn(email, password, "Admin");
+                //Check Is Admin Not Found
+                if (!isAdmin)
+                {
+                    return "You Don't have the required Permission";
+                    throw new Exception("You Don't have the required Permission");
                 }
 
                 //Get Order By OrderID

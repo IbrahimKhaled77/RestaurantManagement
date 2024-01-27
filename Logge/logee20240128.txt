@@ -1,0 +1,11 @@
+2024-01-28 00:00:03.963 +03:00 [INF] Starting ResetPassword
+2024-01-28 00:00:03.999 +03:00 [INF]  ResetPasswordEmployee Is In Finised
+2024-01-28 00:00:03.999 +03:00 [DBG] Debugging ResetPasswordEmployee  Has been Finised Successfully With Employee  6 
+2024-01-28 00:00:29.523 +03:00 [ERR] Customer Not Found 
+2024-01-28 00:00:29.543 +03:00 [ERR] Customer Not Found: Not Found (Parameter 'Customer')
+2024-01-28 00:00:36.243 +03:00 [INF] Customer Is In Existing
+2024-01-28 00:00:36.252 +03:00 [INF] Customer Is Deleted
+2024-01-28 00:00:36.252 +03:00 [DBG] Debugging DeleteCustomer Has been Finised Successfully With Customer ID  = 3
+2024-01-28 00:01:01.731 +03:00 [INF] Employee Is In Existing
+2024-01-28 00:01:01.749 +03:00 [INF] Employee Is Deleted
+2024-01-28 00:01:01.749 +03:00 [DBG] Debugging DeleteEmployee Has been Finised Successfully With Employee ID  = 5
