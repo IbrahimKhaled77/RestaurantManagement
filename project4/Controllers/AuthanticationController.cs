@@ -25,7 +25,7 @@ namespace RestaurantManagement.Controllers
         ///       "Id": "Enter the  user  Id (Required)",
         ///     }
         /// </remarks>
-        /// <response code="201">Returns  LoginCustomer  Successfully</response>
+        /// <response code="200">Returns  LoginCustomer  Successfully</response>
         /// <response code="404">If the error was occured  (Not Found)</response>
         /// <response code="500">If an internal server error or database error occurs (Internal Server Error OR Database)</response>   
         /// <response code="400">If the error was occured  (Exception)</response>       
@@ -40,7 +40,7 @@ namespace RestaurantManagement.Controllers
         {
             try
             {
-                return StatusCode(201, await _authanticationService.Logout(UserId));
+                return StatusCode(200, await _authanticationService.Logout(UserId));
 
             }
             catch (DbUpdateException ex)
@@ -71,7 +71,7 @@ namespace RestaurantManagement.Controllers
         ///       "NewPassword": "Enter the  user  NewPassword ",
         ///     }
         /// </remarks>
-        /// <response code="201">Returns  ResetPassword  Successfully</response>
+        /// <response code="200">Returns  ResetPassword  Successfully</response>
         /// <response code="404">If the error was occured  (Not Found)</response>
         /// <response code="500">If an internal server error or database error occurs (Internal Server Error OR Database)</response>   
         /// <response code="400">If the error was occured  (Exception)</response>       
@@ -86,7 +86,7 @@ namespace RestaurantManagement.Controllers
         {
             try
             {
-                return StatusCode(201, await _authanticationService.ResetPassword(ResetPasswordDTO));
+                return StatusCode(200, await _authanticationService.ResetPassword(ResetPasswordDTO));
 
             }
             catch (DbUpdateException ex)

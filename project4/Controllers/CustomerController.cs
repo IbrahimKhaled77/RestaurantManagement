@@ -29,7 +29,7 @@ namespace RestaurantManagement.Controllers
         ///      
         ///     }
         /// </remarks>
-        /// <response code="201">Returns  LoginCustomer  Successfully</response>
+        /// <response code="200">Returns  LoginCustomer  Successfully</response>
         /// <response code="404">If the error was occured  (Not Found)</response>
         /// <response code="500">If an internal server error or database error occurs (Internal Server Error OR Database)</response>   
         /// <response code="400">If the error was occured  (Exception)</response>       
@@ -45,7 +45,7 @@ namespace RestaurantManagement.Controllers
         {
             try
             {
-                return StatusCode(201, await _customerService.LoginCustomer(AuthanticationDTOs));
+                return StatusCode(200, await _customerService.LoginCustomer(AuthanticationDTOs));
 
             }
             catch (DbUpdateException ex)
@@ -79,7 +79,7 @@ namespace RestaurantManagement.Controllers
         ///      
         ///     }
         /// </remarks>
-        /// <response code="201">Returns  Get All Customers Successfully</response>
+        /// <response code="200">Returns  Get All Customers Successfully</response>
         /// <response code="404">If the error was occured  (Not Found)</response>
         /// <response code="500">If an internal server error or database error occurs (Internal Server Error OR Database)</response>   
         /// <response code="400">If an exception occurs (Exception)</response>    
@@ -91,12 +91,13 @@ namespace RestaurantManagement.Controllers
         /// <returns>List of Customers </returns>
         [HttpGet]
         [Route("[action]")]
-        public async Task<IActionResult> GetAllCustomers([FromHeader] string Email, [FromHeader] string Password)
+        public async Task<IActionResult> GetAllCustomers([FromHeader]  string Email, [FromHeader] string Password)
         {
             try
             {
                 
-                return StatusCode(201, await _customerService.GetAllCustomers(Email, Password));
+               
+                return StatusCode(200, await _customerService.GetAllCustomers(Email, Password));
 
             }
             catch (DbUpdateException ex)
@@ -128,24 +129,24 @@ namespace RestaurantManagement.Controllers
         ///      
         ///     }
         /// </remarks>
-        /// <response code="201">Returns  Get  Customer by CustomerID Successfully</response>
+        /// <response code="200">Returns  Get  Customer by CustomerID Successfully</response>
         /// <response code="404">If the error was occured  (Not Found)</response>
         /// <response code="500">If the error was occured  (Internal Server Error OR Database)</response>   
         /// <response code="400">If an exception occurs (Exception)</response>       
         ///<summary>
         /// Retrieves a customer by ID from the application
         /// </summary>
-        /// <param name="CustomerId">The ID of the customer to retrieve (Required).</param>
+        /// <param name="Id">The ID of the customer to retrieve (Required).</param>
         /// <param name="Email">The Email of the  Customer to Get Customer By Id (Required).</param>
         /// <param name="Password">The Password of the  Customer to Get Customer By Id (Required).</param> 
         /// <returns>The customer information. </returns>
         [HttpGet]
-        [Route("[action]/{CustomerId}")]
-        public async Task<IActionResult> GetCustomerById([FromRoute] int CustomerId, [FromHeader] string Email, [FromHeader] string Password)
+        [Route("[action]/{Id}")]
+        public async Task<IActionResult> GetCustomerById([FromRoute] int Id, [FromHeader] string Email, [FromHeader] string Password)
         {
             try
             {
-                return StatusCode(201, await _customerService.GetCustomerById(CustomerId, Email, Password));
+                return StatusCode(200, await _customerService.GetCustomerById(Id, Email, Password));
 
             }
             catch (DbUpdateException ex)
@@ -275,7 +276,7 @@ namespace RestaurantManagement.Controllers
         ///      
         ///     }
         /// </remarks>
-        /// <response code="201">Returns  Delete Customer Successfully</response>
+        /// <response code="200">Returns  Delete Customer Successfully</response>
         /// <response code="404">If the error was occured  (Not Found)</response>
         /// <response code="500">If an internal server error or database error occurs (Internal Server Error OR Database)</response>   
         /// <response code="400">If the error was occured  (Exception)</response>       
@@ -292,7 +293,7 @@ namespace RestaurantManagement.Controllers
         {
             try
             {
-                return StatusCode(201, await _customerService.DeleteCustomer(CustomerId, Email, Password));
+                return StatusCode(200, await _customerService.DeleteCustomer(CustomerId, Email, Password));
 
             }
             catch (DbUpdateException ex)

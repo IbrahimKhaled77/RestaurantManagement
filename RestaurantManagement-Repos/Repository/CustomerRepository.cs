@@ -64,7 +64,7 @@ namespace RestaurantManagement.Implementation
 
         //Enter the customer's email and password and search for them in the customer table in the database and
         //see if the customer is active or not and it returns true or false.
-        public async Task<bool> IsCustomerLoggedIn(string email, string password)
+        public async Task<bool> IsCustomerLoggedIn( string email, string password)
         {
             var customer= await _context.Customer.AnyAsync(x => x.Email == email && x.Password == password && x.IsLoggedIn == true); ;
 

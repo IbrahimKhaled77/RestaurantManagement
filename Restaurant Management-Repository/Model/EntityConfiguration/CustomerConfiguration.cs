@@ -29,8 +29,8 @@ namespace RestaurantManagement.Model.EntityConfiguration
 
 
             builder.Property(x => x.Password).IsRequired();
-            builder.HasCheckConstraint("Password", "(len([Password])=(11) AND [Password] like '%[0-9]%' AND [Password] like '%[A-Za-z]%' AND [Password] like '%[^A-Za-z]%')");
-
+            builder.HasCheckConstraint("Password", "(len([Password])>=(11) AND [Password] like '%[0-9]%' AND [Password] like '%[A-Za-z]%' AND [Password] like '%[^A-Za-z]%')");
+            
 
             //Be the first phone number + then enter 12 numbers
             builder.Property(x => x.PhoneNumber).HasMaxLength(13).IsRequired();

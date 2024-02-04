@@ -27,7 +27,7 @@ namespace RestaurantManagement.Controllers
         ///      
         ///     }
         /// </remarks>
-        /// <response code="201">Returns  Get All Menu Successfully</response>
+        /// <response code="200">Returns  Get All Menu Successfully</response>
         /// <response code="404">If the error was occured  (Not Found)</response>
         /// <response code="500">If an internal server error or database error occurs (Internal Server Error OR Database)</response>   
         /// <response code="400">If an exception occurs (Exception)</response>    
@@ -43,7 +43,7 @@ namespace RestaurantManagement.Controllers
         {
             try
             {
-                return StatusCode(201, await _IMenuService.GetAllMenus(Email, Password));
+                return StatusCode(200, await _IMenuService.GetAllMenus(Email, Password));
 
             }
             catch (DbUpdateException ex)
@@ -74,7 +74,7 @@ namespace RestaurantManagement.Controllers
         ///        "password": "Enter Your password Here (Required)",
         ///     }
         /// </remarks>
-        /// <response code="201">Returns  Get  Menu by MenuID Successfully</response>
+        /// <response code="200">Returns  Get  Menu by MenuID Successfully</response>
         /// <response code="404">If the error was occured  (Not Found)</response>
         /// <response code="500">If the error was occured  (Internal Server Error OR Database)</response>   
         /// <response code="400">If an exception occurs (Exception)</response>       
@@ -92,7 +92,7 @@ namespace RestaurantManagement.Controllers
         {
             try
             {
-                return StatusCode(201, await _IMenuService.GetMenuById(MenuId, Email, Password));
+                return StatusCode(200, await _IMenuService.GetMenuById(MenuId, Email, Password));
 
             }
             catch (DbUpdateException ex)
@@ -138,7 +138,7 @@ namespace RestaurantManagement.Controllers
         /// <returns>A message indicating the success of the operation </returns>
         [HttpPost]
         [Route("[action]")]
-        public async Task<IActionResult> AddMenu([FromBody]CreatMenuDTO menu, [FromHeader] string Email, [FromHeader] string Password)
+        public async Task<IActionResult> AddMenu([FromBody] CreatMenuDTO menu, [FromHeader] string Email, [FromHeader] string Password)
         {
             
             try
@@ -228,7 +228,7 @@ namespace RestaurantManagement.Controllers
         ///      
         ///     }
         /// </remarks>
-        /// <response code="201">Returns  Delete Menu Successfully</response>
+        /// <response code="200">Returns  Delete Menu Successfully</response>
         /// <response code="404">If the error was occured  (Not Found)</response>
         /// <response code="500">If an internal server error or database error occurs (Internal Server Error OR Database)</response>   
         /// <response code="400">If the error was occured  (Exception)</response>       
@@ -245,7 +245,7 @@ namespace RestaurantManagement.Controllers
         {
             try
             {
-                return StatusCode(201, await _IMenuService.DeleteMenu(MenuId, Email, Password));
+                return StatusCode(200, await _IMenuService.DeleteMenu(MenuId, Email, Password));
 
             }
             catch (DbUpdateException ex)

@@ -26,7 +26,7 @@ namespace RestaurantManagement.Controllers
         ///      
         ///     }
         /// </remarks>
-        /// <response code="201">Returns  Get All Orders item Successfully</response>
+        /// <response code="200">Returns  Get All Orders item Successfully</response>
         /// <response code="404">If the error was occured  (Not Found)</response>
         /// <response code="500">If an internal server error or database error occurs (Internal Server Error OR Database)</response>   
         /// <response code="400">If an exception occurs (Exception)</response>    
@@ -43,7 +43,7 @@ namespace RestaurantManagement.Controllers
 
             try
             {
-                return StatusCode(201, await _orderItemService.GetAllOrderItems(Email, Password));
+                return StatusCode(200, await _orderItemService.GetAllOrderItems(Email, Password));
 
             }
             catch (DbUpdateException ex)
@@ -71,7 +71,7 @@ namespace RestaurantManagement.Controllers
         ///       "OrderItemId": "Enter Your OrderItem ID Here (Required)",  
         ///     }
         /// </remarks>
-        /// <response code="201">Returns  Get  Order item by OrderID Successfully</response>
+        /// <response code="200">Returns  Get  Order item by OrderID Successfully</response>
         /// <response code="404">If the error was occured  (Not Found)</response>
         /// <response code="500">If the error was occured  (Internal Server Error OR Database)</response>   
         /// <response code="400">If an exception occurs (Exception)</response>       
@@ -88,7 +88,7 @@ namespace RestaurantManagement.Controllers
         {
             try
             {
-                return StatusCode(201, await _orderItemService.GetOrderItemById(OrderItemId, Email, Password));
+                return StatusCode(200, await _orderItemService.GetOrderItemById(OrderItemId, Email, Password));
 
             }
             catch (DbUpdateException ex)
@@ -134,11 +134,11 @@ namespace RestaurantManagement.Controllers
         /// <returns>A message indicating the success of the operation </returns>
         [HttpPut]
         [Route("[action]")]
-        public async Task<IActionResult> AddOrderItem(CreateOrderItemDTO OrderItemDTO, [FromHeader] string Email, [FromHeader] string Password)
+        public async Task<IActionResult> AddOrderItem([FromBody] CreateOrderItemDTO OrderItemDTO, [FromHeader] string Email, [FromHeader] string Password)
         {
             try
             {
-                return StatusCode(201, await _orderItemService.AddOrderItem(OrderItemDTO, Email, Password));
+                return StatusCode(200, await _orderItemService.AddOrderItem(OrderItemDTO, Email, Password));
 
             }
             catch (DbUpdateException ex)
@@ -223,7 +223,7 @@ namespace RestaurantManagement.Controllers
         ///      
         ///     }
         /// </remarks>
-        /// <response code="201">Returns  Delete Order Successfully</response>
+        /// <response code="200">Returns  Delete Order Successfully</response>
         /// <response code="404">If the error was occured  (Not Found)</response>
         /// <response code="500">If an internal server error or database error occurs (Internal Server Error OR Database)</response>   
         /// <response code="400">If the error was occured  (Exception)</response>       
@@ -240,7 +240,7 @@ namespace RestaurantManagement.Controllers
         {
             try
             {
-                return StatusCode(201, await _orderItemService.DeleteOrderItem(OrderItemId, Email, Password));
+                return StatusCode(200, await _orderItemService.DeleteOrderItem(OrderItemId, Email, Password));
 
             }
             catch (DbUpdateException ex)

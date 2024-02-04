@@ -12,8 +12,8 @@ using RestaurantManagement.Context;
 namespace RestaurantManagement_Repos.Migrations
 {
     [DbContext(typeof(RestaurantManagemenstContext))]
-    [Migration("20240126183819_resMangement")]
-    partial class resMangement
+    [Migration("20240204132758_End")]
+    partial class End
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -72,7 +72,7 @@ namespace RestaurantManagement_Repos.Migrations
 
                             t.HasCheckConstraint("Name", "(NOT [Name] like '%[0-9]%' AND NOT [Name] like '%[^A-Za-z ]%')");
 
-                            t.HasCheckConstraint("Password", "(len([Password])=(11) AND [Password] like '%[0-9]%' AND [Password] like '%[A-Za-z]%' AND [Password] like '%[^A-Za-z]%')");
+                            t.HasCheckConstraint("Password", "(len([Password])>=(11) AND [Password] like '%[0-9]%' AND [Password] like '%[A-Za-z]%' AND [Password] like '%[^A-Za-z]%')");
 
                             t.HasCheckConstraint("PhoneNumber", "([PhoneNumber] like '+%' AND len([PhoneNumber])=(13) AND [PhoneNumber] like '%[0-9]%')");
                         });
@@ -127,7 +127,7 @@ namespace RestaurantManagement_Repos.Migrations
                             t.HasCheckConstraint("Name", "(NOT [Name] like '%[0-9]%' AND NOT [Name] like '%[^A-Za-z ]%')")
                                 .HasName("Name1");
 
-                            t.HasCheckConstraint("Password", "(len([Password])=(11) AND [Password] like '%[0-9]%' AND [Password] like '%[A-Za-z]%' AND [Password] like '%[^A-Za-z]%')")
+                            t.HasCheckConstraint("Password", "(len([Password])>=(11) AND [Password] like '%[0-9]%' AND [Password] like '%[A-Za-z]%' AND [Password] like '%[^A-Za-z]%')")
                                 .HasName("Password1");
 
                             t.HasCheckConstraint("Position", "([Position] like '%Waiter%' OR [Position] like '%Accountant%' OR [Position] like '%Chef%' OR [Position] like '%Admin%')");
@@ -250,7 +250,7 @@ namespace RestaurantManagement_Repos.Migrations
 
                     b.ToTable("OrderItem", t =>
                         {
-                            t.HasCheckConstraint("Quantity", "Quantity >= 0");
+                            t.HasCheckConstraint("Quantity", "Quantity >= 1");
                         });
                 });
 
@@ -278,7 +278,7 @@ namespace RestaurantManagement_Repos.Migrations
 
                     b.ToTable("Table", t =>
                         {
-                            t.HasCheckConstraint("TableNumber", "TableNumber >= 0");
+                            t.HasCheckConstraint("TableNumber", "TableNumber >= 1");
                         });
                 });
 

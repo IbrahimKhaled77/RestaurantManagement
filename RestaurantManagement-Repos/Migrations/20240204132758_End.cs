@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace RestaurantManagement_Repos.Migrations
 {
     /// <inheritdoc />
-    public partial class resMangement : Migration
+    public partial class End : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -31,7 +31,7 @@ namespace RestaurantManagement_Repos.Migrations
                     table.PrimaryKey("PK_Customer", x => x.CustomerId);
                     table.CheckConstraint("Email", "([Email] like '%@GMAIL%' OR [Email] like '%@HOTMAIL%' OR [Email] like '%@ICLOUD%')");
                     table.CheckConstraint("Name", "(NOT [Name] like '%[0-9]%' AND NOT [Name] like '%[^A-Za-z ]%')");
-                    table.CheckConstraint("Password", "(len([Password])=(11) AND [Password] like '%[0-9]%' AND [Password] like '%[A-Za-z]%' AND [Password] like '%[^A-Za-z]%')");
+                    table.CheckConstraint("Password", "(len([Password])>=(11) AND [Password] like '%[0-9]%' AND [Password] like '%[A-Za-z]%' AND [Password] like '%[^A-Za-z]%')");
                     table.CheckConstraint("PhoneNumber", "([PhoneNumber] like '+%' AND len([PhoneNumber])=(13) AND [PhoneNumber] like '%[0-9]%')");
                 });
 
@@ -55,7 +55,7 @@ namespace RestaurantManagement_Repos.Migrations
                     table.PrimaryKey("PK_Employee", x => x.EmployeeId);
                     table.CheckConstraint("Email1", "([Email] like '%@GMAIL%' OR [Email] like '%@HOTMAIL%' OR [Email] like '%@ICLOUD%')");
                     table.CheckConstraint("Name1", "(NOT [Name] like '%[0-9]%' AND NOT [Name] like '%[^A-Za-z ]%')");
-                    table.CheckConstraint("Password1", "(len([Password])=(11) AND [Password] like '%[0-9]%' AND [Password] like '%[A-Za-z]%' AND [Password] like '%[^A-Za-z]%')");
+                    table.CheckConstraint("Password1", "(len([Password])>=(11) AND [Password] like '%[0-9]%' AND [Password] like '%[A-Za-z]%' AND [Password] like '%[^A-Za-z]%')");
                     table.CheckConstraint("Position", "([Position] like '%Waiter%' OR [Position] like '%Accountant%' OR [Position] like '%Chef%' OR [Position] like '%Admin%')");
                 });
 
@@ -90,7 +90,7 @@ namespace RestaurantManagement_Repos.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Table", x => x.TableId);
-                    table.CheckConstraint("TableNumber", "TableNumber >= 0");
+                    table.CheckConstraint("TableNumber", "TableNumber >= 1");
                 });
 
             migrationBuilder.CreateTable(
@@ -160,7 +160,7 @@ namespace RestaurantManagement_Repos.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_OrderItem", x => x.OrderItemId);
-                    table.CheckConstraint("Quantity", "Quantity >= 0");
+                    table.CheckConstraint("Quantity", "Quantity >= 1");
                     table.ForeignKey(
                         name: "FK_OrderItem_Menu_MenuId",
                         column: x => x.MenuId,

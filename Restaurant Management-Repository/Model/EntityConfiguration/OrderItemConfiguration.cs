@@ -15,7 +15,7 @@ namespace RestaurantManagement.Model.EntityConfiguration
 
             //Quantity or number of one product. How much should one order from it and be positive 
             builder.Property(x => x.Quantity).IsRequired();
-            builder.HasCheckConstraint("Quantity", "Quantity >= 0");
+            builder.HasCheckConstraint("Quantity", "Quantity >= 1");
            
 
         }

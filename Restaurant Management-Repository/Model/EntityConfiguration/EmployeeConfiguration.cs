@@ -20,7 +20,7 @@ namespace RestaurantManagement.Model.EntityConfiguration
             builder.HasCheckConstraint("Email", "([Email] like '%@GMAIL%' OR [Email] like '%@HOTMAIL%' OR [Email] like '%@ICLOUD%')");
 
             builder.Property(x => x.Password).IsRequired();
-            builder.HasCheckConstraint("Password", "(len([Password])=(11) AND [Password] like '%[0-9]%' AND [Password] like '%[A-Za-z]%' AND [Password] like '%[^A-Za-z]%')");
+            builder.HasCheckConstraint("Password", "(len([Password])>=(11) AND [Password] like '%[0-9]%' AND [Password] like '%[A-Za-z]%' AND [Password] like '%[^A-Za-z]%')");
 
 
             //Enter TypePosition Waiter OR Chef OR Admin OR accountant

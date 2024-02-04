@@ -12,7 +12,7 @@ namespace RestaurantManagement.Controllers
         public OrderController(IOrderService orderService)
         {
             _orderService = orderService;
-;
+            ;
         }
 
 
@@ -27,7 +27,7 @@ namespace RestaurantManagement.Controllers
         ///      
         ///     }
         /// </remarks>
-        /// <response code="201">Returns  Get All Orders Successfully</response>
+        /// <response code="200">Returns  Get All Orders Successfully</response>
         /// <response code="404">If the error was occured  (Not Found)</response>
         /// <response code="500">If an internal server error or database error occurs (Internal Server Error OR Database)</response>   
         /// <response code="400">If an exception occurs (Exception)</response>    
@@ -44,7 +44,7 @@ namespace RestaurantManagement.Controllers
 
             try
             {
-                return StatusCode(201,await _orderService.GetAllOrders(Email, Password));
+                return StatusCode(200, await _orderService.GetAllOrders(Email, Password));
 
             }
             catch (DbUpdateException ex)
@@ -72,7 +72,7 @@ namespace RestaurantManagement.Controllers
         ///       "OrderId": "Enter Your Order ID Here (Required)",  
         ///     }
         /// </remarks>
-        /// <response code="201">Returns  Get  Order by OrderID Successfully</response>
+        /// <response code="200">Returns  Get  Order by OrderID Successfully</response>
         /// <response code="404">If the error was occured  (Not Found)</response>
         /// <response code="500">If the error was occured  (Internal Server Error OR Database)</response>   
         /// <response code="400">If an exception occurs (Exception)</response>       
@@ -85,11 +85,11 @@ namespace RestaurantManagement.Controllers
         /// <returns>The Order information. </returns>
         [HttpGet]
         [Route("[action]/{OrderId}")]
-        public async Task<IActionResult> GetOrderById([FromRoute]  int OrderId, [FromHeader] string Email, [FromHeader] string Password)
+        public async Task<IActionResult> GetOrderById([FromRoute] int OrderId, [FromHeader] string Email, [FromHeader] string Password)
         {
             try
             {
-                return StatusCode(201,await _orderService.GetOrderById(OrderId, Email, Password));
+                return StatusCode(200, await _orderService.GetOrderById(OrderId, Email, Password));
 
             }
             catch (DbUpdateException ex)
@@ -135,7 +135,7 @@ namespace RestaurantManagement.Controllers
         /// <returns>A message indicating the success of the operation </returns>
         [HttpPut]
         [Route("[action]")]
-        public async Task<IActionResult> AddOrder(CreatOrderDTO order, [FromHeader] string Email, [FromHeader] string Password)
+        public async Task<IActionResult> AddOrder([FromBody] CreatOrderDTO order, [FromHeader] string Email, [FromHeader] string Password)
         {
             try
             {
@@ -190,7 +190,7 @@ namespace RestaurantManagement.Controllers
         {
             try
             {
-                return StatusCode(201,await _orderService.UpdateOrder(order, Email, Password));
+                return StatusCode(201, await _orderService.UpdateOrder(order, Email, Password));
 
             }
             catch (DbUpdateException ex)
@@ -223,7 +223,7 @@ namespace RestaurantManagement.Controllers
         ///      
         ///     }
         /// </remarks>
-        /// <response code="201">Returns  Delete Order Successfully</response>
+        /// <response code="200">Returns  Delete Order Successfully</response>
         /// <response code="404">If the error was occured  (Not Found)</response>
         /// <response code="500">If an internal server error or database error occurs (Internal Server Error OR Database)</response>   
         /// <response code="400">If the error was occured  (Exception)</response>       
@@ -240,7 +240,7 @@ namespace RestaurantManagement.Controllers
         {
             try
             {
-                return StatusCode(201,await _orderService.DeleteOrder(OrderId, Email, Password));
+                return StatusCode(200,await _orderService.DeleteOrder(OrderId, Email, Password));
 
             }
             catch (DbUpdateException ex)

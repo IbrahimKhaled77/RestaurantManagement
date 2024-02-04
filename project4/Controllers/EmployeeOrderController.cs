@@ -40,7 +40,7 @@ namespace RestaurantManagement.Controllers
         /// <returns>A message indicating the success of the operation </returns>
         [HttpPost]
         [Route("[action]")]
-        public async Task<IActionResult> AddEmployeeOrder([FromBody] EmployeeOrderCreatDTOs employeeOrderCardDTOs,[FromHeader] string Email, [FromHeader] string Password)
+        public async Task<IActionResult> AddEmployeeOrder([FromHeader] EmployeeOrderCreatDTOs employeeOrderCardDTOs,[FromHeader] string Email, [FromHeader] string Password)
         {
             try
             {

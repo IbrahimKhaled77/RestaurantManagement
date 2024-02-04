@@ -27,7 +27,7 @@ namespace RestaurantManagement.Controllers
         ///      
         ///     }
         /// </remarks>
-        /// <response code="201">Returns  Get All Table Successfully</response>
+        /// <response code="200">Returns  Get All Table Successfully</response>
         /// <response code="404">If the error was occured  (Not Found)</response>
         /// <response code="500">If an internal server error or database error occurs (Internal Server Error OR Database)</response>   
         /// <response code="400">If an exception occurs (Exception)</response>    
@@ -44,7 +44,7 @@ namespace RestaurantManagement.Controllers
             try
             {
 
-                return StatusCode(201,await _tableService.GetAllTables(Email, Password));
+                return StatusCode(200,await _tableService.GetAllTables(Email, Password));
 
             }
             catch (DbUpdateException ex)
@@ -74,7 +74,7 @@ namespace RestaurantManagement.Controllers
         ///        "password": "Enter Your password Here (Required)",
         ///     }
         /// </remarks>
-        /// <response code="201">Returns  Get  Table by TableID Successfully</response>
+        /// <response code="200">Returns  Get  Table by TableID Successfully</response>
         /// <response code="404">If the error was occured  (Not Found)</response>
         /// <response code="500">If the error was occured  (Internal Server Error OR Database)</response>   
         /// <response code="400">If an exception occurs (Exception)</response>       
@@ -92,7 +92,7 @@ namespace RestaurantManagement.Controllers
 
             try
             {
-                return StatusCode(201,await _tableService.GetTableById(TableId, Email, Password));
+                return StatusCode(200,await _tableService.GetTableById(TableId, Email, Password));
 
             }
             catch (DbUpdateException ex)
@@ -143,7 +143,7 @@ namespace RestaurantManagement.Controllers
             try
             {
                
-                return StatusCode(201,await _tableService.AddTables(Table, Email, Password));
+                return StatusCode(201, await _tableService.AddTables(Table, Email, Password));
 
             }
             catch (DbUpdateException ex)
@@ -195,7 +195,7 @@ namespace RestaurantManagement.Controllers
         {
             try
             {
-                return StatusCode(201,await _tableService.UpdateTable(TableDto, Email, Password));
+                return StatusCode(201, await _tableService.UpdateTable(TableDto, Email, Password));
 
             }
             catch (ArgumentNullException ex)
@@ -229,7 +229,7 @@ namespace RestaurantManagement.Controllers
         ///      
         ///     }
         /// </remarks>
-        /// <response code="201">Returns  Delete Table Successfully</response>
+        /// <response code="200">Returns  Delete Table Successfully</response>
         /// <response code="404">If the error was occured  (Not Found)</response>
         /// <response code="500">If an internal server error or database error occurs (Internal Server Error OR Database)</response>   
         /// <response code="400">If the error was occured  (Exception)</response>       
@@ -247,7 +247,7 @@ namespace RestaurantManagement.Controllers
             try
             {
 
-                return StatusCode(201,await _tableService.DeleteTable(TableId, Email, Password));
+                return StatusCode(200,await _tableService.DeleteTable(TableId, Email, Password));
 
             }
             catch (ArgumentNullException ex)

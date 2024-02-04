@@ -17,7 +17,7 @@ namespace RestaurantManagement.Model.EntityConfiguration
             builder.Property(x => x.TableNumber).IsRequired();
 
             builder.HasIndex(x => x.TableNumber).IsUnique();
-            builder.HasCheckConstraint("TableNumber", "TableNumber >= 0");
+            builder.HasCheckConstraint("TableNumber", "TableNumber >= 1");
         }
     }
 }

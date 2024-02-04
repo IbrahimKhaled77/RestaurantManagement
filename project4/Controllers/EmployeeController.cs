@@ -28,7 +28,7 @@ namespace RestaurantManagement.Controllers
         ///      
         ///     }
         /// </remarks>
-        /// <response code="201">Returns  LoginEmployee  Successfully</response>
+        /// <response code="200">Returns  LoginEmployee  Successfully</response>
         /// <response code="404">If the error was occured  (Not Found)</response>
         /// <response code="500">If an internal server error or database error occurs (Internal Server Error OR Database)</response>   
         /// <response code="400">If the error was occured  (Exception)</response>       
@@ -44,7 +44,7 @@ namespace RestaurantManagement.Controllers
         {
             try
             {
-                return StatusCode(201, await _employeeService.LoginEmployee(AuthanticationDTOs));
+                return StatusCode(200, await _employeeService.LoginEmployee(AuthanticationDTOs));
 
             }
             catch (DbUpdateException ex)
@@ -76,7 +76,7 @@ namespace RestaurantManagement.Controllers
         ///      
         ///     }
         /// </remarks>
-        /// <response code="201">Returns  Get All Employees Successfully</response>
+        /// <response code="200">Returns  Get All Employees Successfully</response>
         /// <response code="404">If the error was occured  (Not Found)</response>
         /// <response code="500">If an internal server error or database error occurs (Internal Server Error OR Database)</response>   
         /// <response code="400">If an exception occurs (Exception)</response>    
@@ -92,7 +92,7 @@ namespace RestaurantManagement.Controllers
         {
             try
             {
-                return StatusCode(201, await _employeeService.GetAllEmployees(Email, Password));
+                return StatusCode(200, await _employeeService.GetAllEmployees(Email, Password));
 
             }
             catch (DbUpdateException ex)
@@ -122,7 +122,7 @@ namespace RestaurantManagement.Controllers
         ///        "passwordEmployee": "Enter Your passwordEmployee Here (Required)",
         ///     }
         /// </remarks>
-        /// <response code="201">Returns  Get  Employee by EmployeeID Successfully</response>
+        /// <response code="200">Returns  Get  Employee by EmployeeID Successfully</response>
         /// <response code="404">If the error was occured  (Not Found)</response>
         /// <response code="500">If the error was occured  (Internal Server Error OR Database)</response>   
         /// <response code="400">If an exception occurs (Exception)</response>       
@@ -139,7 +139,7 @@ namespace RestaurantManagement.Controllers
         {
             try
             {
-                return StatusCode(201, await _employeeService.GetEmployeeById(EmployeeId, Email, Password));
+                return StatusCode(200, await _employeeService.GetEmployeeById(EmployeeId, Email, Password));
 
             }
             catch (DbUpdateException ex)
@@ -186,7 +186,7 @@ namespace RestaurantManagement.Controllers
         /// <returns>A message indicating the success of the operation </returns>
         [HttpPost]
         [Route("[action]")]
-        public async Task<IActionResult> AddEmployee([FromBody]CreatEmployeeDTO creatEmployee, [FromHeader] string email, [FromHeader] string password)
+        public async Task<IActionResult> AddEmployee([FromBody] CreatEmployeeDTO creatEmployee, [FromHeader] string email, [FromHeader] string password)
         {
             try
             {
@@ -276,7 +276,7 @@ namespace RestaurantManagement.Controllers
         ///      
         ///     }
         /// </remarks>
-        /// <response code="201">Returns  Delete Employee Successfully</response>
+        /// <response code="200">Returns  Delete Employee Successfully</response>
         /// <response code="404">If the error was occured  (Not Found)</response>
         /// <response code="500">If an internal server error or database error occurs (Internal Server Error OR Database)</response>   
         /// <response code="400">If the error was occured  (Exception)</response>       
@@ -293,7 +293,7 @@ namespace RestaurantManagement.Controllers
         {
             try
             {
-                return StatusCode(201,await _employeeService.DeleteEmployee(EmployeeId, Email, Password));
+                return StatusCode(200, await _employeeService.DeleteEmployee(EmployeeId, Email, Password));
 
             }
             catch (DbUpdateException ex)

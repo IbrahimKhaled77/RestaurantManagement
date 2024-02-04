@@ -1,0 +1,101 @@
+2024-02-04 16:03:10.783 +03:00 [INF] Starting web host
+2024-02-04 16:03:56.157 +03:00 [INF] OrderItem Is In Processing
+2024-02-04 16:03:56.442 +03:00 [ERR] menu or order Not Found 
+2024-02-04 16:03:56.495 +03:00 [ERR] An error occurred: Invalid menu or order not Fund
+2024-02-04 16:28:49.369 +03:00 [INF] Starting web host
+2024-02-04 16:36:07.574 +03:00 [INF] Create New Customer
+2024-02-04 16:36:09.008 +03:00 [INF] Customer Is In Finised
+2024-02-04 16:36:09.008 +03:00 [DBG] Debugging AddCustomer Has been Finised Successfully With Customer ID  1 
+2024-02-04 16:36:38.603 +03:00 [INF] Starting Login
+2024-02-04 16:36:39.092 +03:00 [INF] LoginCustomer Is In Finised
+2024-02-04 16:36:39.092 +03:00 [DBG] Debugging LoginCustomer Has been Finised Successfully With finalToken  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySWQiOiIxIiwiTmFtZSI6IklicmFoaW1LaGFsZWQiLCJuYmYiOjE3MDcwNTM3OTksImV4cCI6MTcwNzA2NDU5OSwiaWF0IjoxNzA3MDUzNzk5fQ.sS6p-HKjEI4SwNDRsllNKMNFiRTzJpXXDPYu4Jn_qvU 
+2024-02-04 16:40:05.239 +03:00 [INF] Starting web host
+2024-02-04 16:41:27.073 +03:00 [INF] Starting web host
+2024-02-04 16:41:37.175 +03:00 [INF] Customers are Reached
+2024-02-04 16:41:37.175 +03:00 [DBG] Debugging GetAllCustomers Has been Finised Successfully
+2024-02-04 16:44:18.887 +03:00 [INF] Starting web host
+2024-02-04 16:46:10.627 +03:00 [ERR] An error occurred ,Exception: You Must Login In To Your Account
+2024-02-04 16:46:39.762 +03:00 [INF] Starting Login
+2024-02-04 16:46:39.967 +03:00 [INF] Customer Is not Found
+2024-02-04 16:46:39.967 +03:00 [DBG] Youre Session Has been Closed Please Login in Again
+2024-02-04 16:46:45.842 +03:00 [INF] Starting Login
+2024-02-04 16:46:45.963 +03:00 [INF] LoginCustomer Is In Finised
+2024-02-04 16:46:45.963 +03:00 [DBG] Debugging LoginCustomer Has been Finised Successfully With finalToken  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySWQiOiIxIiwiTmFtZSI6IklicmFoaW1LaGFsZWQiLCJuYmYiOjE3MDcwNTQ0MDUsImV4cCI6MTcwNzA2NTIwNSwiaWF0IjoxNzA3MDU0NDA1fQ.RvFCrJVLND21NTvGCbC-r_KGIGBPSHusUqAPwNHAY-E 
+2024-02-04 16:46:55.661 +03:00 [ERR] An error occurred ,Exception: You Must Login In To Your Account
+2024-02-04 16:47:00.375 +03:00 [ERR] An error occurred ,Exception: You Must Login In To Your Account
+2024-02-04 16:47:00.974 +03:00 [ERR] An error occurred ,Exception: You Must Login In To Your Account
+2024-02-04 16:51:45.330 +03:00 [INF] Starting web host
+2024-02-04 16:51:56.271 +03:00 [ERR] An error occurred ,Exception: You Must Login In To Your Account
+2024-02-04 16:52:33.602 +03:00 [INF] Starting web host
+2024-02-04 16:52:44.014 +03:00 [INF] Customers are Reached
+2024-02-04 16:52:44.014 +03:00 [DBG] Debugging GetAllCustomers Has been Finised Successfully
+2024-02-04 16:58:32.414 +03:00 [INF] Starting web host
+2024-02-04 16:59:24.556 +03:00 [INF] Create New Customer
+2024-02-04 16:59:25.590 +03:00 [ERR] An error occurred in database: An error occurred while saving the entity changes. See the inner exception for details.
+2024-02-04 16:59:57.669 +03:00 [INF] Starting Login
+2024-02-04 16:59:57.941 +03:00 [INF] Customer Is not Found
+2024-02-04 16:59:57.941 +03:00 [DBG] Youre Session Has been Closed Please Login in Again
+2024-02-04 17:00:02.980 +03:00 [INF] Starting Login
+2024-02-04 17:00:03.070 +03:00 [INF] LoginCustomer Is In Finised
+2024-02-04 17:00:03.070 +03:00 [DBG] Debugging LoginCustomer Has been Finised Successfully With finalToken  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySWQiOiIxIiwiTmFtZSI6IklicmFoaW1LaGFsZWQiLCJuYmYiOjE3MDcwNTUyMDMsImV4cCI6MTcwNzA2NjAwMywiaWF0IjoxNzA3MDU1MjAzfQ.reSi1JkTtamClR8wIwy1TpQe_2nKGHEa3eF1NAFnozg 
+2024-02-04 17:00:36.418 +03:00 [INF] Starting Login
+2024-02-04 17:00:36.439 +03:00 [INF] Customer Is not Found
+2024-02-04 17:00:36.439 +03:00 [DBG] Youre Session Has been Closed Please Login in Again
+2024-02-04 17:00:38.552 +03:00 [INF] Starting Login
+2024-02-04 17:00:38.570 +03:00 [INF] LoginCustomer Is In Finised
+2024-02-04 17:00:38.570 +03:00 [DBG] Debugging LoginCustomer Has been Finised Successfully With finalToken  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySWQiOiIxIiwiTmFtZSI6IklicmFoaW1LaGFsZWQiLCJuYmYiOjE3MDcwNTUyMzgsImV4cCI6MTcwNzA2NjAzOCwiaWF0IjoxNzA3MDU1MjM4fQ.NicnnvVLNREHNMyDxPb46kbLUONkA0NnAnJFvvCDqz0 
+2024-02-04 17:00:54.581 +03:00 [INF] Starting Login
+2024-02-04 17:00:54.588 +03:00 [INF] Either Email or Password is Incorrect
+2024-02-04 17:00:54.588 +03:00 [DBG] Either Email or Password is Incorrect
+2024-02-04 17:03:15.366 +03:00 [ERR] An error occurred ,Exception: You Must Login In To Your Account
+2024-02-04 17:03:48.791 +03:00 [ERR] An error occurred ,Exception: You Must Login In To Your Account
+2024-02-04 17:03:59.552 +03:00 [ERR] An error occurred ,Exception: You Must Login In To Your Account
+2024-02-04 17:04:29.390 +03:00 [ERR] An error occurred ,Exception: You Must Login In To Your Account
+2024-02-04 17:05:43.765 +03:00 [INF] Starting web host
+2024-02-04 17:05:56.562 +03:00 [ERR] An error occurred ,Exception: You Must Login In To Your Account
+2024-02-04 17:08:49.888 +03:00 [ERR] An error occurred Exception: You Must Login In To Your Account
+2024-02-04 17:09:16.564 +03:00 [INF] Starting ResetPassword
+2024-02-04 17:09:16.601 +03:00 [ERR] An error occurred Exception: Please Fill All Information
+2024-02-04 17:09:50.306 +03:00 [INF] Starting ResetPassword
+2024-02-04 17:09:50.422 +03:00 [ERR] An error occurred Exception: ERROR NOt Found User to ResetPassword 
+2024-02-04 17:11:41.742 +03:00 [ERR] An error occurred Exception: You Must Login In To Your Account
+2024-02-04 17:14:20.864 +03:00 [INF] Starting Login
+2024-02-04 17:14:21.050 +03:00 [INF] LoginEmployee Is In Finised
+2024-02-04 17:14:21.051 +03:00 [DBG] Debugging LoginEmployee Has been Finised Successfully With finalToken  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySWQiOiIzIiwiTmFtZSI6ImphbWVsIiwibmJmIjoxNzA3MDU2MDYxLCJleHAiOjE3MDcwNjY4NjEsImlhdCI6MTcwNzA1NjA2MX0.aFzkOSFXsapA7uAAeS8TQ2U79o1O2_p1hqqa0tDnBkI 
+2024-02-04 17:14:59.634 +03:00 [INF] Create New Employee
+2024-02-04 17:14:59.759 +03:00 [ERR] An error occurred in datebase: An error occurred while saving the entity changes. See the inner exception for details.
+2024-02-04 17:15:18.932 +03:00 [INF] Create New Employee
+2024-02-04 17:15:19.007 +03:00 [ERR] An error occurred in datebase: An error occurred while saving the entity changes. See the inner exception for details.
+2024-02-04 17:16:05.725 +03:00 [INF] Starting web host
+2024-02-04 17:19:17.264 +03:00 [INF] Starting web host
+2024-02-04 17:19:37.239 +03:00 [INF] Create New Customer
+2024-02-04 17:19:38.240 +03:00 [ERR] An error occurred in database: An error occurred while saving the entity changes. See the inner exception for details.
+2024-02-04 17:20:06.980 +03:00 [ERR] An error occurred ,Exception: You Must Login In To Your Account
+2024-02-04 17:20:33.933 +03:00 [ERR] An error occurred ,Exception: You Must Login In To Your Account
+2024-02-04 17:21:08.617 +03:00 [ERR] An error occurred ,Exception: You Must Login In To Your Account
+2024-02-04 17:22:04.030 +03:00 [ERR] An error occurred ,Exception: You Must Login In To Your Account
+2024-02-04 17:22:28.661 +03:00 [INF] Starting Login
+2024-02-04 17:22:28.721 +03:00 [INF] Either Email or Password is Incorrect
+2024-02-04 17:22:28.721 +03:00 [DBG] Either Email or Password is Incorrect
+2024-02-04 17:23:07.882 +03:00 [ERR] An error occurred Exception : You Must Login In To Your Account
+2024-02-04 17:23:38.021 +03:00 [ERR] An error occurred Exception : You Must Login In To Your Account
+2024-02-04 17:24:01.744 +03:00 [ERR] An error occurred Exception: You Must Login In To Your Account
+2024-02-04 17:24:31.254 +03:00 [ERR] An error occurred ,Exception: You Must Login In To Your Account
+2024-02-04 17:24:47.913 +03:00 [ERR] An error occurred ,Exception: You Must Login In To Your Account
+2024-02-04 17:24:51.426 +03:00 [ERR] An error occurred ,Exception: You Must Login In To Your Account
+2024-02-04 17:25:34.411 +03:00 [ERR] An error occurred Exception: You Must Login In To Your Account
+2024-02-04 17:25:57.232 +03:00 [ERR] An error occurred Exception: You Must Login In To Your Account
+2024-02-04 17:26:22.065 +03:00 [ERR] An error occurred ,Exception: You Must Login In To Your Account
+2024-02-04 17:26:45.619 +03:00 [ERR] An error occurred ,Exception: You Must Login In To Your Account
+2024-02-04 17:27:05.131 +03:00 [ERR] An error occurred Exception : You Must Login In To Your Account
+2024-02-04 17:27:23.508 +03:00 [ERR] An error occurred Exception : You Must Login In To Your Account
+2024-02-04 17:27:56.031 +03:00 [ERR] An error occurred: You Must Login In To Your Account
+2024-02-04 17:29:08.310 +03:00 [ERR] An error occurred Exception : You Must Login In To Your Account
+2024-02-04 17:29:30.524 +03:00 [ERR] An error occurred Exception : You Must Login In To Your Account
+2024-02-04 17:30:08.025 +03:00 [ERR] An error occurred: You Must Login In To Your Account
+2024-02-04 17:31:54.985 +03:00 [ERR] An error occurred: You Must Login In To Your Account
+2024-02-04 17:34:15.152 +03:00 [ERR] An error occurred Exception : You Must Login In To Your Account
+2024-02-04 17:34:28.834 +03:00 [ERR] An error occurred Exception : You Must Login In To Your Account
+2024-02-04 17:35:03.736 +03:00 [ERR] An error occurred ,Exception: You Must Login In To Your Account
+2024-02-04 17:36:02.498 +03:00 [ERR] An error occurred Exception : You Must Login In To Your Account
+2024-02-04 17:36:19.533 +03:00 [ERR] An error occurred Exception : You Must Login In To Your Account

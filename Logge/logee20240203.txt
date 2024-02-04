@@ -1,0 +1,33 @@
+2024-02-03 14:48:12.875 +03:00 [INF] Starting web host
+2024-02-03 14:49:13.537 +03:00 [INF] Create New Customer
+2024-02-03 14:49:14.725 +03:00 [INF] Customer Is In Finised
+2024-02-03 14:49:14.725 +03:00 [DBG] Debugging AddCustomer Has been Finised Successfully With Customer ID  4 
+2024-02-03 14:50:26.378 +03:00 [INF] Starting Login
+2024-02-03 14:50:26.755 +03:00 [INF] LoginCustomer Is In Finised
+2024-02-03 14:50:26.755 +03:00 [DBG] Debugging LoginCustomer Has been Finised Successfully With finalToken  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySWQiOiI0IiwiTmFtZSI6Ik9tYXIgS2hhbGVkIiwibmJmIjoxNzA2OTYxMDI2LCJleHAiOjE3MDY5NzE4MjYsImlhdCI6MTcwNjk2MTAyNn0.wP9MSwmh_otdFD8lKRVGBrqxc0T7Z0x78QRIVPr-0nk 
+2024-02-03 14:54:50.634 +03:00 [INF] Starting web host
+2024-02-03 14:55:24.783 +03:00 [ERR] An error occurred Exception: You Must Login In To Your Account
+2024-02-03 14:56:46.737 +03:00 [INF] Starting Login
+2024-02-03 14:56:46.822 +03:00 [INF] Either Email or Password is Incorrect
+2024-02-03 14:56:46.822 +03:00 [DBG] Either Email or Password is Incorrect
+2024-02-03 14:56:59.412 +03:00 [INF] Starting Login
+2024-02-03 14:56:59.608 +03:00 [INF] Employee Is not Found
+2024-02-03 14:56:59.609 +03:00 [DBG] Youre Session Has been Closed Please Login in Again
+2024-02-03 14:57:02.161 +03:00 [INF] Starting Login
+2024-02-03 14:57:02.237 +03:00 [INF] LoginEmployee Is In Finised
+2024-02-03 14:57:02.237 +03:00 [DBG] Debugging LoginEmployee Has been Finised Successfully With finalToken  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySWQiOiIzIiwiTmFtZSI6IklicmFoaW0iLCJuYmYiOjE3MDY5NjE0MjIsImV4cCI6MTcwNjk3MjIyMiwiaWF0IjoxNzA2OTYxNDIyfQ.UlTLSA2gY1NZT33NYnpnF_q7yzi8X4Kyu_edhx1l3vw 
+2024-02-03 14:57:20.101 +03:00 [INF] Create New Employee
+2024-02-03 14:57:20.148 +03:00 [INF] Employee Is In Finised
+2024-02-03 14:57:20.148 +03:00 [DBG] Debugging AddEmployee Has been Finised Successfully With Employee ID  8 
+2024-02-03 14:58:18.991 +03:00 [INF] Menu Is In Procesing
+2024-02-03 14:58:19.015 +03:00 [INF] Menu Is In Finised
+2024-02-03 14:58:19.015 +03:00 [DBG] Debugging AddMenus Has been Finised Successfully With Menu ID  6 
+2024-02-03 14:58:47.782 +03:00 [INF] Table Is In Procesing
+2024-02-03 14:58:47.805 +03:00 [INF] Table Is In Finised
+2024-02-03 14:58:47.805 +03:00 [DBG] Debugging AddTables Has been Finised Successfully With Table ID  14
+2024-02-03 14:59:58.710 +03:00 [INF] Order Is In Processing
+2024-02-03 15:00:38.565 +03:00 [INF] OrderItem Is In Processing
+2024-02-03 15:00:38.633 +03:00 [INF] orderItem Is Updated
+2024-02-03 15:00:38.633 +03:00 [DBG] Debugging AddOrderItem Has been Finised Successfully With Order ID  = 4
+2024-02-03 15:00:38.643 +03:00 [INF] Order Is Updated
+2024-02-03 15:00:38.643 +03:00 [DBG] Debugging UpdateOrder Has been Finised Successfully With Order ID  = 6

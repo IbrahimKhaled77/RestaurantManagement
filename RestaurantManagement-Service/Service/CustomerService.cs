@@ -19,7 +19,7 @@ namespace Restaurants_Service.Service
            
         }
 
-        public async Task<List<CustomerCardDTO>> GetAllCustomers([FromHeader] string email, [FromHeader] string password)
+        public async Task<List<CustomerCardDTO>> GetAllCustomers([FromHeader]  string email, [FromHeader]  string password)
         {
             try
             {
